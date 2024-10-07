@@ -30,7 +30,7 @@ profiler.txt
 tmp/*
 kprintf.txt
 log.txt
-export
+/export
 ms0
 .gradle
 step-trace.txt
@@ -42,4 +42,4 @@ step-trace.txt
 /PARAM.SFO
 /Snap*.bin
 
-target/
+/target
