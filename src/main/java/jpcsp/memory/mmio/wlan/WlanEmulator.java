@@ -16,7 +16,8 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.memory.mmio.wlan;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.arm.ARMInterpreter;
 import jpcsp.arm.ARMMemory;
@@ -30,7 +31,7 @@ import jpcsp.memory.mmio.wlan.threadx.hle.TXManager;
  *
  */
 public class WlanEmulator {
-	public static Logger log = Logger.getLogger("arm");
+	public static Logger log = LoggerFactory.getLogger("arm");
 	private static WlanEmulator instance;
 	private final ARMMemory mem; 
 	private final ARMProcessor processor;

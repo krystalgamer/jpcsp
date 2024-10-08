@@ -28,7 +28,8 @@ import jpcsp.HLE.PspString;
 import jpcsp.HLE.TPointer;
 import jpcsp.HLE.TPointer32;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceNp extends HLEModule {
     public static Logger log = Modules.getLogger("sceNp");

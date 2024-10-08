@@ -23,7 +23,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.Allegrex.compiler.RuntimeContext;
 import jpcsp.HLE.kernel.types.IAction;

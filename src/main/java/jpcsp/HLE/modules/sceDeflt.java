@@ -40,7 +40,8 @@ import jpcsp.memory.MemoryReader;
 import jpcsp.memory.MemoryWriter;
 import jpcsp.util.MemoryInputStream;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceDeflt extends HLEModule {
     public static Logger log = Modules.getLogger("sceDeflt");

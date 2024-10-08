@@ -37,7 +37,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.TPointer;
 import jpcsp.HLE.VFS.IVirtualCache;
@@ -57,7 +58,7 @@ import jpcsp.util.Utilities;
 
 // See format description: https://en.wikipedia.org/wiki/Design_of_the_FAT_file_system
 public abstract class FatVirtualFile implements IVirtualFile, IVirtualCache, IState {
-	public static Logger log = Logger.getLogger("fat");
+	public static Logger log = LoggerFactory.getLogger("fat");
 	private static final boolean useSynchronizeVFS = true;
 	private static final int STATE_VERSION = 0;
     public final static int sectorSize = 512;

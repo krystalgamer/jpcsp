@@ -28,12 +28,12 @@ import static jpcsp.util.Utilities.setBit;
 import static jpcsp.util.Utilities.u8;
 import static jpcsp.util.Utilities.writeUnaligned16;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.Emulator;
 import jpcsp.memory.mmio.syscon.MMIOHandlerSysconFirmwareSfr;
 import jpcsp.nec78k0.sfr.Nec78k0InterruptRequestInfo;
+import org.slf4j.event.Level;
 
 /**
  * @author gid15

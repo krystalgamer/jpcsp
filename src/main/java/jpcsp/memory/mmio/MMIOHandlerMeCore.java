@@ -19,7 +19,8 @@ package jpcsp.memory.mmio;
 import static jpcsp.HLE.modules.sceAudiocodec.PSP_CODEC_AT3PLUS;
 import static jpcsp.HLE.modules.sceAudiocodec.PSP_CODEC_MP3;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Memory;
 import jpcsp.Allegrex.compiler.RuntimeContextLLE;

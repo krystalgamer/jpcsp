@@ -18,7 +18,8 @@ package jpcsp.memory.mmio.wm8750;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.hardware.Model;
 import jpcsp.state.IState;
@@ -33,7 +34,7 @@ import jpcsp.state.StateOutputStream;
  *    http://hitmen.c02.at/files/docs/psp/WM8750.pdf
  */
 public class WM8750 implements IState {
-	public static Logger log = Logger.getLogger("WM8750");
+	public static Logger log = LoggerFactory.getLogger("WM8750");
 	private static final int STATE_VERSION = 0;
 	private static WM8750 instance;
 	private final int NUMBER_REGISTERS;

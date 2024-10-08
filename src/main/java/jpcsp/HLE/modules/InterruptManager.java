@@ -45,7 +45,8 @@ import static jpcsp.HLE.kernel.managers.IntrManager.IP2;
 import static jpcsp.memory.mmio.MMIOHandlerInterruptMan.NUMBER_INTERRUPTS;
 import static jpcsp.util.Utilities.clearFlag;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class InterruptManager extends HLEModule {
     public static Logger log = Modules.getLogger("InterruptManager");

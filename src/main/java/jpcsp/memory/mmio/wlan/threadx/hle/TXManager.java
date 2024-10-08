@@ -32,8 +32,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.Allegrex.compiler.RuntimeContext;
@@ -69,6 +71,7 @@ import jpcsp.memory.mmio.wlan.threadx.TXTimerChange;
 import jpcsp.memory.mmio.wlan.threadx.TXTimerCreate;
 import jpcsp.memory.mmio.wlan.threadx.TXTimerDeactivate;
 import jpcsp.util.Utilities;
+import org.slf4j.event.Level;
 
 /**
  * Basic HLE implementation for the real-time operating system (RTOS) ThreadX.
@@ -78,7 +81,7 @@ import jpcsp.util.Utilities;
  *
  */
 public class TXManager {
-	public static final Logger log = Logger.getLogger("threadx");
+	public static final Logger log = LoggerFactory.getLogger("threadx");
 	// Thread execution state values
 	public static final int TX_READY = 0;
 	public static final int TX_COMPLETED = 1;
@@ -986,14 +989,29 @@ public class TXManager {
 	public void disassemble(ARMProcessor processor, String comment, int addr) {
 		if (disassembleFunctions) {
 			final Level logLevel = Level.INFO;
-			if (log.isEnabledFor(logLevel)) {
+			if (log.isEnabledForLevel(logLevel)) {
 				if (disassembler == null) {
 					disassembler = new ARMDisassembler(log, logLevel, processor.mem, processor.interpreter);
 				}
 
 				if (!disassembler.isAlreadyDisassembled(addr)) {
 					if (comment != null) {
-						log.log(logLevel, comment);
+                        switch (logLevel){
+                            case DEBUG:
+                                log.debug(comment);
+                                break;
+                            case ERROR:
+                                log.error(comment);
+                                break;
+                            case WARN:
+                                log.warn(comment);
+                                break;
+                            case INFO:
+                                log.info(comment);
+                            case TRACE:
+                                log.trace(comment);
+                                break;
+                        }
 					}
 
 					disassembler.disasm(addr);

@@ -29,7 +29,8 @@ import jpcsp.HLE.Modules;
 import jpcsp.HLE.kernel.types.SceKernelErrors;
 import jpcsp.sound.SoundChannel;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceVaudio extends HLEModule {
     public static Logger log = Modules.getLogger("sceVaudio");

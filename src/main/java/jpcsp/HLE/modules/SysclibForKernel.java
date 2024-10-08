@@ -19,7 +19,8 @@ package jpcsp.HLE.modules;
 import static jpcsp.Allegrex.Common._a2;
 import static jpcsp.Allegrex.Common._a3;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Allegrex.CpuState;
 import jpcsp.Allegrex.compiler.nativeCode.AbstractNativeCodeSequence;

@@ -20,8 +20,10 @@ import static jpcsp.HLE.kernel.types.SceKernelErrors.ERROR_KERNEL_UNSUPPORTED_OP
 
 import java.util.Map;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.TPointer;
 import jpcsp.HLE.kernel.types.SceIoDirent;
@@ -30,7 +32,7 @@ import jpcsp.HLE.modules.IoFileMgrForUser;
 import jpcsp.util.Utilities;
 
 public abstract class AbstractVirtualFileSystem implements IVirtualFileSystem {
-	protected static Logger log = Logger.getLogger("vfs");
+	protected static Logger log = LoggerFactory.getLogger("vfs");
 	public static final int IO_ERROR = -1;
 
 	protected static boolean hasFlag(int mode, int flag) {
@@ -125,7 +127,7 @@ public abstract class AbstractVirtualFileSystem implements IVirtualFileSystem {
 
 	@Override
 	public int ioDevctl(String deviceName, int command, TPointer inputPointer, int inputLength, TPointer outputPointer, int outputLength) {
-		if (log.isEnabledFor(Level.WARN)) {
+        if (log.isWarnEnabled()) {
 	        log.warn(String.format("ioDevctl on '%s', 0x%08X unsupported command, inlen=%d, outlen=%d", deviceName, command, inputLength, outputLength));
 	        if (inputPointer.isAddressGood()) {
 	        	log.warn(String.format("ioDevctl indata: %s", Utilities.getMemoryDump(inputPointer.getAddress(), inputLength)));

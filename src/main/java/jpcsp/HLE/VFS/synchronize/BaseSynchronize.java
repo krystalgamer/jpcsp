@@ -21,7 +21,8 @@ import static jpcsp.HLE.modules.sceRtc.hleGetCurrentMicros;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Allegrex.compiler.RuntimeContext;
 import jpcsp.HLE.kernel.types.ScePspDateTime;
@@ -30,7 +31,7 @@ import jpcsp.state.StateOutputStream;
 import jpcsp.util.Utilities;
 
 public abstract class BaseSynchronize implements ISynchronize {
-	public static Logger log = Logger.getLogger("synchronize");
+	public static Logger log = LoggerFactory.getLogger("synchronize");
 	private static final int STATE_VERSION = 0;
     protected static final int deltaSyncDelayMillis = 1000;
     protected static final int deltaSyncIntervalMillis = 100;

@@ -25,7 +25,8 @@ import static jpcsp.util.Utilities.setBit;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Allegrex.compiler.RuntimeContextLLE;
 import jpcsp.HLE.modules.sceGpio;

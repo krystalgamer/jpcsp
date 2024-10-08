@@ -21,7 +21,8 @@ import static jpcsp.hardware.Nand.pageSize;
 import java.io.IOException;
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.state.StateInputStream;
 import jpcsp.state.StateOutputStream;

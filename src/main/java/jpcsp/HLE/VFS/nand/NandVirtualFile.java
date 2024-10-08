@@ -23,7 +23,8 @@ import static jpcsp.hardware.Nand.pagesPerBlock;
 
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.TPointer;
 import jpcsp.HLE.VFS.IVirtualFile;

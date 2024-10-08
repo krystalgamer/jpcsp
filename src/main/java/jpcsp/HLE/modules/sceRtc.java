@@ -37,7 +37,8 @@ import jpcsp.HLE.TPointer32;
 import jpcsp.HLE.TPointer64;
 import jpcsp.HLE.kernel.types.ScePspDateTime;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceRtc extends HLEModule {
     public static Logger log = Modules.getLogger("sceRtc");

@@ -25,8 +25,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
 import jpcsp.Emulator;
@@ -39,6 +38,7 @@ import jpcsp.hardware.Model;
 import jpcsp.hardware.Wlan;
 import jpcsp.memory.mmio.wlan.WlanEmulator;
 import jpcsp.util.LWJGLFixer;
+import org.slf4j.event.Level;
 
 /**
  * @author gid15
@@ -70,7 +70,7 @@ public class ARMTest {
 			length = is.read(buffer);
 			is.close();
 		} catch (IOException e) {
-			log.error(e);
+			log.error(e.toString());
 		}
 		int countFound = 0;
 		int bootCodeOffset = 0;

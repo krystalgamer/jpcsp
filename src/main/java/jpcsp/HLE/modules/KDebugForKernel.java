@@ -29,14 +29,15 @@ import jpcsp.HLE.TPointer;
 import static jpcsp.HLE.kernel.types.SceKernelErrors.ERROR_KERNEL_ERROR;
 import static jpcsp.util.Utilities.hasBit;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.Modules;
 import jpcsp.Allegrex.CpuState;
 
 public class KDebugForKernel extends HLEModule {
     public static Logger log = Modules.getLogger("KDebugForKernel");
-    protected static Logger kprintf = Logger.getLogger("kprintf");
+    protected static Logger kprintf = LoggerFactory.getLogger("kprintf");
     private long dispsw;
     private TPointer sm1Operations;
     private int deci2pOperations;

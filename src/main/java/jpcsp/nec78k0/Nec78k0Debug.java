@@ -18,7 +18,7 @@ package jpcsp.nec78k0;
 
 import static jpcsp.memory.mmio.syscon.MMIOHandlerSysconFirmwareSfr.getInterruptName;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 /**
  * @author gid15

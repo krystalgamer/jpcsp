@@ -19,7 +19,8 @@ package jpcsp.HLE.modules;
 import java.nio.charset.Charset;
 import java.util.SortedMap;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.HLEFunction;
 import jpcsp.HLE.HLEModule;

@@ -25,7 +25,8 @@ import static jpcsp.HLE.modules.SysMemUserForUser.PSP_SMEM_Low;
 import static jpcsp.HLE.modules.SysMemUserForUser.USER_PARTITION_ID;
 import static jpcsp.util.Utilities.writeStringZ;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.Memory;

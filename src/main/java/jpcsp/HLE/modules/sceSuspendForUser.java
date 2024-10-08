@@ -29,7 +29,8 @@ import jpcsp.HLE.kernel.Managers;
 import jpcsp.HLE.kernel.types.SceKernelSemaInfo;
 import jpcsp.hardware.Screen;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceSuspendForUser extends HLEModule {
     public static Logger log = Modules.getLogger("sceSuspendForUser");

@@ -24,7 +24,8 @@ import static jpcsp.util.Utilities.endianSwap16;
 import static jpcsp.util.Utilities.endianSwap32;
 import static jpcsp.util.Utilities.intArrayToByteArray;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.BufferInfo;
 import jpcsp.HLE.BufferInfo.LengthInfo;

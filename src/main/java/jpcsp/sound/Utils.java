@@ -224,12 +224,12 @@ public class Utils {
 		}
 
 		if (inLeftVolume < 0.f || inLeftVolume > 1.f) {
-			if (Modules.log.isEnabledFor(Level.WARN)) {
+			if (Modules.log.isWarnEnabled()) {
 				Modules.log.warn(String.format("Utils.mixStereoInMemory left volume outside range %f", inLeftVolume));
 			}
 		}
 		if (inRightVolume < 0.f || inRightVolume > 1.f) {
-			if (Modules.log.isEnabledFor(Level.WARN)) {
+			if (Modules.log.isWarnEnabled()) {
 				Modules.log.warn(String.format("Utils.mixStereoInMemory right volume outside range %f", inRightVolume));
 			}
 		}

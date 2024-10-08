@@ -23,14 +23,15 @@ import static jpcsp.util.Utilities.hasBit;
 import static jpcsp.util.Utilities.setBit;
 import static jpcsp.util.Utilities.setFlag;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author gid15
  *
  */
 public class ARMProcessor {
-	public static Logger log = Logger.getLogger("arm");
+	public static Logger log = LoggerFactory.getLogger("arm");
 	// Processor modes
 	public static final int MODE_USER = 0;
 	public static final int MODE_FIQ = 1;

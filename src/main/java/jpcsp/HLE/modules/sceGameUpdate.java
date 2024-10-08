@@ -25,7 +25,8 @@ import jpcsp.HLE.HLEUnimplemented;
 import jpcsp.HLE.Modules;
 import jpcsp.HLE.TPointer;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceGameUpdate extends HLEModule {
     public static Logger log = Modules.getLogger("sceGameUpdate");

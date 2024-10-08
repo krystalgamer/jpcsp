@@ -19,7 +19,7 @@ package jpcsp.arm;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.Emulator;
 import jpcsp.Memory;

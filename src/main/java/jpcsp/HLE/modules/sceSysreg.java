@@ -18,7 +18,8 @@ package jpcsp.HLE.modules;
 
 import static jpcsp.memory.mmio.MMIOHandlerSystemControl.SYSREG_CLK_AUDIO_CLKOUT;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Allegrex.compiler.RuntimeContextLLE;
 import jpcsp.HLE.HLEFunction;

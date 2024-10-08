@@ -30,7 +30,8 @@ import jpcsp.HLE.TPointerFunction;
 
 import static jpcsp.HLE.Modules.sceUsbPspcmModule;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.Modules;
 import jpcsp.HLE.kernel.types.SceKernelThreadInfo;

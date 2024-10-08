@@ -37,7 +37,7 @@ import static jpcsp.nec78k0.Nec78k0Instructions.getBranchAddress;
 import static jpcsp.nec78k0.Nec78k0Instructions.registerFunctionName;
 import static jpcsp.util.Utilities.internalReadUnaligned16;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
 import jpcsp.Emulator;

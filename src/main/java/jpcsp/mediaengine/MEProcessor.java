@@ -27,7 +27,7 @@ import static jpcsp.util.Utilities.setFlag;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.Emulator;
 import jpcsp.Memory;
@@ -43,6 +43,7 @@ import jpcsp.HLE.kernel.types.IAction;
 import jpcsp.memory.mmio.MMIOHandlerInterruptMan;
 import jpcsp.state.StateInputStream;
 import jpcsp.state.StateOutputStream;
+import org.slf4j.LoggerFactory;
 
 /**
  * The PSP Media Engine is very close to the PSP main CPU. It has the same instructions
@@ -63,7 +64,7 @@ import jpcsp.state.StateOutputStream;
  *
  */
 public class MEProcessor extends Processor {
-	public static Logger log = Logger.getLogger("me");
+	public static Logger log = LoggerFactory.getLogger("me");
 	private static final boolean DUMP = false;
 	private static final int STATE_VERSION = 0;
 	public static final int CPUID_ME = 1;

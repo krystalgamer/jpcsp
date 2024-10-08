@@ -52,7 +52,8 @@ import jpcsp.network.INetworkAdapter;
 import jpcsp.util.HLEUtilities;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceNetAdhocctl extends HLEModule {
     public static Logger log = Modules.getLogger("sceNetAdhocctl");

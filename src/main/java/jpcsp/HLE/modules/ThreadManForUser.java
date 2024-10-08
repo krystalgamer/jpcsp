@@ -155,7 +155,8 @@ import jpcsp.scheduler.Scheduler;
 import jpcsp.util.DurationStatistics;
 import jpcsp.util.HLEUtilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.CheckArgument;
 

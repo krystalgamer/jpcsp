@@ -39,14 +39,15 @@ import jpcsp.Allegrex.CpuState;
 import jpcsp.Allegrex.Decoder;
 import jpcsp.Allegrex.Instructions;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Processor implements IState {
 	private static final int STATE_VERSION = 0;
     public CpuState cpu = new CpuState();
     public Cp0State cp0 = new Cp0State();
     public static final Memory memory = Memory.getInstance();
-    protected Logger log = Logger.getLogger("cpu");
+    protected Logger log = LoggerFactory.getLogger("cpu");
     private int opcode;
     private Instruction instruction;
     private int delaySlotOpcode;

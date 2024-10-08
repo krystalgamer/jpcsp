@@ -24,7 +24,8 @@ import jpcsp.HLE.kernel.Managers;
 import jpcsp.HLE.kernel.types.SceKernelErrors;
 import jpcsp.HLE.kernel.types.SceKernelMppInfo;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class StdioForUser extends HLEModule {
     public static Logger log = Modules.getLogger("StdioForUser");

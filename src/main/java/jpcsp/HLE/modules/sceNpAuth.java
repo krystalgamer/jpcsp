@@ -53,7 +53,8 @@ import jpcsp.memory.MemoryReader;
 import jpcsp.memory.MemoryWriter;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceNpAuth extends HLEModule {
     public static Logger log = Modules.getLogger("sceNpAuth");
@@ -259,9 +260,9 @@ public class sceNpAuth extends HLEModule {
 		    				}
 		    			}
 		    		} catch (MalformedURLException e) {
-		    			log.error(e);
+		    			log.error(e.toString());
 		    		} catch (IOException e) {
-		    			log.error(e);
+		    			log.error(e.toString());
 		    		} finally {
 	    				if (connection != null) {
 	    					connection.disconnect();

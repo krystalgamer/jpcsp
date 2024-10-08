@@ -19,7 +19,7 @@ package jpcsp.sound;
 import static java.lang.Math.min;
 import static jpcsp.HLE.kernel.types.SceKernelErrors.ERROR_ATRAC_ALL_DATA_DECODED;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.Memory;
 import jpcsp.HLE.TPointer32;

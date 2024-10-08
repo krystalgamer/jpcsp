@@ -23,7 +23,7 @@ import java.nio.IntBuffer;
 
 import jpcsp.HLE.modules.sceAudio;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 import org.lwjgl.openal.AL;
 import org.lwjgl.openal.AL10;
 import org.lwjgl.openal.AL11;

@@ -22,7 +22,7 @@ import static jpcsp.util.Utilities.clearBit;
 import static jpcsp.util.Utilities.hasBit;
 import static jpcsp.util.Utilities.setBit;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.memory.mmio.IMMIOHandler;
 import jpcsp.memory.mmio.MMIO;

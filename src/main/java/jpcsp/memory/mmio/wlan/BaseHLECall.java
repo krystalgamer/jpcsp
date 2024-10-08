@@ -22,7 +22,8 @@ import static jpcsp.arm.ARMProcessor.REG_R3;
 import static jpcsp.arm.ARMProcessor.REG_R4;
 import static jpcsp.util.Utilities.clearBit;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.arm.ARMProcessor;
 import jpcsp.arm.IARMHLECall;

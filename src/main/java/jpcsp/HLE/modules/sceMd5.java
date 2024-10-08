@@ -19,7 +19,8 @@ package jpcsp.HLE.modules;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.HLEFunction;
 import jpcsp.HLE.HLELogging;

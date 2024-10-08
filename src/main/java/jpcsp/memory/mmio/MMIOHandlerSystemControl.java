@@ -27,7 +27,8 @@ import static jpcsp.util.Utilities.setFlag;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.Allegrex.compiler.ResetException;
@@ -41,7 +42,7 @@ import jpcsp.state.StateInputStream;
 import jpcsp.state.StateOutputStream;
 
 public class MMIOHandlerSystemControl extends MMIOHandlerBase {
-	public static Logger log = Logger.getLogger("systemcontrol");
+	public static Logger log = LoggerFactory.getLogger("systemcontrol");
 	private static final int STATE_VERSION = 0;
 	public static final int BASE_ADDRESS = 0xBC100000;
 	public static final int SYSREG_RESET_TOP       = 0;

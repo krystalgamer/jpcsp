@@ -18,7 +18,8 @@ package jpcsp.memory.mmio.wlan;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.modules.sceWlan;
 import jpcsp.state.StateInputStream;

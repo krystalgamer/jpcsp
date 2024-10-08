@@ -18,7 +18,8 @@ package jpcsp.HLE.modules;
 
 import static jpcsp.HLE.Modules.ThreadManForUserModule;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.HLE.HLEFunction;

@@ -49,8 +49,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.event.Level;
 
 /**
  * @author gid15
@@ -77,7 +77,23 @@ public class Nec78k0Disassembler {
 	}
 
 	private void log(String s) {
-		log.log(level, s);
+
+        switch (level){
+            case DEBUG:
+                log.debug(s);
+                break;
+            case ERROR:
+                log.error(s);
+                break;
+            case WARN:
+                log.warn(s);
+                break;
+            case INFO:
+                log.info(s);
+            case TRACE:
+                log.trace(s);
+                break;
+        }
 	}
 
 	private boolean isEndOfBlock(int addr, int insn, Nec78k0Instruction instr) {

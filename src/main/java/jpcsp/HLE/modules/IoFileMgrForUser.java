@@ -113,12 +113,13 @@ import jpcsp.settings.Settings;
 import jpcsp.util.HLEUtilities;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class IoFileMgrForUser extends HLEModule {
     public static Logger log = Modules.getLogger("IoFileMgrForUser");
-    private static Logger stdout = Logger.getLogger("stdout");
-    private static Logger stderr = Logger.getLogger("stderr");
+    private static Logger stdout = LoggerFactory.getLogger("stdout");
+    private static Logger stderr = LoggerFactory.getLogger("stderr");
     public final static int PSP_O_RDONLY = 0x0001;
     public final static int PSP_O_WRONLY = 0x0002;
     public final static int PSP_O_RDWR = (PSP_O_RDONLY | PSP_O_WRONLY);
@@ -634,7 +635,7 @@ public class IoFileMgrForUser extends HLEModule {
 	            		result /= UmdIsoFile.sectorLength;
 	            	}
 	            } catch (IOException e) {
-	            	log.error(e);
+	            	log.error(e.toString());
 	            	result = ERROR_KERNEL_FILE_READ_ERROR;
 	            }
             }
@@ -2567,7 +2568,7 @@ public class IoFileMgrForUser extends HLEModule {
                             	memoryWriter.flush();
                                 result = 0;
 							} catch (IOException e) {
-								log.error(e);
+								log.error(e.toString());
 								result = ERROR_KERNEL_FILE_READ_ERROR;
 							}
 	                    } else {
@@ -2597,7 +2598,7 @@ public class IoFileMgrForUser extends HLEModule {
                             	memoryWriter.flush();
                                 result = 0;
 							} catch (IOException e) {
-								log.error(e);
+								log.error(e.toString());
 								result = ERROR_KERNEL_FILE_READ_ERROR;
 							}
 	                    } else {
@@ -2708,7 +2709,7 @@ public class IoFileMgrForUser extends HLEModule {
 	                                info.position += length;
 	                                result = length;
 								} catch (IOException e) {
-									log.error(e);
+									log.error(e.toString());
 									result = ERROR_KERNEL_FILE_READ_ERROR;
 								}
                     		} else {
@@ -2737,7 +2738,7 @@ public class IoFileMgrForUser extends HLEModule {
 	                                info.position += length;
 	                                result = length / UmdIsoFile.sectorLength;
 								} catch (IOException e) {
-									log.error(e);
+									log.error(e.toString());
 									result = ERROR_KERNEL_FILE_READ_ERROR;
 								}
                     		} else {

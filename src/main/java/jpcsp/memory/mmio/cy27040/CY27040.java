@@ -18,7 +18,8 @@ package jpcsp.memory.mmio.cy27040;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.memory.mmio.MMIOHandlerAudio;
 import jpcsp.state.IState;
@@ -26,7 +27,7 @@ import jpcsp.state.StateInputStream;
 import jpcsp.state.StateOutputStream;
 
 public class CY27040 implements IState {
-	public static Logger log = Logger.getLogger("CY27040");
+	public static Logger log = LoggerFactory.getLogger("CY27040");
 	private static final int STATE_VERSION = 0;
 	private static CY27040 instance;
 	// In clock register, used to manage the audio frequency

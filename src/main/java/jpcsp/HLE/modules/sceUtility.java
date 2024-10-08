@@ -162,7 +162,8 @@ import jpcsp.util.MemoryInputStream;
 import jpcsp.util.Utilities;
 import jpcsp.util.sceGu;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceUtility extends HLEModule {
     public static Logger log = Modules.getLogger("sceUtility");
@@ -1121,7 +1122,7 @@ public class sceUtility extends HLEModule {
                         }
                     } catch (Exception e) {
                         savedataParams.base.result = SceKernelErrors.ERROR_SAVEDATA_LOAD_ACCESS_ERROR;
-                        log.error(e);
+                        log.error(e.toString());
                     }
                     break;
                 }
@@ -1169,7 +1170,7 @@ public class sceUtility extends HLEModule {
                                 }
                             } catch (Exception e) {
                                 savedataParams.base.result = SceKernelErrors.ERROR_SAVEDATA_LOAD_ACCESS_ERROR;
-                                log.error(e);
+                                log.error(e.toString());
                             }
 
                             if (isReadyForVisible()) {
@@ -1257,7 +1258,7 @@ public class sceUtility extends HLEModule {
                                 }
                             } catch (Exception e) {
                                 savedataParams.base.result = SceKernelErrors.ERROR_SAVEDATA_LOAD_ACCESS_ERROR;
-                                log.error(e);
+                                log.error(e.toString());
                             }
 
                             if (isReadyForVisible()) {
@@ -1298,7 +1299,7 @@ public class sceUtility extends HLEModule {
                         savedataParams.base.result = SceKernelErrors.ERROR_SAVEDATA_SAVE_ACCESS_ERROR;
                     } catch (Exception e) {
                         savedataParams.base.result = SceKernelErrors.ERROR_SAVEDATA_SAVE_ACCESS_ERROR;
-                        log.error(e);
+                        log.error(e.toString());
                     }
                     break;
                 }
@@ -1338,7 +1339,7 @@ public class sceUtility extends HLEModule {
                                 savedataParams.base.result = SceKernelErrors.ERROR_SAVEDATA_SAVE_ACCESS_ERROR;
                             } catch (Exception e) {
                                 savedataParams.base.result = SceKernelErrors.ERROR_SAVEDATA_SAVE_ACCESS_ERROR;
-                                log.error(e);
+                                log.error(e.toString());
                             }
 
                             if (isReadyForVisible()) {
@@ -1424,7 +1425,7 @@ public class sceUtility extends HLEModule {
                                 savedataParams.base.result = SceKernelErrors.ERROR_SAVEDATA_SAVE_ACCESS_ERROR;
                             } catch (Exception e) {
                                 savedataParams.base.result = SceKernelErrors.ERROR_SAVEDATA_SAVE_ACCESS_ERROR;
-                                log.error(e);
+                                log.error(e.toString());
                             }
 
                             if (isReadyForVisible()) {
@@ -1780,7 +1781,7 @@ public class sceUtility extends HLEModule {
                         savedataParams.base.result = SceKernelErrors.ERROR_SAVEDATA_RW_ACCESS_ERROR;
                     } catch (Exception e) {
                         savedataParams.base.result = SceKernelErrors.ERROR_SAVEDATA_RW_ACCESS_ERROR;
-                        log.error(e);
+                        log.error(e.toString());
                     }
                     break;
                 }
@@ -1814,7 +1815,7 @@ public class sceUtility extends HLEModule {
                         savedataParams.base.result = SceKernelErrors.ERROR_SAVEDATA_RW_NO_DATA;
                     } catch (Exception e) {
                         savedataParams.base.result = SceKernelErrors.ERROR_SAVEDATA_RW_ACCESS_ERROR;
-                        log.error(e);
+                        log.error(e.toString());
                     }
                     break;
                 }
@@ -1834,7 +1835,7 @@ public class sceUtility extends HLEModule {
                         }
                     } catch (Exception e) {
                         savedataParams.base.result = SceKernelErrors.ERROR_SAVEDATA_RW_ACCESS_ERROR;
-                        log.error(e);
+                        log.error(e.toString());
                     }
                     break;
                 }

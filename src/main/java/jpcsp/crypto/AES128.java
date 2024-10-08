@@ -30,7 +30,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import jpcsp.HLE.Modules;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 public class AES128 {

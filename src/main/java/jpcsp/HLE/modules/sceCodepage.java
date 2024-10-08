@@ -18,7 +18,8 @@ package jpcsp.HLE.modules;
 
 import static jpcsp.HLE.kernel.types.pspAbstractMemoryMappedStructure.charset16;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.BufferInfo;
 import jpcsp.HLE.BufferInfo.LengthInfo;

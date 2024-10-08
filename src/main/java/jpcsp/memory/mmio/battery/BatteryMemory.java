@@ -21,13 +21,16 @@ import static jpcsp.nec78k0.Nec78k0Processor.SFR_ADDRESS;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.memory.mmio.IMMIOHandler;
 import jpcsp.nec78k0.Nec78k0MMIOHandlerReadWrite;
 import jpcsp.nec78k0.Nec78k0Memory;
 import jpcsp.nec78k0.Nec78k0Processor;
+import org.slf4j.event.Level;
 
 /**
  * NEC 78k0 Memory map used by the Battery firmware:

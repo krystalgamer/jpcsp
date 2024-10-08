@@ -56,7 +56,8 @@ import jpcsp.remote.HTTPServer;
 import jpcsp.util.ThreadLocalCookieManager;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceHttp extends HLEModule {
     public static Logger log = Modules.getLogger("sceHttp");

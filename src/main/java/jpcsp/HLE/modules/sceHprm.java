@@ -26,7 +26,8 @@ import jpcsp.HLE.TPointer;
 import jpcsp.HLE.TPointer32;
 import jpcsp.HLE.Modules;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceHprm extends HLEModule {
     public static Logger log = Modules.getLogger("sceHprm");

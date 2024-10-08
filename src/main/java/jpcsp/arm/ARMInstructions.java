@@ -31,7 +31,7 @@ import static jpcsp.util.Utilities.notHasBit;
 import static jpcsp.util.Utilities.notHasFlag;
 import static jpcsp.util.Utilities.setFlag;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.Emulator;
 import jpcsp.Allegrex.compiler.ICompilerContext;

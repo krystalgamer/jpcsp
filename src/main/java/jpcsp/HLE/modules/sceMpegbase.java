@@ -25,7 +25,8 @@ import static jpcsp.graphics.VideoEngineUtilities.getPixelFormatBytes;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Memory;
 import jpcsp.Allegrex.compiler.RuntimeContext;

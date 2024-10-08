@@ -18,14 +18,15 @@ package jpcsp.memory.mmio.uart;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.memory.mmio.MMIOHandlerBase;
 import jpcsp.state.StateInputStream;
 import jpcsp.state.StateOutputStream;
 
 public class MMIOHandlerUartBase extends MMIOHandlerBase {
-	public static Logger log = Logger.getLogger("uart");
+	public static Logger log = LoggerFactory.getLogger("uart");
 	private static final int STATE_VERSION = 0;
 	public static final int SIZE_OF = 0x48;
 	public static final int UART_STATUS_RXEMPTY = 0x10;

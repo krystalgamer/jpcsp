@@ -31,7 +31,8 @@ import static jpcsp.util.Utilities.writeUnaligned64;
 import java.util.Arrays;
 import java.util.Random;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Allegrex.compiler.RuntimeContext;
 import jpcsp.HLE.BufferInfo;

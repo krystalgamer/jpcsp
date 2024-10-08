@@ -19,7 +19,7 @@ package jpcsp.mediaengine;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.HLE.kernel.types.MemoryChunk;
 import jpcsp.HLE.kernel.types.MemoryChunkList;

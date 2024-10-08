@@ -20,7 +20,8 @@ import static jpcsp.HLE.Modules.ThreadManForUserModule;
 import static jpcsp.HLE.kernel.types.SceKernelErrors.ERROR_KERNEL_SUBINTR_ALREADY_REGISTERED;
 import static jpcsp.HLE.kernel.types.SceKernelErrors.ERROR_KERNEL_SUBINTR_NOT_REGISTERED;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.AfterCallbackAction;
 import jpcsp.HLE.BufferInfo;

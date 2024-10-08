@@ -46,7 +46,8 @@ import jpcsp.HLE.kernel.types.SceNetIfMessage;
 import jpcsp.HLE.kernel.types.pspNetMacAddress;
 import jpcsp.HLE.modules.SysMemUserForUser.SysMemInfo;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceNetIfhandle extends HLEModule {
     public static Logger log = Modules.getLogger("sceNetIfhandle");

@@ -23,7 +23,7 @@ import java.net.SocketException;
 
 import jpcsp.HLE.modules.sceNetAdhoc;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 /**
  * @author gid15

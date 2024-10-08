@@ -27,7 +27,7 @@ import static jpcsp.memory.mmio.battery.BatteryEmulator.BATTERY_MODEL_2000;
 import static jpcsp.memory.mmio.battery.BatteryEmulator.BATTERY_MODEL_3000;
 import static jpcsp.nec78k0.Nec78k0Processor.RESET;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
 import jpcsp.Emulator;

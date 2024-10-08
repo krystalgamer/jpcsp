@@ -23,7 +23,8 @@ import static jpcsp.HLE.kernel.types.SceKernelErrors.ERROR_KERNEL_KTLS_IS_FULL;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.HLE.HLEFunction;

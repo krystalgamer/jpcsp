@@ -18,13 +18,14 @@ package jpcsp.memory.mmio;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.state.StateInputStream;
 import jpcsp.state.StateOutputStream;
 
 public class MMIOHandlerA7F00000 extends MMIOHandlerBase {
-	public static Logger log = Logger.getLogger("0xA7F00000");
+	public static Logger log = LoggerFactory.getLogger("0xA7F00000");
 	private static final int STATE_VERSION = 0;
 	private int unknown00;
 	private int unknown20;

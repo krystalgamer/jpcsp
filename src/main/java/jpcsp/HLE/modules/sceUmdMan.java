@@ -25,7 +25,8 @@ import static jpcsp.memory.mmio.umd.MMIOHandlerUmdAta.ATA_SENSE_KEY_NO_SENSE;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.Memory;
@@ -195,7 +196,7 @@ public class sceUmdMan extends HLEModule {
     	try {
     		sectorDevice.readSectors(sectorNumber, totalReadSectors, dataBuffer, 0);
 		} catch (IOException e) {
-			log.error(e);
+			log.error(e.toString());
 			return -1;
 		}
 

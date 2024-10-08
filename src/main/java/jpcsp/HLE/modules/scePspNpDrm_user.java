@@ -47,7 +47,8 @@ import jpcsp.HLE.Modules;
 import jpcsp.HLE.modules.IoFileMgrForUser.IoInfo;
 import jpcsp.settings.AbstractBoolSettingsListener;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class scePspNpDrm_user extends HLEModule {
     public static Logger log = Modules.getLogger("scePspNpDrm_user");

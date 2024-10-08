@@ -16,7 +16,8 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.HLE.modules;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -101,7 +102,7 @@ public class scePauth extends HLEModule {
                 resultLengthAddr.setValue(reslength);
             }
         } catch (IOException ioe) {
-            log.error(ioe);
+            log.error(ioe.toString());
         }
         
     	return 0;
@@ -168,7 +169,7 @@ public class scePauth extends HLEModule {
                 resultLengthAddr.setValue(reslength);
             }
         } catch (IOException ioe) {
-            log.error(ioe);
+            log.error(ioe.toString());
         }
         
     	return 0;

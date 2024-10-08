@@ -19,8 +19,10 @@ package jpcsp.HLE.VFS;
 import java.io.IOException;
 import java.util.Map;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.Modules;
 import jpcsp.HLE.TPointer;
@@ -142,7 +144,7 @@ public abstract class AbstractVirtualFile implements IVirtualFile {
 			return ioctlFile.ioIoctl(command, inputPointer, inputLength, outputPointer, outputLength);
 		}
 
-		if (log.isEnabledFor(Level.WARN)) {
+		if (log.isWarnEnabled()) {
 	        log.warn(String.format("ioIoctl 0x%08X unsupported command, inlen=%d, outlen=%d", command, inputLength, outputLength));
 	        if (inputPointer.isAddressGood()) {
 	        	log.warn(String.format("ioIoctl indata: %s", Utilities.getMemoryDump(inputPointer.getAddress(), inputLength)));

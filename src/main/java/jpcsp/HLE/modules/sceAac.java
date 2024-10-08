@@ -23,7 +23,8 @@ import static jpcsp.HLE.kernel.types.SceKernelErrors.ERROR_AAC_INVALID_PARAMETER
 import static jpcsp.HLE.kernel.types.SceKernelErrors.ERROR_AAC_RESOURCE_NOT_INITIALIZED;
 import static jpcsp.HLE.modules.sceAudiocodec.PSP_CODEC_AAC;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Memory;
 import jpcsp.HLE.CanBeNull;

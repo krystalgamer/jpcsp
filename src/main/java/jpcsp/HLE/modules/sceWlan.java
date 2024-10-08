@@ -64,7 +64,8 @@ import jpcsp.network.protocols.EtherFrame;
 import jpcsp.util.HLEUtilities;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceWlan extends HLEModule implements IAccessPointCallback {
     public static Logger log = Modules.getLogger("sceWlan");

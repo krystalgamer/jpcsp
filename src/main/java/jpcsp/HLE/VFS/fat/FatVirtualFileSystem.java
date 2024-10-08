@@ -29,7 +29,8 @@ import static jpcsp.hardware.Nand.pageSize;
 import java.util.Arrays;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.TPointer;
 import jpcsp.HLE.VFS.AbstractVirtualFileSystem;

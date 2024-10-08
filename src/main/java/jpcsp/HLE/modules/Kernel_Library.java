@@ -30,7 +30,8 @@ import jpcsp.HLE.BufferInfo.LengthInfo;
 import jpcsp.HLE.kernel.Managers;
 import jpcsp.HLE.kernel.types.SceKernelTls;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Kernel_Library extends HLEModule {
     public static Logger log = Modules.getLogger("Kernel_Library");

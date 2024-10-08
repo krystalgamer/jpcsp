@@ -25,7 +25,8 @@ import jpcsp.Memory;
 import jpcsp.HLE.Modules;
 import jpcsp.HLE.kernel.types.SceNetAdhocDiscoverParam;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceNetAdhocDiscover extends HLEModule {
     public static Logger log = Modules.getLogger("sceNetAdhocDiscover");

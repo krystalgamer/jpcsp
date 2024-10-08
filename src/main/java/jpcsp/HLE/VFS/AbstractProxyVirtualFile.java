@@ -19,7 +19,8 @@ package jpcsp.HLE.VFS;
 import java.io.IOException;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.TPointer;
 import jpcsp.HLE.modules.IoFileMgrForUser.IoOperation;

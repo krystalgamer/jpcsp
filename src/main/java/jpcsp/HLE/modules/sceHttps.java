@@ -31,7 +31,8 @@ import java.util.HashMap;
 import jpcsp.HLE.kernel.types.SceKernelThreadInfo;
 import jpcsp.HLE.Modules;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceHttps extends HLEModule {
     public static Logger log = Modules.getLogger("sceHttps");

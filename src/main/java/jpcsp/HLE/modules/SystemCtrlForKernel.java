@@ -21,7 +21,8 @@ import static jpcsp.HLE.Modules.ModuleMgrForUserModule;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.NIDMapper;
 import jpcsp.HLE.BufferInfo;

@@ -25,7 +25,8 @@ import static jpcsp.util.Utilities.readUnaligned32;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Memory;
 import jpcsp.HLE.BufferInfo;

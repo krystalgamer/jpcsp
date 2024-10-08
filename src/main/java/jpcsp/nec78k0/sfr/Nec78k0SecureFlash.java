@@ -32,7 +32,7 @@ import static jpcsp.util.Utilities.writeUnaligned32;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.state.IState;
 import jpcsp.state.StateInputStream;

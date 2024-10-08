@@ -58,7 +58,8 @@ import jpcsp.media.codec.atrac3.Atrac3Decoder;
 import jpcsp.media.codec.atrac3plus.Atrac3plusDecoder;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceAtrac3plus extends HLEModule {
     public static Logger log = Modules.getLogger("sceAtrac3plus");

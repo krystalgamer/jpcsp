@@ -111,7 +111,8 @@ import jpcsp.settings.Settings;
 import jpcsp.util.DurationStatistics;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.lwjgl.opengl.awt.GLData;
 import org.lwjgl.opengl.awt.PlatformLinuxGLCanvas;
 import org.lwjgl.opengl.awt.PlatformWin32GLCanvas;

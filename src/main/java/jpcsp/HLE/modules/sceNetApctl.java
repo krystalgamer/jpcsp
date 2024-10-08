@@ -34,7 +34,8 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.Modules;
 import jpcsp.HLE.BufferInfo.Usage;
@@ -258,9 +259,9 @@ public class sceNetApctl extends HLEModule {
 				ssid = "Jpcsp";
 			}
 		} catch (SocketException e) {
-			log.error(e);
+			log.error(e.toString());
 		} catch (UnknownHostException e) {
-			log.error(e);
+			log.error(e.toString());
 		}
 
 		return ssid;
@@ -350,7 +351,7 @@ public class sceNetApctl extends HLEModule {
 					log.debug(String.format("Using IP address of local host: %s, Subnet Mask %s", localHostIP, getSubnetMask()));
 				}
 			} catch (UnknownHostException e) {
-				log.error(e);
+				log.error(e.toString());
 			}
 		}
 

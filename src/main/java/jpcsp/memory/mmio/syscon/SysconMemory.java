@@ -18,7 +18,8 @@ package jpcsp.memory.mmio.syscon;
 
 import static jpcsp.nec78k0.Nec78k0Processor.SFR_ADDRESS;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.nec78k0.Nec78k0Memory;
 

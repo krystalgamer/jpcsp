@@ -56,7 +56,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.savarese.rocksaw.net.RawSocket;
 
@@ -1035,7 +1036,7 @@ public class sceNetInet extends HLEModule {
 					}
 					return connected;
 				} catch (IOException e) {
-					log.error(e);
+					log.error(e.toString());
 					setSocketError(e);
 					return false;
 				}
@@ -1084,7 +1085,7 @@ public class sceNetInet extends HLEModule {
 					return -1;
 				}
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setErrorToSelf(e);
 				return -1;
 			}
@@ -1105,7 +1106,7 @@ public class sceNetInet extends HLEModule {
 					socketChannel.socket().bind(getSocketAddress(addr));
 				}
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setError(e, blockingState);
 				return -1;
 			}
@@ -1171,7 +1172,7 @@ public class sceNetInet extends HLEModule {
 				clearError(blockingState);
 				return length;
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setError(e, blockingState);
 				return -1;
 			}
@@ -1219,7 +1220,7 @@ public class sceNetInet extends HLEModule {
 				clearError(blockingState);
 				return length;
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setError(e, blockingState);
 				return -1;
 			}
@@ -1234,7 +1235,7 @@ public class sceNetInet extends HLEModule {
 					socketChannel.close();
 					socketChannel = null;
 				} catch (IOException e) {
-					log.error(e);
+					log.error(e.toString());
 					setError(e, blockingState);
 					return -1;
 				}
@@ -1245,7 +1246,7 @@ public class sceNetInet extends HLEModule {
 					serverSocketChannel.close();
 					serverSocketChannel = null;
 				} catch (IOException e) {
-					log.error(e);
+					log.error(e.toString());
 					setError(e, blockingState);
 					return -1;
 				}
@@ -1366,7 +1367,7 @@ public class sceNetInet extends HLEModule {
 				try {
 					socketChannel.socket().setKeepAlive(keepAlive);
 				} catch (SocketException e) {
-					log.error(e);
+					log.error(e.toString());
 					setErrorToSelf(e);
 					return -1;
 				}
@@ -1382,7 +1383,7 @@ public class sceNetInet extends HLEModule {
 				try {
 					socketChannel.socket().setSoLinger(enabled, linger);
 				} catch (SocketException e) {
-					log.error(e);
+					log.error(e.toString());
 					setErrorToSelf(e);
 					return -1;
 				}
@@ -1398,7 +1399,7 @@ public class sceNetInet extends HLEModule {
 				try {
 					socketChannel.socket().setReuseAddress(reuseAddress);
 				} catch (SocketException e) {
-					log.error(e);
+					log.error(e.toString());
 					setErrorToSelf(e);
 					return -1;
 				}
@@ -1414,7 +1415,7 @@ public class sceNetInet extends HLEModule {
 				try {
 					socketChannel.socket().setTcpNoDelay(tcpNoDelay);
 				} catch (SocketException e) {
-					log.error(e);
+					log.error(e.toString());
 					setErrorToSelf(e);
 					return -1;
 				}
@@ -1440,7 +1441,7 @@ public class sceNetInet extends HLEModule {
 							break;
 					}
 				} catch (IOException e) {
-					log.error(e);
+					log.error(e.toString());
 					setErrorToSelf(e);
 					return -1;
 				}
@@ -1457,7 +1458,7 @@ public class sceNetInet extends HLEModule {
 				openChannel();
 				bindChannel();
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setErrorToSelf(e);
 				return -1;
 			}
@@ -1482,7 +1483,7 @@ public class sceNetInet extends HLEModule {
 				bindChannel();
 				socketChannel = serverSocketChannel.accept();
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setError(e, blockingState);
 				return -1;
 			}
@@ -1506,7 +1507,7 @@ public class sceNetInet extends HLEModule {
 			try {
 				inetSocket.configureSocketChannel();
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 			}
 			sockAddrInternet.readFromInetSocketAddress((InetSocketAddress) socketChannel.socket().getRemoteSocketAddress());
 			sockAddrInternet.write(Memory.getInstance());
@@ -1552,7 +1553,7 @@ public class sceNetInet extends HLEModule {
 				datagramChannel.connect(getSocketAddress(addr));
 				setRemoteAddr(addr);
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setErrorToSelf(e);
 				return -1;
 			}
@@ -1567,7 +1568,7 @@ public class sceNetInet extends HLEModule {
 				openChannel();
 				datagramChannel.socket().bind(getSocketAddress(addr));
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setErrorToSelf(e);
 				return -1;
 			}
@@ -1583,7 +1584,7 @@ public class sceNetInet extends HLEModule {
 					datagramChannel.close();
 					datagramChannel = null;
 				} catch (IOException e) {
-					log.error(e);
+					log.error(e.toString());
 					setErrorToSelf(e);
 					return -1;
 				}
@@ -1646,7 +1647,7 @@ public class sceNetInet extends HLEModule {
 				clearError(blockingState);
 				return length;
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setError(e, blockingState);
 				return -1;
 			}
@@ -1699,7 +1700,7 @@ public class sceNetInet extends HLEModule {
 				clearError(blockingState);
 				return length;
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setError(e, blockingState);
 				return -1;
 			}
@@ -1743,7 +1744,7 @@ public class sceNetInet extends HLEModule {
 				clearError(blockingState);
 				return length;
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setError(e, blockingState);
 				return -1;
 			}
@@ -1756,7 +1757,7 @@ public class sceNetInet extends HLEModule {
 				openChannel();
 				datagramChannel.socket().setBroadcast(broadcast);
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setErrorToSelf(e);
 				return -1;
 			}
@@ -1836,7 +1837,7 @@ public class sceNetInet extends HLEModule {
 				try {
 					datagramChannel.socket().setReuseAddress(reuseAddress);
 				} catch (SocketException e) {
-					log.error(e);
+					log.error(e.toString());
 					setErrorToSelf(e);
 					return -1;
 				}
@@ -1919,14 +1920,14 @@ public class sceNetInet extends HLEModule {
 			try {
 				rawChannel.socket().bind(getInetAddress(addr));
 			} catch (IllegalStateException e) {
-				log.error(e);
+				log.error(e.toString());
 				return -1;
 			} catch (UnknownHostException e) {
-				log.error(e);
+				log.error(e.toString());
 				setErrorToSelf(e);
 				return -1;
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setErrorToSelf(e);
 				return -1;
 			}
@@ -1940,7 +1941,7 @@ public class sceNetInet extends HLEModule {
 				try {
 					rawChannel.close();
 				} catch (IOException e) {
-					log.error(e);
+					log.error(e.toString());
 					setErrorToSelf(e);
 					return -1;
 				} finally {
@@ -2045,11 +2046,11 @@ public class sceNetInet extends HLEModule {
 
 				return length;
 			} catch (InterruptedIOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setError(e, blockingState);
 				return -1;
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setError(e, blockingState);
 				return -1;
 			}
@@ -2099,10 +2100,10 @@ public class sceNetInet extends HLEModule {
 
 				return length;
 			} catch (IllegalStateException e) {
-				log.error(e);
+				log.error(e.toString());
 				return -1;
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 				setError(e, blockingState);
 				return -1;
 			}
@@ -2484,7 +2485,7 @@ public class sceNetInet extends HLEModule {
 				unblockThread(blockingState, count);
 			}
 		} catch (IOException e) {
-			log.error(e);
+			log.error(e.toString());
 		}
 	}
 
@@ -2574,7 +2575,7 @@ public class sceNetInet extends HLEModule {
 				unblockThread(blockingState, count);
 			}
 		} catch (IOException e) {
-			log.error(e);
+			log.error(e.toString());
 		}
 	}
 
@@ -3142,7 +3143,7 @@ public class sceNetInet extends HLEModule {
 			blockingState.execute();
 			result = thread.cpuContext._v0;
 		} catch (IOException e) {
-			log.error(e);
+			log.error(e.toString());
 			setErrnoToSelf(-1);
 			return -1;
 		}

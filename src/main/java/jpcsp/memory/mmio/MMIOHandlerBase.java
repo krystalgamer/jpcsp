@@ -18,7 +18,8 @@ package jpcsp.memory.mmio;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Memory;
 import jpcsp.Processor;
@@ -27,7 +28,7 @@ import jpcsp.state.StateInputStream;
 import jpcsp.state.StateOutputStream;
 
 public class MMIOHandlerBase implements IMMIOHandler {
-	public Logger log = Logger.getLogger("mmio");
+	public Logger log = LoggerFactory.getLogger("mmio");
 	private static final int STATE_VERSION = 0;
 	protected final int baseAddress;
 

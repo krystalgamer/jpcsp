@@ -20,7 +20,7 @@ import static jpcsp.nec78k0.sfr.Nec78k0Sfr.SRIF6;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.HLE.kernel.types.IAction;
 import jpcsp.state.IState;

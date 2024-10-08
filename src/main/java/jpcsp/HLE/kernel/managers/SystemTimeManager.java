@@ -21,7 +21,8 @@ import jpcsp.HLE.Modules;
 import jpcsp.HLE.TPointer32;
 import jpcsp.HLE.TPointer64;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SystemTimeManager {
 

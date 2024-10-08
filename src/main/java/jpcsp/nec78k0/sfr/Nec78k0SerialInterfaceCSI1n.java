@@ -19,7 +19,7 @@ package jpcsp.nec78k0.sfr;
 import java.io.IOException;
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.memory.mmio.syscon.MMIOHandlerSyscon;
 import jpcsp.state.IState;

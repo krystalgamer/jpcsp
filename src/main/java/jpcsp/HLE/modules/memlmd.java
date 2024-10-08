@@ -20,7 +20,8 @@ import static jpcsp.crypto.KIRK.PSP_KIRK_CMD_DECRYPT_FUSE;
 import static jpcsp.crypto.KIRK.PSP_KIRK_CMD_MODE_DECRYPT_CBC;
 import static jpcsp.util.Utilities.writeUnaligned32;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.BufferInfo;
 import jpcsp.HLE.CanBeNull;

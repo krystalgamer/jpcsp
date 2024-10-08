@@ -23,7 +23,7 @@ import static jpcsp.util.Utilities.hasBit;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.Emulator;
 

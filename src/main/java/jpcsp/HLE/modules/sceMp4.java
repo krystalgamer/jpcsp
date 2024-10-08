@@ -53,7 +53,8 @@ import jpcsp.media.codec.ICodec;
 import jpcsp.media.codec.h264.H264Utils;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceMp4 extends HLEModule {
     public static Logger log = Modules.getLogger("sceMp4");

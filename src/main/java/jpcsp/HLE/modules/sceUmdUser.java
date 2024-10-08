@@ -52,7 +52,8 @@ import jpcsp.filesystems.umdiso.UmdIsoReader;
 import jpcsp.scheduler.Scheduler;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceUmdUser extends HLEModule {
     public static Logger log = Modules.getLogger("sceUmdUser");

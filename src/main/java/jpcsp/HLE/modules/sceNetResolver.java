@@ -39,7 +39,8 @@ import javax.naming.directory.Attributes;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.InitialDirContext;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.kernel.managers.SceUidManager;
 import jpcsp.HLE.kernel.types.SceKernelErrors;
@@ -194,7 +195,7 @@ public class sceNetResolver extends HLEModule {
 				log.info(String.format("sceNetResolverStartNtoA resolved '%s' into '%s'", hostname.getString(), sceNetInet.internetAddressToString(resolvedAddress)));
 			}
 		} catch (UnknownHostException e) {
-			log.error(e);
+			log.error(e.toString());
 			return SceKernelErrors.ERROR_NET_RESOLVER_INVALID_HOST;
 		}
 
@@ -224,7 +225,7 @@ public class sceNetResolver extends HLEModule {
 				log.debug(String.format("sceNetResolverStartAtoN returning host name '%s'", hostName));
 			}
 		} catch (UnknownHostException e) {
-			log.error(e);
+			log.error(e.toString());
 			return SceKernelErrors.ERROR_NET_RESOLVER_INVALID_HOST;
 		}
 

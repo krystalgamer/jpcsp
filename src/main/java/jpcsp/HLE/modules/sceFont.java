@@ -81,7 +81,8 @@ import jpcsp.settings.Settings;
 import jpcsp.util.Debug;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 //
 // The stackUsage values are based on tests performed using JpcspTrace
@@ -329,7 +330,7 @@ public class sceFont extends HLEModule {
             }
         } catch (IOException e) {
             // The file was removed from flash0.
-            log.error(e);
+            log.error(e.toString());
         }
     }
 
@@ -382,7 +383,7 @@ public class sceFont extends HLEModule {
                     try {
                         image.write();
                     } catch (IOException e) {
-                        log.error(e);
+                        log.error(e.toString());
                     }
                     mem.memset(addr, (byte) 0, memoryLength);
                     level++;
@@ -398,7 +399,7 @@ public class sceFont extends HLEModule {
         try {
             image.write();
         } catch (IOException e) {
-            log.error(e);
+            log.error(e.toString());
         }
     }
 
@@ -447,7 +448,7 @@ public class sceFont extends HLEModule {
             }
         } catch (IOException e) {
             // Can't open file.
-            log.warn(e);
+            log.warn(e.toString());
         }
 
         return font;

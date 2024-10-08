@@ -19,7 +19,8 @@ package jpcsp.HLE;
 
 import jpcsp.HLE.modules.*;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Modules {
 	// The modules must be named using the following convention:
@@ -190,9 +191,9 @@ public class Modules {
     public static sceUsbPspcm sceUsbPspcmModule = new sceUsbPspcm();
     public static sceAvcodec sceAvcodecModule = new sceAvcodec();
 
-    public static Logger log = Logger.getLogger("hle");
+    public static Logger log = LoggerFactory.getLogger("hle");
 
     public static Logger getLogger(String module) {
-        return Logger.getLogger("hle." + module);
+        return LoggerFactory.getLogger("hle." + module);
     }
 }

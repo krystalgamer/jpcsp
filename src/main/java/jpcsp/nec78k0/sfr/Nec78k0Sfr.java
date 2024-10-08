@@ -42,7 +42,7 @@ import static jpcsp.util.Utilities.setByte1;
 import java.io.IOException;
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.Emulator;
 import jpcsp.HLE.kernel.types.IAction;

@@ -26,7 +26,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.Allegrex.compiler.RuntimeContext;
@@ -41,7 +42,7 @@ import jpcsp.util.Utilities;
  *
  */
 public class SysconEmulator {
-    public static Logger log = Logger.getLogger("syscon");
+    public static Logger log = LoggerFactory.getLogger("syscon");
 	public static boolean firmwareBootloader = false;
 	private static final int firmwareBootloaderCodeLength = 0x2000;
 	private static final int firmwareBootloaderCodeOffset = 0x8000;
@@ -128,7 +129,7 @@ public class SysconEmulator {
 					mem.write32(i, readUnaligned32(buffer, i));
 				}
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 			}
 		} else {
 			// Loading the firmware file, including
@@ -144,7 +145,7 @@ public class SysconEmulator {
 				length = is.read(buffer);
 				is.close();
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 			}
 
 			int baseAddress = BASE_RAM0;
@@ -175,7 +176,7 @@ public class SysconEmulator {
 					mem.write32(firmwareBootloaderAddress + i, readUnaligned32(buffer, i));
 				}
 			} catch (IOException e) {
-				log.error(e);
+				log.error(e.toString());
 			}
 		}
 	}

@@ -31,7 +31,8 @@ import static jpcsp.util.Utilities.writeUnaligned32;
 import static libkirk.KirkEngine.KIRK_CMD_ECDSA_VERIFY;
 import static libkirk.KirkEngine.KIRK_CMD_SHA1_HASH;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceOpenPSID extends HLEModule {
     public static Logger log = Modules.getLogger("sceOpenPSID");

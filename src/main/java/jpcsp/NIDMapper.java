@@ -21,7 +21,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.HLE.Modules;
 import jpcsp.HLE.kernel.types.SceModule;

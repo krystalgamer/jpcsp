@@ -18,14 +18,15 @@ package jpcsp.memory.mmio.wm1801;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.state.IState;
 import jpcsp.state.StateInputStream;
 import jpcsp.state.StateOutputStream;
 
 public class WM1801 implements IState {
-	public static Logger log = Logger.getLogger("WM1801");
+	public static Logger log = LoggerFactory.getLogger("WM1801");
 	private static final int STATE_VERSION = 0;
 	private static WM1801 instance;
 	private final static int NUMBER_REGISTERS = 128;

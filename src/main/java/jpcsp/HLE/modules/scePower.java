@@ -30,7 +30,8 @@ import jpcsp.HLE.TPointer32;
 import jpcsp.hardware.Battery;
 import jpcsp.hardware.Model;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class scePower extends HLEModule {
     public static Logger log = Modules.getLogger("scePower");

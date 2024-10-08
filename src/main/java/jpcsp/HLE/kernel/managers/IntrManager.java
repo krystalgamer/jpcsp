@@ -46,7 +46,8 @@ import jpcsp.HLE.kernel.types.interrupts.SubIntrHandler;
 import jpcsp.HLE.kernel.types.interrupts.VBlankInterruptHandler;
 import jpcsp.scheduler.Scheduler;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class IntrManager {
     protected static Logger log = Modules.getLogger("ThreadManForUser");

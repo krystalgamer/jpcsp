@@ -40,7 +40,8 @@ import jpcsp.media.codec.mp3.Mp3Decoder;
 import jpcsp.media.codec.mp3.Mp3Header;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceMp3 extends HLEModule {
     public static Logger log = Modules.getLogger("sceMp3");

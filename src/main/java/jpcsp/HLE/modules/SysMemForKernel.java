@@ -66,7 +66,8 @@ import jpcsp.memory.IMemoryWriter;
 import jpcsp.memory.MemoryWriter;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SysMemForKernel extends HLEModule {
     public static Logger log = Modules.getLogger("SysMemForKernel");

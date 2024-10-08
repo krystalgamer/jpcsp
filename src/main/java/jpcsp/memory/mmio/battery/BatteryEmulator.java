@@ -42,7 +42,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.Allegrex.compiler.RuntimeContext;
@@ -62,7 +63,7 @@ import jpcsp.util.Utilities;
  *
  */
 public class BatteryEmulator {
-	public static Logger log = Logger.getLogger("battery");
+	public static Logger log = LoggerFactory.getLogger("battery");
 	public static final int BATTERY_MODEL_FAT = 0;
 	public static final int BATTERY_MODEL_2000 = 1;
 	public static final int BATTERY_MODEL_3000 = 2;
@@ -262,7 +263,7 @@ public class BatteryEmulator {
 			length = in.read(buffer);
 			in.close();
 		} catch (IOException e) {
-			log.error(e);
+			log.error(e.toString());
 		}
 
 		int baseAddress = BASE_RAM0;

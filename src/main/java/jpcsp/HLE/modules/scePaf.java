@@ -20,7 +20,8 @@ import static jpcsp.util.Utilities.endianSwap32;
 
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Allegrex.CpuState;
 import jpcsp.HLE.BufferInfo;

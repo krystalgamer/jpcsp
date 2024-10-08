@@ -27,7 +27,8 @@ import jpcsp.HLE.PspString;
 import jpcsp.HLE.TPointer;
 import jpcsp.HLE.TPointer8;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class sceUsbstor extends HLEModule {
 	public static Logger log = Modules.getLogger("sceUsbstor");

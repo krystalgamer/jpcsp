@@ -19,7 +19,8 @@ package jpcsp.HLE.modules;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.CanBeNull;
 import jpcsp.HLE.HLEFunction;

@@ -45,7 +45,8 @@ import jpcsp.sound.AudioBlockingOutputAction;
 import jpcsp.sound.SoundChannel;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.openal.AL10;
 import org.lwjgl.openal.ALC10;

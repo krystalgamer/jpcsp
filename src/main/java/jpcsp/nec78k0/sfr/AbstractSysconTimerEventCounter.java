@@ -20,7 +20,7 @@ import static jpcsp.memory.mmio.syscon.MMIOHandlerSysconFirmwareSfr.now;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.HLE.kernel.types.IAction;
 import jpcsp.state.IState;

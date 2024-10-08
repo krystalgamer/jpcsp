@@ -38,7 +38,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.BufferInfo;
 import jpcsp.HLE.BufferInfo.LengthInfo;
@@ -2608,7 +2609,7 @@ public class sceReg extends HLEModule {
 		try {
 			sha1 = MessageDigest.getInstance("SHA-1");
 		} catch (NoSuchAlgorithmException e) {
-			log.error(e);
+			log.error(e.toString());
 		}
 
 		registryHandles = new HashMap<Integer, sceReg.RegistryHandle>();

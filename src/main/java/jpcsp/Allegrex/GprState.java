@@ -18,7 +18,7 @@ package jpcsp.Allegrex;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.Emulator;
 import jpcsp.state.IState;

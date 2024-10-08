@@ -55,7 +55,8 @@ import jpcsp.memory.MemoryReader;
 import jpcsp.memory.MemoryWriter;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /*
  * TODO list:
@@ -71,7 +72,7 @@ import org.apache.log4j.Logger;
  */
 public class SysMemUserForUser extends HLEModule {
     public static Logger log = Modules.getLogger("SysMemUserForUser");
-    protected static Logger stdout = Logger.getLogger("stdout");
+    protected static Logger stdout = LoggerFactory.getLogger("stdout");
     protected static HashMap<Integer, SysMemInfo> blockList;
     protected static MemoryChunkList[] freeMemoryChunks;
     protected int firmwareVersion = 150;
