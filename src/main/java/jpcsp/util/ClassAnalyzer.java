@@ -22,7 +22,8 @@ import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.ClassNode;
@@ -34,7 +35,7 @@ import org.objectweb.asm.tree.MethodNode;
  *
  */
 public class ClassAnalyzer {
-	private static Logger log = Logger.getLogger("classAnalyzer");
+	private static Logger log = LoggerFactory.getLogger("classAnalyzer");
 
 	public static class ParameterInfo {
 		public final String name;

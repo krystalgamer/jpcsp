@@ -37,7 +37,7 @@ import com.twilight.h264.decoder.H264Context;
 import jpcsp.util.Utilities;
 
 public class UmdBrowserPmf {
-	private static org.apache.log4j.Logger log = Emulator.log;
+	private static org.slf4j.Logger log = Emulator.log;
     private UmdIsoReader iso;
     private String fileName;
     private long startTime;

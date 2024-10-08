@@ -89,6 +89,8 @@ import jpcsp.memory.MemoryWriter;
 import jpcsp.memory.mmio.MMIO;
 import jpcsp.settings.Settings;
 
+import org.slf4j.LoggerFactory;
+
 public class Utilities {
 	public static final int KB = 1024;
 	public static final int MB = 1024 * KB;
@@ -768,7 +770,7 @@ public class Utilities {
                 try {
                     c.close();
                 } catch (Exception ex) {
-                    Logger.getLogger(Utilities.class.getName()).log(Level.WARNING, "Couldn't close Closeable", ex);
+                    LoggerFactory.getLogger(Utilities.class.getName()).warn("Couldn't close Closeable", ex);
                 }
             }
         }
@@ -2060,9 +2062,9 @@ public class Utilities {
 			};
 			HttpsURLConnection.setDefaultHostnameVerifier(allHostsValid);
 		} catch (NoSuchAlgorithmException e) {
-			Emulator.log.error(e);
+			Emulator.log.error(e.toString());
 		} catch (KeyManagementException e) {
-			Emulator.log.error(e);
+			Emulator.log.error(e.toString());
 		}
     }
 
@@ -2404,7 +2406,7 @@ public class Utilities {
 			os.write(bytes);
 			os.close();
 		} catch (IOException e) {
-			Emulator.log.error(e);
+			Emulator.log.error(e.toString());
 		}
     }
 

@@ -27,7 +27,7 @@ import java.security.Security;
 
 import jpcsp.Emulator;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 import org.bouncycastle.math.ec.ECCurve;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.provider.JCEECPrivateKey;

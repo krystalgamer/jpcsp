@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.Emulator;
 import jpcsp.HLE.kernel.types.pspNetMacAddress;
@@ -172,7 +172,7 @@ public class Wlan {
     	try {
 			setLocalInetAddress(InetAddress.getByName(localIPAddress));
 		} catch (UnknownHostException e) {
-			log.error(e);
+			log.error(e.toString());
 		}
     }
 

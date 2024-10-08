@@ -92,7 +92,7 @@ public class Screen {
 					}
 				}
 			} catch (AWTException e) {
-				Emulator.log.error(e);
+				Emulator.log.error(e.toString());
 			}
 		}
     }

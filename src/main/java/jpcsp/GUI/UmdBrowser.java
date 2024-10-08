@@ -41,7 +41,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableCellRenderer;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.Emulator;
 import jpcsp.MainGUI;
@@ -288,7 +288,7 @@ public class UmdBrowser extends javax.swing.JDialog {
                         return text;
                 }
             } catch (IOException e) {
-                log.error(e);
+                log.error(e.toString());
             }
             return null;
         }
@@ -404,7 +404,7 @@ public class UmdBrowser extends javax.swing.JDialog {
         	// getClass().getClassLoader().loadClass("sun.awt.image.PNGImageDecoder").getMethod("	", boolean.class).invoke(null, false);
         	sun.awt.image.PNGImageDecoder.setCheckCRC(false);
         } catch (Throwable e) {
-        	log.warn(e);
+        	log.warn(e.toString());
         }
     }
 
@@ -419,9 +419,9 @@ public class UmdBrowser extends javax.swing.JDialog {
             os.write(content);
             os.close();
         } catch (FileNotFoundException e) {
-            log.error(e);
+            log.error(e.toString());
         } catch (IOException e) {
-            log.error(e);
+            log.error(e.toString());
         }
     }
 
@@ -519,10 +519,10 @@ public class UmdBrowser extends javax.swing.JDialog {
                 // default icon
                 icons[rowIndex] = new ImageIcon(getClass().getResource("/jpcsp/images/icon0.png"));
             } catch (IOException ve) {
-                log.error(ve);
+                log.error(ve.toString());
             }
         } catch (IOException e) {
-            log.error(e);
+            log.error(e.toString());
         }
 
         umdInfoLoaded[rowIndex] = true;
@@ -547,7 +547,7 @@ public class UmdBrowser extends javax.swing.JDialog {
                 	pic0Icon = new ImageIcon(pic0);
                 }
             } catch (IOException e) {
-                log.error(e);
+                log.error(e.toString());
             }
 
             // Read PIC1.PNG
@@ -571,7 +571,7 @@ public class UmdBrowser extends javax.swing.JDialog {
                     }
                 }
             } catch (IOException e) {
-                log.error(e);
+                log.error(e.toString());
             }
 
             icon0Icon = icons[rowIndex];
@@ -604,7 +604,7 @@ public class UmdBrowser extends javax.swing.JDialog {
         } catch (FileNotFoundException e) {
             // Ignore exception
         } catch (IOException e) {
-            log.error(e);
+            log.error(e.toString());
         }
         pic0Label.setIcon(pic0Icon);
         pic1Label.setIcon(pic1Icon);

@@ -29,7 +29,7 @@ import java.util.Arrays;
 
 import jpcsp.Emulator;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 /**
  * Implements a SectorDevice where the sectors are stored in random

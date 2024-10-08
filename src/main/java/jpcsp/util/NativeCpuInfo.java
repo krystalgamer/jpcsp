@@ -16,14 +16,15 @@
  */
 package jpcsp.util;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author shadow
  */
 public class NativeCpuInfo {
-	private static Logger log = Logger.getLogger("cpuinfo");
+	private static Logger log = LoggerFactory.getLogger("cpuinfo");
 	private static boolean isAvailable = false;
 
     static {

@@ -108,13 +108,14 @@ import jpcsp.util.LWJGLFixer;
 import jpcsp.util.MetaInformation;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 import org.apache.log4j.xml.DOMConfigurator;
 
 import com.jidesoft.plaf.LookAndFeelFactory;
 
 import jpcsp.Debugger.FileLogger.FileLoggerFrame;
+import org.slf4j.LoggerFactory;
+import org.slf4j.event.Level;
 
 /**
  *
@@ -191,7 +192,7 @@ public class MainGUI extends javax.swing.JFrame implements KeyListener, Componen
      * Creates new form MainGUI
      */
     public MainGUI() {
-        System.setOut(new PrintStream(new LoggingOutputStream(Logger.getLogger("emu"), Level.INFO)));
+        //System.setOut(new PrintStream(new LoggingOutputStream(LoggerFactory.getLogger("emu"), Level.INFO)));
 
         actionListenerMap = new HashMap<KeyStroke, ActionListener[]>();
 
@@ -2612,7 +2613,7 @@ private void ExportISOFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN
             String message = MessageFormat.format(messageFormat, fileName, exportFileName);
             JOptionPane.showMessageDialog(null, message, null, JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException e) {
-            log.error(e);
+            log.error(e.toString());
         }
 
 }//GEN-LAST:event_ExportISOFileActionPerformed

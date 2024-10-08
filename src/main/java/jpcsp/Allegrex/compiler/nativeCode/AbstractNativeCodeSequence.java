@@ -18,7 +18,7 @@ package jpcsp.Allegrex.compiler.nativeCode;
 
 import static jpcsp.util.Utilities.alignDown;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.Emulator;
 import jpcsp.Memory;

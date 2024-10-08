@@ -21,7 +21,7 @@ import java.io.RandomAccessFile;
 
 import jpcsp.Emulator;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 public abstract class AbstractFileSectorDevice implements ISectorDevice {
 	protected static Logger log = Emulator.log;

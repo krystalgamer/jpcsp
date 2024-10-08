@@ -642,7 +642,7 @@ public class UmdVideoPlayer implements KeyListener {
             }
         } catch (FileNotFoundException e) {
         } catch (IOException e) {
-            Emulator.log.error(e);
+            Emulator.log.error(e.toString());
         }
 
         if (isoFile != null) {

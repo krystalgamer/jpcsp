@@ -18,7 +18,7 @@ package jpcsp.format.psmf;
 
 import static jpcsp.HLE.VFS.AbstractVirtualFileSystem.IO_ERROR;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 import jpcsp.Emulator;
 import jpcsp.HLE.TPointer;

@@ -39,7 +39,7 @@ import jpcsp.memory.mmio.wlan.MMIOHandlerWlan;
 import jpcsp.network.INetworkAdapter;
 import jpcsp.network.IWlanAdapter;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
 
 /**
  * @author gid15

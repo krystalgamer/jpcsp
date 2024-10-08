@@ -19,7 +19,8 @@ package jpcsp.Allegrex;
 import static jpcsp.HLE.SyscallHandler.syscallLoadCoreUnmappedImport;
 import static jpcsp.HLE.SyscallHandler.syscallUnmappedImport;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.Memory;
@@ -36,8 +37,8 @@ public class Common {
 
     public static abstract class Instruction {
     	protected static Logger log = Emulator.log;
-    	protected static Logger logCop0 = Logger.getLogger("cop0");
-    	protected static Logger logCache = Logger.getLogger("cache");
+    	protected static Logger logCop0 = LoggerFactory.getLogger("cop0");
+    	protected static Logger logCache = LoggerFactory.getLogger("cache");
         private int m_count = 0;
         private int flags = 0;
         public final static int FLAG_INTERPRETED = (1 << 0);

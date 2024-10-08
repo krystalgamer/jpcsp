@@ -63,7 +63,8 @@ import jpcsp.util.DurationStatistics;
 import jpcsp.util.HLEUtilities;
 import jpcsp.util.JpcspDialogManager;
 
-import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 /*
  * TODO list:
@@ -85,7 +86,7 @@ public class Emulator implements Runnable {
     private static boolean exitCalled = false;
     private static IMainGUI gui;
     private InstructionCounter instructionCounter;
-    public static Logger log = Logger.getLogger("emu");
+    public static Logger log = LoggerFactory.getLogger("emu");
     private SceModule module;
     private int firmwareVersion = 999;
     private String[] bootModuleBlackList = {"Prometheus Loader"};
@@ -121,7 +122,7 @@ public class Emulator implements Runnable {
         VideoEngine.exit();
         Screen.exit();
         if (DurationStatistics.collectStatistics) {
-            log.info(TextureCache.getInstance().statistics);
+            log.info(TextureCache.getInstance().statistics.toString());
         }
         RendererExecutor.exit();
         VertexCache.getInstance().exit();

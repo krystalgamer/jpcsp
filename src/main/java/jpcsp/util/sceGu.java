@@ -25,7 +25,8 @@ import static jpcsp.graphics.GeCommands.VTYPE_COLOR_FORMAT_32BIT_ABGR_8888;
 import static jpcsp.graphics.GeCommands.VTYPE_POSITION_FORMAT_16_BIT;
 import static jpcsp.graphics.GeCommands.VTYPE_TRANSFORM_PIPELINE_RAW_COORD;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Memory;
 import jpcsp.MemoryMap;
@@ -49,7 +50,7 @@ import jpcsp.memory.MemoryWriter;
  *
  */
 public class sceGu {
-	private static Logger log = Logger.getLogger("sceGu");
+	private static Logger log = LoggerFactory.getLogger("sceGu");
 	private SysMemInfo sysMemInfo;
 	private int bottomAddr;
 	private int topAddr;

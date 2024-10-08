@@ -32,7 +32,8 @@ import java.util.Iterator;
 import java.util.ListIterator;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
@@ -109,7 +110,7 @@ import org.objectweb.asm.util.TraceClassVisitor;
  * - float
  */
 public class ClassSpecializer {
-	private static Logger log = Logger.getLogger("classSpecializer");
+	private static Logger log = LoggerFactory.getLogger("classSpecializer");
 	private static SpecializedClassLoader classLoader = new SpecializedClassLoader();
 	private static HashSet<Class<?>> tracedClasses = new HashSet<Class<?>>();
 
@@ -127,7 +128,7 @@ public class ClassSpecializer {
 					ClassReader cr = new ClassReader(c.getName().replace('.', '/'));
 					cr.accept(classTraceCv, 0);
 					log.trace(String.format("Dump of class to be specialized: %s", c.getName()));
-					log.trace(classTrace);
+					log.trace(classTrace.toString());
 				} catch (IOException e) {
 					// Ignore Exception
 				}
