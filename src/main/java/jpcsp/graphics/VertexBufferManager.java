@@ -48,7 +48,7 @@ public class VertexBufferManager {
 	public static void exit() {
 		if (instance != null) {
 			if (DurationStatistics.collectStatistics) {
-				VideoEngine.log.info(instance.statistics);
+				VideoEngine.log.info(String.valueOf(instance.statistics));
 			}
 		}
 	}
@@ -146,7 +146,7 @@ public class VertexBufferManager {
 	protected void displayStatistics() {
 		int length = 0;
 		for (VertexBuffer vertexBuffer : vertexBuffers) {
-			VideoEngine.log.info(vertexBuffer);
+			VideoEngine.log.info(String.valueOf(vertexBuffer));
 			length += vertexBuffer.getLength();
 		}
 

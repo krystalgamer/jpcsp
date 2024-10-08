@@ -23,7 +23,8 @@ import java.util.Arrays;
 
 import jpcsp.media.codec.atrac3plus.Atrac3plusDecoder;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class VLC {
 	private static Logger log = Atrac3plusDecoder.log;

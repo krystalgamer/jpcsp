@@ -70,12 +70,12 @@ public class RESoftware extends NullRenderingEngine {
     @Override
 	public void exit() {
 		if (DurationStatistics.collectStatistics) {
-			log.info(drawArraysStatistics);
-			log.info(triangleRender3DStatistics);
-			log.info(triangleRender2DStatistics);
-			log.info(spriteRenderStatistics);
-			log.info(cachedTextureStatistics);
-			log.info(textureResamplingStatistics);
+			log.info(String.valueOf(drawArraysStatistics));
+			log.info(String.valueOf(triangleRender3DStatistics));
+			log.info(String.valueOf(triangleRender2DStatistics));
+			log.info(String.valueOf(spriteRenderStatistics));
+			log.info(String.valueOf(cachedTextureStatistics));
+			log.info(String.valueOf(textureResamplingStatistics));
 		}
 	}
 

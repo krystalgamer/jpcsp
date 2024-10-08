@@ -53,14 +53,15 @@ import jpcsp.settings.AbstractStringSettingsListener;
 import jpcsp.settings.Settings;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author gid15
  *
  */
 public class ProOnlineNetworkAdapter extends BaseNetworkAdapter {
-	protected static Logger log = Logger.getLogger("ProOnline");
+	protected static Logger log = LoggerFactory.getLogger("ProOnline");
 	private static boolean enabled = false;
 	private UPnP upnp;
 	private Socket metaSocket;

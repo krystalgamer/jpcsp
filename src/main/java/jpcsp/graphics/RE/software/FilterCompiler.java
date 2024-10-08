@@ -23,7 +23,8 @@ import static jpcsp.graphics.GeCommands.CMAT_FLAG_SPECULAR;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Allegrex.compiler.RuntimeContext;
 import jpcsp.graphics.GeContext;
@@ -179,7 +180,7 @@ public class FilterCompiler {
 			}
 			Arrays.sort(statistics, 0, n);
 			for (int i = 0; i < n; i++) {
-				log.info(statistics[i]);
+				log.info(String.valueOf(statistics[i]));
 			}
 		}
 	}

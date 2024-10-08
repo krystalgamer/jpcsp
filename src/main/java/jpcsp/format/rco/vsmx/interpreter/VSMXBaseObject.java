@@ -21,7 +21,8 @@ import java.util.List;
 
 import jpcsp.format.rco.vsmx.VSMX;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class VSMXBaseObject {
 	public static final Logger log = VSMX.log;

@@ -18,13 +18,14 @@ package jpcsp.sound;
 
 import static jpcsp.HLE.modules.sceSasCore.PSP_SAS_OUTPUTMODE_STEREO;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.Modules;
 import jpcsp.HLE.modules.sceSasCore;
 
 public class SoftwareSynthesizer {
-	public static Logger log = Logger.getLogger("sound");
+	public static Logger log = LoggerFactory.getLogger("sound");
 	private SoundVoice voice;
 	private ISampleSource sampleSource;
 	private static final int defaultDelay = 32;

@@ -22,10 +22,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AutoDetectLocalIPAddress {
-	public static Logger log = Logger.getLogger("network");
+	public static Logger log = LoggerFactory.getLogger("network");
 	private static AutoDetectLocalIPAddress instance = null;
     // Try to use a port unused by other applications...
     private static final int serverSocketPort = 30005;

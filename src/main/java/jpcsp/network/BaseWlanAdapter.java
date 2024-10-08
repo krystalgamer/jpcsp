@@ -20,7 +20,8 @@ import static jpcsp.network.BaseNetworkAdapter.settingsEnableChat;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.settings.Settings;
 
@@ -29,7 +30,7 @@ import jpcsp.settings.Settings;
  *
  */
 public abstract class BaseWlanAdapter implements IWlanAdapter {
-	public static Logger log = Logger.getLogger("wlan");
+	public static Logger log = LoggerFactory.getLogger("wlan");
 
 	@Override
 	public void stop() throws IOException {

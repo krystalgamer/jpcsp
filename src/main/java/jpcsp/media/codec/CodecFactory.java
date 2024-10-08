@@ -16,7 +16,8 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.media.codec;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.modules.sceAudiocodec;
 import jpcsp.media.codec.aac.AacDecoder;
@@ -26,7 +27,7 @@ import jpcsp.media.codec.h264.H264Decoder;
 import jpcsp.media.codec.mp3.Mp3Decoder;
 
 public class CodecFactory {
-	public static Logger log = Logger.getLogger("codec");
+	public static Logger log = LoggerFactory.getLogger("codec");
 
 	public static ICodec getCodec(int codecType) {
 		ICodec codec = null;

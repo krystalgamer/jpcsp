@@ -64,7 +64,8 @@ import jpcsp.media.codec.util.CodecUtils;
 import jpcsp.media.codec.util.VLC;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AacPs {
 	private static Logger log = AacDecoder.log;

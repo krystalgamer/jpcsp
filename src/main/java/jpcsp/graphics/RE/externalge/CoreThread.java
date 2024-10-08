@@ -32,7 +32,8 @@ import jpcsp.HLE.kernel.types.PspGeList;
 import jpcsp.HLE.modules.sceGe_user;
 import jpcsp.graphics.GeCommands;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author gid15

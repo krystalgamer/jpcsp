@@ -27,7 +27,8 @@ import jpcsp.Allegrex.compiler.nativeCode.NativeCodeSequence;
 import jpcsp.settings.AbstractBoolSettingsListener;
 import jpcsp.settings.Settings;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author gid15
@@ -35,7 +36,7 @@ import org.apache.log4j.Logger;
  */
 public class Profiler {
 
-    public static Logger log = Logger.getLogger("profiler");
+    public static Logger log = LoggerFactory.getLogger("profiler");
     private static boolean profilerEnabled = false;
     private static final HashMap<Integer, Long> callCounts = new HashMap<Integer, Long>();
     private static final HashMap<Integer, Long> instructionCounts = new HashMap<Integer, Long>();

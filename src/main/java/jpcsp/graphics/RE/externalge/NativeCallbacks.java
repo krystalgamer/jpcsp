@@ -23,7 +23,8 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.IntBuffer;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Memory;
 import jpcsp.Allegrex.compiler.RuntimeContext;
@@ -37,7 +38,7 @@ import jpcsp.util.Utilities;
  *
  */
 public class NativeCallbacks {
-	private static final Logger log = Logger.getLogger("NativeCallbacks");
+	private static final Logger log = LoggerFactory.getLogger("NativeCallbacks");
 	private static DurationStatistics read32 = new DurationStatistics("read32");
 	private static DurationStatistics readByteBuffer = new DurationStatistics("readByteBuffer");
 	private static DurationStatistics writeByteBuffer = new DurationStatistics("writeByteBuffer");
@@ -48,7 +49,7 @@ public class NativeCallbacks {
 	// Array indexed by the log category
 	private static final Logger[] logs = new Logger[] {
 		log,
-		Logger.getLogger("externalge")
+		LoggerFactory.getLogger("externalge")
 	};
 
 	public static void exit() {
@@ -174,7 +175,7 @@ public class NativeCallbacks {
 			case 0: // E_OFF
 				break;
 			case 1: // E_FATAL
-				log.fatal(message);
+				log.error(message);
 				break;
 			case 2: // E_ERROR
 				log.error(message);

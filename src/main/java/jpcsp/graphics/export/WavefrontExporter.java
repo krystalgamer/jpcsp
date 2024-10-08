@@ -25,7 +25,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Locale;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.graphics.GeContext;
 import jpcsp.graphics.VertexState;

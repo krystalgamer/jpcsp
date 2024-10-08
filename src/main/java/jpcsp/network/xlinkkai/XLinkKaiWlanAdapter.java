@@ -46,7 +46,8 @@ import java.net.UnknownHostException;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.GUI.ChatGUI;
@@ -64,7 +65,7 @@ import jpcsp.settings.Settings;
 import jpcsp.util.Utilities;
 
 public class XLinkKaiWlanAdapter extends BaseWlanAdapter {
-	public static Logger log = Logger.getLogger("XLinkKai");
+	public static Logger log = LoggerFactory.getLogger("XLinkKai");
 	private static final boolean filterDuplicateMessages = true;
 	private static boolean enabled = false;
 	private DatagramSocket socket;

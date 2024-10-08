@@ -38,7 +38,8 @@ import static jpcsp.nec78k0.Nec78k0Instructions.registerFunctionName;
 import static jpcsp.util.Utilities.internalReadUnaligned16;
 
 import org.slf4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.Allegrex.compiler.RuntimeContext;
@@ -221,7 +222,8 @@ public class Syscon78k0Test {
 
 	public static void main(String[] args) {
         LWJGLFixer.fixOnce();
-        DOMConfigurator.configure("LogSettings.xml");
+        // @FIXME
+        // DOMConfigurator.configure("LogSettings.xml");
         log = SysconEmulator.log;
 		RuntimeContext.setLog4jMDC();
 		Wlan.initialize();

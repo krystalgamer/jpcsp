@@ -25,7 +25,8 @@ import java.util.List;
 import jpcsp.settings.AbstractBoolSettingsListener;
 import jpcsp.settings.Settings;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Profiler for the Graphics Engine
@@ -34,7 +35,7 @@ import org.apache.log4j.Logger;
  *
  */
 public class GEProfiler {
-    public static Logger log = Logger.getLogger("profiler");
+    public static Logger log = LoggerFactory.getLogger("profiler");
     private static boolean profilerEnabled = true;
     private static ProfilerEnabledSettingsListerner profilerEnabledSettingsListerner;
     private static final Long zero = Long.valueOf(0);

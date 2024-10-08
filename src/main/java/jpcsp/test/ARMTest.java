@@ -26,7 +26,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.slf4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.Allegrex.compiler.RuntimeContext;
@@ -49,7 +50,8 @@ public class ARMTest {
 
 	public static void main(String[] args) {
         LWJGLFixer.fixOnce();
-        DOMConfigurator.configure("LogSettings.xml");
+        // @FIXME
+        // DOMConfigurator.configure("LogSettings.xml");
         log = ARMProcessor.log;
 		RuntimeContext.setLog4jMDC();
 		Wlan.initialize();

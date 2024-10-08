@@ -21,7 +21,8 @@ import static jpcsp.sound.SoundChannel.MAX_VOLUME;
 
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.Modules;
 import jpcsp.hardware.Audio;

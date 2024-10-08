@@ -41,10 +41,14 @@ import javax.imageio.ImageIO;
 
 import jpcsp.util.FileUtil;
 import jpcsp.util.LWJGLFixer;
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.Allegrex.compiler.RuntimeContext;
@@ -57,12 +61,14 @@ import jpcsp.hardware.Screen;
 import jpcsp.log.LoggingOutputStream;
 
 public class AutoTestsRunner {
-	private static final Logger log = Logger.getLogger("pspautotests");
+	private static final Logger log = LoggerFactory.getLogger("pspautotests");
 	private static final int FAIL_TIMEOUT = 10; // in seconds
 
 	static {
 		LWJGLFixer.fixOnce();
-		log.addAppender(new ConsoleAppender());
+
+        // @FIXME: ffs bro
+		//log.addAppender(new ConsoleAppender());
 	}
 
 	static public void main(String[] args) {
@@ -117,8 +123,13 @@ public class AutoTestsRunner {
 	}
 	
 	public void run() {
+
+        // @FIXME:
+        /*
         DOMConfigurator.configure("LogSettings.xml");
-        System.setOut(new PrintStream(new LoggingOutputStream(Logger.getLogger("emu"), Level.INFO)));
+        System.setOut(new PrintStream(new LoggingOutputStream(LoggerFactory.getLogger("emu"), Level.INFO)));
+        */
+
         Screen.setHasScreen(false);
         //IoFileMgrForUser.defaultTimings.get(IoFileMgrForUser.IoOperation.iodevctl).setDelayMillis(0);
         Modules.sceDisplayModule.setCalledFromCommandLine();

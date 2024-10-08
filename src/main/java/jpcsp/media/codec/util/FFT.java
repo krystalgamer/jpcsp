@@ -23,7 +23,8 @@ import static java.lang.Math.sqrt;
 import jpcsp.media.codec.CodecFactory;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FFT {
 	private static Logger log = CodecFactory.log;

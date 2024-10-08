@@ -48,7 +48,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import jpcsp.State;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -56,7 +57,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class UPnP {
-	public static Logger log = Logger.getLogger("upnp");
+	public static Logger log = LoggerFactory.getLogger("upnp");
 	protected IGD igd;
 	private volatile boolean end;
 	public  static final int discoveryTimeoutMillis = 2000;

@@ -88,10 +88,11 @@ import jpcsp.remote.HTTPConfiguration.HttpServerConfiguration;
 import jpcsp.settings.Settings;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class HTTPServer {
-	private static Logger log = Logger.getLogger("http");
+	private static Logger log = LoggerFactory.getLogger("http");
 	private static HTTPServer instance;
 	private static final HTTPServerDescriptor[] serverDescriptors = new HTTPServerDescriptor[] {
 		new HTTPServerDescriptor(0, 80, false),

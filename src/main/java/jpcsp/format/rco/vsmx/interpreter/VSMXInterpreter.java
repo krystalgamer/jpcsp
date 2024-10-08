@@ -18,7 +18,8 @@ package jpcsp.format.rco.vsmx.interpreter;
 
 import java.util.Stack;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.HLE.kernel.types.IAction;

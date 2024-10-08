@@ -31,7 +31,8 @@ import static jpcsp.HLE.modules.sceSasCore.PSP_SAS_ENVELOPE_HEIGHT_MAX;
 import static jpcsp.sound.SoundMixer.getSampleLeft;
 import static jpcsp.sound.SoundMixer.getSampleRight;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.modules.sceSasCore;
 import jpcsp.sound.SoundVoice.VoiceADSREnvelope;

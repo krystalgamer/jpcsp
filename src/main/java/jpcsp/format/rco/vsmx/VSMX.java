@@ -18,10 +18,11 @@ package jpcsp.format.rco.vsmx;
 
 import java.nio.charset.Charset;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class VSMX {
-	public static Logger log = Logger.getLogger("vsmx");
+	public static Logger log = LoggerFactory.getLogger("vsmx");
 	private static final int VSMX_SIGNATURE = 0x584D5356; // "VSMX"
 	private static final int VSMX_VERSION = 0x00010000;
 	private byte[] buffer;

@@ -85,7 +85,8 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.VFS.IVirtualFile;
 import jpcsp.HLE.VFS.local.LocalVirtualFile;
@@ -102,7 +103,7 @@ import libchdr.codec.Lzma;
 import libchdr.codec.Zlib;
 
 public class Chd {
-	public static Logger log = Logger.getLogger("libchdr");
+	public static Logger log = LoggerFactory.getLogger("libchdr");
 
 	/***************************************************************************
     	CONSTANTS

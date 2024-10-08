@@ -62,15 +62,17 @@ import jpcsp.util.CpuDurationStatistics;
 import jpcsp.util.DurationStatistics;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.MDC;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author gid15
  *
  */
 public class RuntimeContext {
-    public  static Logger log = Logger.getLogger("runtime");
+    public  static Logger log = LoggerFactory.getLogger("runtime");
 	private static boolean compilerEnabled = true;
 	public  static float[] fpr;
 	public  static float[] vprFloat;
@@ -1135,7 +1137,6 @@ public class RuntimeContext {
     	if (exitCalled()) {
     		return;
     	}
-
     	if (!initialise()) {
         	compilerEnabled = false;
         	return;
@@ -1280,7 +1281,7 @@ public class RuntimeContext {
     		log.debug("RuntimeContext.exit");
         	stopAllThreads();
         	if (DurationStatistics.collectStatistics) {
-        		log.info(idleDuration);
+        		log.info(idleDuration.toString());
         	}
 
             if (enableInstructionTypeCounting) {
@@ -1849,6 +1850,9 @@ public class RuntimeContext {
     }
 
     public static void setLog4jMDC(String threadName, int threadUid) {
+
+        // @FIXME: bro..
+        /*
 		MDC.put("LLE-thread-name", threadName);
 
 		if (threadUid != 0) {
@@ -1858,5 +1862,6 @@ public class RuntimeContext {
 			MDC.put("LLE-thread-uid", "");
 			MDC.put("LLE-thread", threadName);
 		}
+         */
     }
 }

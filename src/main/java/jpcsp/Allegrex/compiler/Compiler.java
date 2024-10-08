@@ -53,7 +53,8 @@ import jpcsp.settings.Settings;
 import jpcsp.util.CpuDurationStatistics;
 import jpcsp.util.DurationStatistics;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -141,7 +142,7 @@ import org.xml.sax.SAXException;
  *
  */
 public class Compiler implements ICompiler {
-    public static Logger log = Logger.getLogger("compiler");
+    public static Logger log = LoggerFactory.getLogger("compiler");
 	private static Compiler instance;
 	private static int resetCount = 0;
 	private static final int opcodeBreak0 = BREAK(0);
@@ -193,7 +194,7 @@ public class Compiler implements ICompiler {
 	public static void exit() {
 	    if (instance != null) {
 	    	if (DurationStatistics.collectStatistics) {
-	    		log.info(compileDuration);
+	    		log.info(String.valueOf(compileDuration));
 	    	}
 	    }
 	}
@@ -325,11 +326,11 @@ public class Compiler implements ICompiler {
 			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			configuration = documentBuilder.parse(new File("Compiler.xml"));
 		} catch (ParserConfigurationException e) {
-			log.error(e);
+			log.error(String.valueOf(e));
 		} catch (SAXException e) {
-			log.error(e);
+			log.error(String.valueOf(e));
 		} catch (IOException e) {
-			log.error(e);
+			log.error(String.valueOf(e));
 		}
 
 		if (configuration != null) {

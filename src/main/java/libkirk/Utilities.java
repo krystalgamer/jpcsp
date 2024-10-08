@@ -20,10 +20,11 @@ import static java.lang.System.arraycopy;
 
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Utilities {
-	public static Logger log = Logger.getLogger("libkirk");
+	public static Logger log = LoggerFactory.getLogger("libkirk");
 
 	public static int u8(int n) {
 		return n & 0xFF;

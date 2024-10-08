@@ -19,7 +19,8 @@ package jpcsp.format.rco.type;
 import jpcsp.format.rco.RCOContext;
 import jpcsp.format.rco.vsmx.VSMX;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BaseType {
 	protected static final Logger log = VSMX.log;

@@ -34,7 +34,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.zip.GZIPInputStream;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.Processor;
@@ -497,7 +498,7 @@ public class PRX {
 					resultSize = elfOffset;
 					resultBuffer = elfBuffer;
 				} catch (IOException e) {
-					log.error(e);
+					log.error(e.toString());
 				}
         	} else if (kl4eDecompress != null && kl4eDecompress.isNotNull()) {
         		try {
@@ -693,7 +694,7 @@ public class PRX {
         	out.println();
         	out.close();
     	} catch (IOException e) {
-			log.error(e);
+			log.error(e.toString());
 		}
     }
 

@@ -20,7 +20,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Stack;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class VSMXDecompiler {
 	private static Logger log = VSMX.log;

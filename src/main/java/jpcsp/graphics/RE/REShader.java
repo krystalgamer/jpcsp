@@ -384,7 +384,7 @@ public class REShader extends BaseRenderingEngineFunction {
 	        	}
 	            src.replace(startInclude, endInclude + 1, Utilities.toString(resourceStream, true));
 	        } catch (IOException e) {
-	        	log.error(e);
+	        	log.error(e.toString());
 	        	break;
 	        }
 		}
@@ -403,7 +403,7 @@ public class REShader extends BaseRenderingEngineFunction {
         	}
             src.append(Utilities.toString(resourceStream, true));
         } catch (IOException e) {
-        	log.error(e);
+        	log.error(e.toString());
         	return false;
         }
 
@@ -715,7 +715,7 @@ public class REShader extends BaseRenderingEngineFunction {
 	public void exit() {
 		if (DurationStatistics.collectStatistics) {
 			if (useNativeClut) {
-				log.info(textureCacheLookupStatistics);
+				log.info(String.valueOf(textureCacheLookupStatistics));
 			}
 		}
 		super.exit();

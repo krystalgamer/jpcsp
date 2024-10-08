@@ -50,7 +50,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Allegrex.Opcodes;
 import jpcsp.Allegrex.compiler.RuntimeContext;
@@ -86,7 +87,7 @@ import jpcsp.util.Utilities;
 
 public class Loader {
     private static Loader instance;
-    private static Logger log = Logger.getLogger("loader");
+    private static Logger log = LoggerFactory.getLogger("loader");
 
     public final static int SCE_MAGIC = 0x4543537E;
     public final static int PSP_MAGIC = 0x50535000;

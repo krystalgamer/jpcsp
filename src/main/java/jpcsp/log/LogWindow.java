@@ -38,9 +38,13 @@ import java.io.PrintStream;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.UIManager;
 import jpcsp.WindowPropSaver;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.event.Level;
 
 public class LogWindow extends javax.swing.JFrame {
 
@@ -50,10 +54,13 @@ public class LogWindow extends javax.swing.JFrame {
     public LogWindow() {
         initComponents();
 
+        // @FIXME
+        /*
         TextPaneAppender textPaneAppender = (TextPaneAppender) Logger.getRootLogger().getAppender("JpcspAppender");
         if (textPaneAppender != null) {
             textPaneAppender.setTextPane(tpLog);
         }
+        */
 
         getLogLevelFromConfig();
 
@@ -71,9 +78,13 @@ public class LogWindow extends javax.swing.JFrame {
     }
 
     private void getLogLevelFromConfig() {
+
+
+
+        // @FIXME
+        /*
         final Logger rootLogger = Logger.getRootLogger();
         Level lvlConfig = rootLogger.getLevel();
-
         if (lvlConfig.equals(Level.ALL)) {
             cmbLogLevel.setSelectedIndex(0);
         }
@@ -92,12 +103,16 @@ public class LogWindow extends javax.swing.JFrame {
         if (lvlConfig.equals(Level.ERROR)) {
             cmbLogLevel.setSelectedIndex(5);
         }
+        */
+        // @FIXME
+        /*
         if (lvlConfig.equals(Level.FATAL)) {
             cmbLogLevel.setSelectedIndex(6);
         }
         if (lvlConfig.equals(Level.OFF)) {
             cmbLogLevel.setSelectedIndex(7);
         }
+         */
     }
 
     public static void main(String[] args) {
@@ -107,9 +122,10 @@ public class LogWindow extends javax.swing.JFrame {
             e.printStackTrace();
         }
         System.setProperty("log4j.properties", confFile);
-        DOMConfigurator.configure(confFile);
+        // @FIXME
+        // DOMConfigurator.configure(confFile);
+        // System.setOut(new PrintStream(new LoggingOutputStream(LoggerFactory.getLogger("sysout"), Level.INFO)));
 
-        System.setOut(new PrintStream(new LoggingOutputStream(Logger.getLogger("sysout"), Level.INFO)));
         new LogWindow().setVisible(true);
     }
 
@@ -188,8 +204,11 @@ public class LogWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void cmbLogLevelItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbLogLevelItemStateChanged
-        final Logger rootLogger = Logger.getRootLogger();
+        final Logger rootLogger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
         if (evt.getStateChange() == ItemEvent.SELECTED) {
+
+            // @FIXME
+            /*
             if (evt.getItem().equals(loglevels[0])) {
                 rootLogger.setLevel(Level.ALL);
             }
@@ -214,6 +233,7 @@ public class LogWindow extends javax.swing.JFrame {
             if (evt.getItem().equals(loglevels[7])) {
                 rootLogger.setLevel(Level.OFF);
             }
+            */
         }
     }//GEN-LAST:event_cmbLogLevelItemStateChanged
     // Variables declaration - do not modify//GEN-BEGIN:variables

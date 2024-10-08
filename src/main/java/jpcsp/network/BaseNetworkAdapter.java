@@ -19,7 +19,8 @@ package jpcsp.network;
 import java.net.SocketAddress;
 import java.net.UnknownHostException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.settings.Settings;
 
@@ -28,7 +29,7 @@ import jpcsp.settings.Settings;
  *
  */
 public abstract class BaseNetworkAdapter implements INetworkAdapter {
-	public static Logger log = Logger.getLogger("network");
+	public static Logger log = LoggerFactory.getLogger("network");
 	public static final String settingsEnableChat = "network.enableChat";
 
 	@Override

@@ -23,8 +23,10 @@ import java.nio.ByteBuffer;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Semaphore;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.Memory;
@@ -37,6 +39,7 @@ import jpcsp.settings.AbstractBoolSettingsListener;
 import jpcsp.settings.Settings;
 import jpcsp.util.DurationStatistics;
 import jpcsp.util.Utilities;
+import org.slf4j.event.Level;
 
 /**
  * @author gid15
@@ -46,7 +49,7 @@ public class ExternalGE {
 	public static final int numberRendererThread = 4;
 	public static       boolean activateWhenAvailable = false;
 	public static final boolean useUnsafe = false;
-	public static Logger log = Logger.getLogger("externalge");
+	public static Logger log = LoggerFactory.getLogger("externalge");
 	private static ConcurrentLinkedQueue<PspGeList> drawListQueue;
 	private static volatile PspGeList currentList;
 	private static jpcsp.graphics.RE.externalge.RendererThread[] rendererThreads;
@@ -232,8 +235,10 @@ public class ExternalGE {
 					CaptureManager.captureInProgress = true;
 					NativeUtils.setDumpFrames(true);
 					NativeUtils.setDumpTextures(true);
-					logLevel = log.getLevel();
-					log.setLevel(Level.TRACE);
+
+                    // @FIXME
+					// logLevel = log.getLevel();
+					// log.setLevel(Level.TRACE);
 				}
 	
 		        // Save the context at the beginning of the list processing to the given address (used by sceGu).
@@ -345,7 +350,8 @@ public class ExternalGE {
 		synchronized (drawListQueue) {
 			if (list == currentList) {
 				if (CaptureManager.captureInProgress) {
-					log.setLevel(logLevel);
+                    // @FIXME
+                    //log.setLevel(logLevel);
 					NativeUtils.setDumpFrames(false);
 					NativeUtils.setDumpTextures(false);
 					NativeUtils.setLogLevel();

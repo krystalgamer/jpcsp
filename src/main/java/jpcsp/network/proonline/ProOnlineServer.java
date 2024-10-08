@@ -34,7 +34,8 @@ import jpcsp.network.proonline.PacketFactory.SceNetAdhocctlPacketBaseC2S;
 import jpcsp.network.proonline.PacketFactory.SceNetAdhocctlPacketBaseS2C;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /*
  * Ported from ProOnline aemu server

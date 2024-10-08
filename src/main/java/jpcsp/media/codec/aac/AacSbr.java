@@ -60,7 +60,8 @@ import jpcsp.media.codec.util.IBitReader;
 import jpcsp.media.codec.util.VLC;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AacSbr {
 	private static Logger log = AacDecoder.log;

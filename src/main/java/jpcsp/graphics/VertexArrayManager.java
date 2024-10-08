@@ -47,7 +47,7 @@ public class VertexArrayManager {
 	public static void exit() {
 		if (instance != null) {
 			if (DurationStatistics.collectStatistics) {
-				VideoEngine.log.info(instance.statistics);
+				VideoEngine.log.info(String.valueOf(instance.statistics));
 			}
 		}
 	}
@@ -118,7 +118,7 @@ public class VertexArrayManager {
 
 	protected void displayStatistics() {
 		for (VertexArray vertexArray : vertexArrays) {
-			VideoEngine.log.info(vertexArray);
+			VideoEngine.log.info(String.valueOf(vertexArray));
 		}
 
 		VideoEngine.log.info(String.format("VertexArrayManager: %d VAOs", vertexArrays.size()));

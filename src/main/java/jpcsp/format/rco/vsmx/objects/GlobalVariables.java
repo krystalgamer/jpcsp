@@ -16,7 +16,8 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.format.rco.vsmx.objects;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.format.rco.vsmx.VSMX;
 import jpcsp.format.rco.vsmx.interpreter.VSMXArray;
@@ -31,7 +32,7 @@ import jpcsp.hardware.Screen;
 
 public class GlobalVariables extends BaseNativeObject {
 	private static final Logger log = VSMX.log;
-	private static final Logger logWriteln = Logger.getLogger("writeln");
+	private static final Logger logWriteln = LoggerFactory.getLogger("writeln");
 	private StringBuilder writeBuffer = new StringBuilder();
 
 	public static VSMXNativeObject create(VSMXInterpreter interpreter) {

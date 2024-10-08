@@ -28,8 +28,10 @@ import java.io.FileNotFoundException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.VFS.IVirtualFile;
 import jpcsp.HLE.VFS.local.LocalVirtualFile;
@@ -42,7 +44,8 @@ public class TestChdr {
 	public static Logger log = Chd.log;
 
 	public static void main(String[] args) {
-        DOMConfigurator.configure("LogSettings.xml");
+        // @FIXME
+        // DOMConfigurator.configure("LogSettings.xml");
 		try {
 			new TestChdr().test("umdimages/cube.chd", "tmp/cube.iso", null);
 //			new TestChdr().test("tmp/test.chd", "tmp/test.iso", "tmp/parent.chd");

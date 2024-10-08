@@ -16,7 +16,8 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.test;
 
-import org.apache.log4j.xml.DOMConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.graphics.RE.externalge.NativeUtils;
 import jpcsp.util.LWJGLFixer;
@@ -24,7 +25,8 @@ import jpcsp.util.LWJGLFixer;
 public class ExternalGETests {
 	public static void main(String[] args) {
         LWJGLFixer.fixOnce();
-        DOMConfigurator.configure("LogSettings.xml");
+        // @FIXME
+        // DOMConfigurator.configure("LogSettings.xml");
 		NativeUtils.init();
 		NativeUtils.setLogLevel();
 

@@ -24,7 +24,8 @@ import jpcsp.graphics.VertexInfo;
 import jpcsp.graphics.VideoEngine;
 import jpcsp.graphics.RE.buffer.IREBufferManager;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author gid15

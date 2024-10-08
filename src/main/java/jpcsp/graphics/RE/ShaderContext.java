@@ -18,7 +18,8 @@ package jpcsp.graphics.RE;
 
 import static jpcsp.graphics.VideoEngine.NUM_LIGHTS;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.graphics.Uniforms;
 import jpcsp.graphics.VideoEngine;

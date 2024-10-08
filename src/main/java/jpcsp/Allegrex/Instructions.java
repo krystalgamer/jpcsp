@@ -4145,7 +4145,7 @@ public void compile(ICompilerContext context, int insn) {
 		    	if (Compiler.log.isDebugEnabled()) {
 		            CodeInstruction sequence = new SequenceLWCodeInstruction(rs, offsets, registers);
 		            sequence.setAddress(context.getCodeInstruction().getAddress());
-		    		Compiler.log.debug(sequence);
+		    		Compiler.log.debug(sequence.toString());
 		    	}
 
 		    	// Skip the next lw instructions
@@ -4418,7 +4418,7 @@ public void compile(ICompilerContext context, int insn) {
 	    	if (Compiler.log.isDebugEnabled()) {
 	            CodeInstruction sequence = new SequenceSWCodeInstruction(rs, offsets, registers);
 	            sequence.setAddress(context.getCodeInstruction().getAddress());
-	    		Compiler.log.debug(sequence);
+	    		Compiler.log.debug(sequence.toString());
 	    	}
 
 	    	// Skip the next sw instructions

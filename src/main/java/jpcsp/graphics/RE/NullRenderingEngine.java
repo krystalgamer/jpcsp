@@ -3,7 +3,8 @@ package jpcsp.graphics.RE;
 import java.nio.Buffer;
 import java.nio.IntBuffer;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.graphics.GeContext;
 import jpcsp.graphics.VertexInfo;

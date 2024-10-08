@@ -109,7 +109,8 @@ import jpcsp.util.DurationStatistics;
 import jpcsp.util.ClassAnalyzer.ParameterInfo;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.Label;
 import org.objectweb.asm.MethodVisitor;
@@ -1287,7 +1288,7 @@ public class CompilerContext implements ICompilerContext {
     private void logSyscall(HLEModuleFunction func, String logPrefix, String logCheckFunction, String logFunction) {
 		// Modules.getLogger(func.getModuleName()).warn("Unimplemented...");
     	loadModuleLoggger(func);
-		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(Logger.class), logCheckFunction, "()Z", false);
+		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(Logger.class), logCheckFunction, "()Z", true);
 		Label loggingDisabled = new Label();
 		mv.visitJumpInsn(Opcodes.IFEQ, loggingDisabled);
 
@@ -1350,7 +1351,7 @@ public class CompilerContext implements ICompilerContext {
 			mv.visitLdcInsn(formatString.toString());
 			mv.visitInsn(Opcodes.SWAP);
         	invokeStaticMethod(Type.getInternalName(String.class), "format", "(" + Type.getDescriptor(String.class) + "[" + Type.getDescriptor(Object.class) + ")" + Type.getDescriptor(String.class));
-    		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(Logger.class), logFunction, "(" + Type.getDescriptor(Object.class) + ")V", false);
+    		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(Logger.class), logFunction, "(" + Type.getDescriptor(String.class) + ")V", true);
 
             parameterReader = new CompilerParameterReader(this);
             for (int paramIndex = 0; paramIndex < parameters.length; paramIndex++) {
@@ -1463,7 +1464,7 @@ public class CompilerContext implements ICompilerContext {
         			mv.visitLdcInsn(format);
                 	mv.visitInsn(Opcodes.SWAP);
                 	invokeStaticMethod(Type.getInternalName(String.class), "format", "(" + Type.getDescriptor(String.class) + "[" + Type.getDescriptor(Object.class) + ")" + Type.getDescriptor(String.class));
-            		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(Logger.class), logFunction, "(" + Type.getDescriptor(Object.class) + ")V", false);
+            		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(Logger.class), logFunction, "(" + Type.getDescriptor(String.class) + ")V", true);
             		mv.visitJumpInsn(Opcodes.GOTO, done);
 
         			mv.visitLabel(addressNull);
@@ -1485,7 +1486,7 @@ public class CompilerContext implements ICompilerContext {
         	}
 		} else {
 			mv.visitLdcInsn(formatString.toString());
-			mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(Logger.class), logFunction, "(" + Type.getDescriptor(Object.class) + ")V", false);
+			mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(Logger.class), logFunction, "(" + Type.getDescriptor(String.class) + ")V", true);
 		}
 
 		mv.visitLabel(loggingDisabled);
@@ -1538,7 +1539,7 @@ public class CompilerContext implements ICompilerContext {
     	//     Modules.getLogger(func.getModuleName()).debug(String.format("<function name> returning 0x%X", new Object[1] { new Integer(returnValue) }));
     	// }
     	loadModuleLoggger(func);
-    	mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(Logger.class), logCheckFunction, "()Z", false);
+    	mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(Logger.class), logCheckFunction, "()Z", true);
     	Label notDebug = new Label();
     	mv.visitJumpInsn(Opcodes.IFEQ, notDebug);
 
@@ -1562,7 +1563,7 @@ public class CompilerContext implements ICompilerContext {
     	invokeStaticMethod(Type.getInternalName(String.class), "format", "(" + Type.getDescriptor(String.class) + "[" + Type.getDescriptor(Object.class) + ")" + Type.getDescriptor(String.class));
     	loadModuleLoggger(func);
     	mv.visitInsn(Opcodes.SWAP);
-    	mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(Logger.class), loggingLevel, "(" + Type.getDescriptor(Object.class) + ")V", false);
+    	mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(Logger.class), loggingLevel, "(" + Type.getDescriptor(String.class) + ")V", true);
 
     	if (!isErrorCode) {
 			ParameterInfo[] parameters = new ClassAnalyzer().getParameters(func.getFunctionName(), func.getHLEModuleMethod().getDeclaringClass());
@@ -1710,7 +1711,7 @@ public class CompilerContext implements ICompilerContext {
 	        			mv.visitLdcInsn(format);
 	                	mv.visitInsn(Opcodes.SWAP);
 	                	invokeStaticMethod(Type.getInternalName(String.class), "format", "(" + Type.getDescriptor(String.class) + "[" + Type.getDescriptor(Object.class) + ")" + Type.getDescriptor(String.class));
-	            		mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(Logger.class), loggingLevel, "(" + Type.getDescriptor(Object.class) + ")V", false);
+	            		mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(Logger.class), loggingLevel, "(" + Type.getDescriptor(String.class) + ")V", true);
 	            		mv.visitJumpInsn(Opcodes.GOTO, done);
 
 	        			mv.visitLabel(addressNull);
@@ -1865,12 +1866,12 @@ public class CompilerContext implements ICompilerContext {
     		mv.visitJumpInsn(Opcodes.IFEQ, notInsideInterrupt);
 
     		loadModuleLoggger(func);
-        	mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(Logger.class), "isDebugEnabled", "()Z", false);
+        	mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(Logger.class), "isDebugEnabled", "()Z", true);
         	Label notDebug = new Label();
         	mv.visitJumpInsn(Opcodes.IFEQ, notDebug);
         	loadModuleLoggger(func);
         	mv.visitLdcInsn(String.format("%s returning errorCode 0x%08X (ERROR_KERNEL_CANNOT_BE_CALLED_FROM_INTERRUPT)", func.getFunctionName(), SceKernelErrors.ERROR_KERNEL_CANNOT_BE_CALLED_FROM_INTERRUPT));
-        	mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(Logger.class), "debug", "(" + Type.getDescriptor(Object.class) + ")V", false);
+        	mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(Logger.class), "debug", "(" + Type.getDescriptor(String.class) + ")V", true);
         	mv.visitLabel(notDebug);
 
         	storeRegister(_v0, SceKernelErrors.ERROR_KERNEL_CANNOT_BE_CALLED_FROM_INTERRUPT);
@@ -1897,12 +1898,12 @@ public class CompilerContext implements ICompilerContext {
 
     		mv.visitLabel(returnError);
     		loadModuleLoggger(func);
-        	mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(Logger.class), "isDebugEnabled", "()Z", false);
+        	mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(Logger.class), "isDebugEnabled", "()Z", true);
         	Label notDebug = new Label();
         	mv.visitJumpInsn(Opcodes.IFEQ, notDebug);
         	loadModuleLoggger(func);
         	mv.visitLdcInsn(String.format("%s returning errorCode 0x%08X (ERROR_KERNEL_WAIT_CAN_NOT_WAIT)", func.getFunctionName(), SceKernelErrors.ERROR_KERNEL_WAIT_CAN_NOT_WAIT));
-        	mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(Logger.class), "debug", "(" + Type.getDescriptor(Object.class) + ")V", false);
+        	mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(Logger.class), "debug", "(" + Type.getDescriptor(String.class) + ")V", true);
         	mv.visitLabel(notDebug);
 
         	storeRegister(_v0, SceKernelErrors.ERROR_KERNEL_WAIT_CAN_NOT_WAIT);
@@ -2017,7 +2018,7 @@ public class CompilerContext implements ICompilerContext {
         	mv.visitLabel(unsupportedVersionLabel);
         	loadModuleLoggger(func);
         	mv.visitLdcInsn(String.format("%s is not supported in firmware version %d, it requires at least firmware version %d", func.getFunctionName(), RuntimeContext.firmwareVersion, func.getFirmwareVersion()));
-        	mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, Type.getInternalName(Logger.class), "warn", "(" + Type.getDescriptor(Object.class) + ")V", false);
+        	mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, Type.getInternalName(Logger.class), "warn", "(" + Type.getDescriptor(String.class) + ")V", true);
         	storeRegister(_v0, -1);
 
         	mv.visitLabel(afterVersionCheckLabel);

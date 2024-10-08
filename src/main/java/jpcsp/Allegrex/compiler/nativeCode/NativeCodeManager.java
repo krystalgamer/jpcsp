@@ -64,7 +64,7 @@ public class NativeCodeManager {
 		try {
 			return (Class<INativeCodeSequence>) Class.forName(className);
 		} catch (ClassNotFoundException e) {
-			Compiler.log.error(e);
+			Compiler.log.error(e.toString());
 			return null;
 		}
 	}
@@ -125,12 +125,12 @@ public class NativeCodeManager {
 
 						nativeCodeSequence.addBeforeCodeInstruction(codeInstruction);
 					} catch (NumberFormatException e) {
-						Compiler.log.error(e);
+						Compiler.log.error(e.toString());
 					}
 				}
 			}
 		} catch (IOException e) {
-			Compiler.log.error(e);
+			Compiler.log.error(e.toString());
 		}
 	}
 
@@ -172,12 +172,12 @@ public class NativeCodeManager {
 
 						nativeCodeSequence.addOpcode(opcode, mask, label);
 					} catch (NumberFormatException e) {
-						Compiler.log.error(e);
+						Compiler.log.error(e.toString());
 					}
 				}
 			}
 		} catch (IOException e) {
-			Compiler.log.error(e);
+			Compiler.log.error(e.toString());
 		}
 	}
 
@@ -219,7 +219,7 @@ public class NativeCodeManager {
 			}
 			nativeCodeSequence.setParameter(parameter, value, false);
 		} catch (NumberFormatException e) {
-			Compiler.log.error(e);
+			Compiler.log.error(e.toString());
 		}
 	}
 

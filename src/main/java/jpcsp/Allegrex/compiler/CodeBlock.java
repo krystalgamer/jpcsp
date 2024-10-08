@@ -38,7 +38,8 @@ import jpcsp.HLE.HLEModuleFunction;
 import jpcsp.HLE.kernel.types.IAction;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 import org.objectweb.asm.FieldVisitor;
@@ -474,7 +475,9 @@ public class CodeBlock {
     	}
 
     	StringWriter debugOutput = null;
-    	if (log.isTraceEnabled()) {
+
+        // @FIXME
+    	if (true) {
     	    debugOutput = new StringWriter();
     	    PrintWriter debugPrintWriter = new PrintWriter(debugOutput);
     	    cv = new TraceClassVisitor(cv, debugPrintWriter);
@@ -498,7 +501,7 @@ public class CodeBlock {
         cv.visitEnd();
 
     	if (debugOutput != null) {
-    	    log.trace(debugOutput.toString());
+    	    log.warn(debugOutput.toString());
     	}
 
 	    compiledClass = loadExecutable(context, className, cw.toByteArray());
@@ -534,7 +537,9 @@ public class CodeBlock {
     		cv = new CheckClassAdapter(cv);
     	}
         StringWriter debugOutput = null;
-    	if (log.isTraceEnabled()) {
+
+        // @FIXME
+    	if (true) {
     	    debugOutput = new StringWriter();
     	    PrintWriter debugPrintWriter = new PrintWriter(debugOutput);
     	    cv = new TraceClassVisitor(cv, debugPrintWriter);
@@ -583,7 +588,7 @@ public class CodeBlock {
         cv.visitEnd();
 
     	if (debugOutput != null) {
-    	    log.trace(debugOutput.toString());
+    	    log.info(debugOutput.toString());
     	}
 
     	try {
@@ -606,9 +611,9 @@ public class CodeBlock {
 	            try {
                     executable = classExecutable.newInstance();
                 } catch (InstantiationException e) {
-                    log.error(e);
+                    log.error(e.toString());
                 } catch (IllegalAccessException e) {
-                    log.error(e);
+                    log.error(e.toString());
                 }
 	        }
 	    }
@@ -623,9 +628,9 @@ public class CodeBlock {
 	            try {
                     executable = classExecutable.newInstance();
                 } catch (InstantiationException e) {
-                    log.error(e);
+                    log.error(String.valueOf(e));
                 } catch (IllegalAccessException e) {
-                    log.error(e);
+                    log.error(String.valueOf(e));
                 }
 	        }
     	}

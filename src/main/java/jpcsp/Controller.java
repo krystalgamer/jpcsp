@@ -51,7 +51,8 @@ import java.util.logging.Level;
 
 import javax.swing.JOptionPane;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import net.java.games.input.Component;
 import net.java.games.input.ControllerEnvironment;
@@ -64,7 +65,7 @@ import net.java.games.input.Controller.Type;
 
 public class Controller {
 
-    public static Logger log = Logger.getLogger("controller");
+    public static Logger log = LoggerFactory.getLogger("controller");
     private static Controller instance;
     public static final byte analogCenter = (byte) 128;
     // Left analog stick
@@ -125,7 +126,8 @@ public class Controller {
     public static Controller getInstance() {
         if (instance == null) {
             // Disable JInput messages sent to stdout...
-            java.util.logging.Logger.getLogger("net.java.games.input.DefaultControllerEnvironment").setLevel(Level.WARNING);
+            // @FIXME: broken
+            //LoggerFactory.getLogger("net.java.games.input.DefaultControllerEnvironment").setLevel(Level.WARNING);
 
             ControllerEnvironment ce = ControllerEnvironment.getDefaultEnvironment();
             net.java.games.input.Controller[] controllers = ce.getControllers();

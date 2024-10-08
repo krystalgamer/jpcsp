@@ -23,14 +23,15 @@ import jpcsp.media.codec.ICodec;
 import jpcsp.media.codec.util.BitReader;
 import jpcsp.media.codec.util.FFT;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /*
  * Based on the FFmpeg version from Maxim Poliakovski.
  * All credits go to him.
  */
 public class Atrac3plusDecoder implements ICodec {
-	public static Logger log = Logger.getLogger("atrac3plus");
+	public static Logger log = LoggerFactory.getLogger("atrac3plus");
 	public static final int AT3P_ERROR = -1;
 	public static final int CH_UNIT_MONO       = 0;        ///< unit containing one coded channel
 	public static final int CH_UNIT_STEREO     = 1;        ///< unit containing two jointly-coded channels

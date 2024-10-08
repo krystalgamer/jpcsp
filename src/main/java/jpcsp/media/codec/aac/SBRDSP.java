@@ -18,7 +18,8 @@ package jpcsp.media.codec.aac;
 
 import static jpcsp.media.codec.aac.AacSbrData.ff_sbr_noise_table;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SBRDSP {
 	private static Logger log = AacDecoder.log;

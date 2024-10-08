@@ -19,7 +19,8 @@ package jpcsp.format.rco.vsmx.objects;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.format.rco.vsmx.INativeFunction;
 import jpcsp.format.rco.vsmx.VSMX;

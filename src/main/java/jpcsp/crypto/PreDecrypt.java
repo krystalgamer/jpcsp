@@ -35,7 +35,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -177,11 +178,11 @@ public class PreDecrypt {
 			Element configuration = document.getDocumentElement();
 			load(configuration);
 		} catch (ParserConfigurationException e) {
-			log.error(e);
+			log.error(e.toString());
 		} catch (SAXException e) {
-			log.error(e);
+			log.error(e.toString());
 		} catch (IOException e) {
-			log.error(e);
+			log.error(e.toString());
 		}
 	}
 
@@ -287,15 +288,15 @@ public class PreDecrypt {
 
 						bytes = add(bytes, fieldValueBytes);
 					} catch (ClassNotFoundException e) {
-						log.error(e);
+						log.error(String.valueOf(e));
 					} catch (NoSuchFieldException e) {
-						log.error(e);
+						log.error(String.valueOf(e));
 					} catch (SecurityException e) {
-						log.error(e);
+						log.error(String.valueOf(e));
 					} catch (IllegalArgumentException e) {
-						log.error(e);
+						log.error(String.valueOf(e));
 					} catch (IllegalAccessException e) {
-						log.error(e);
+						log.error(String.valueOf(e));
 					}
 				}
 			} else {

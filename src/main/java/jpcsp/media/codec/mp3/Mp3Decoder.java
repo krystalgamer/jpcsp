@@ -37,7 +37,8 @@ import static jpcsp.media.codec.mp3.Mp3Dsp.mdct_win;
 
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Memory;
 import jpcsp.media.codec.ICodec;
@@ -49,7 +50,7 @@ import jpcsp.media.codec.util.FloatDSP;
 import jpcsp.media.codec.util.VLC;
 
 public class Mp3Decoder implements ICodec {
-	public static Logger log = Logger.getLogger("mp3");
+	public static Logger log = LoggerFactory.getLogger("mp3");
 	public static final int MP3_ERROR = -3;
 	private static final int HEADER_SIZE = 4;
 	public static final int BACKSTEP_SIZE = 512;

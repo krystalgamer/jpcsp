@@ -119,8 +119,11 @@ import jpcsp.util.CpuDurationStatistics;
 import jpcsp.util.DurationStatistics;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.event.Level;
 
 //
 // Ideas for Optimization:
@@ -232,7 +235,7 @@ public class VideoEngine {
     private IRenderingEngine re;
     private GeContext context;
     private IREBufferManager bufferManager;
-    public static Logger log = Logger.getLogger("ge");
+    public static Logger log = LoggerFactory.getLogger("ge");
     public static final boolean useTextureCache = true;
     private boolean useVertexCache = false;
     private boolean useAsyncVertexCache = true;
@@ -752,20 +755,20 @@ public class VideoEngine {
             }
 
             if (DurationStatistics.collectStatistics) {
-                log.info(instance.statistics);
+                log.info(String.valueOf(instance.statistics));
                 Arrays.sort(instance.commandStatistics);
                 final int numberCommands = 20;
                 log.info(String.format("%d most time intensive Video commands:", numberCommands));
                 for (int i = 0; i < numberCommands; i++) {
                     log.info(String.format("    %s", instance.commandStatistics[i]));
                 }
-                log.info(instance.vertexStatistics);
-                log.info(instance.vertexReadingStatistics);
-                log.info(instance.drawArraysStatistics);
-                log.info(instance.waitSignalStatistics);
-                log.info(instance.waitStallStatistics);
-                log.info(instance.textureCacheLookupStatistics);
-                log.info(instance.vertexCacheLookupStatistics);
+                log.info(String.valueOf(instance.vertexStatistics));
+                log.info(String.valueOf(instance.vertexReadingStatistics));
+                log.info(String.valueOf(instance.drawArraysStatistics));
+                log.info(String.valueOf(instance.waitSignalStatistics));
+                log.info(String.valueOf(instance.waitStallStatistics));
+                log.info(String.valueOf(instance.textureCacheLookupStatistics));
+                log.info(String.valueOf(instance.vertexCacheLookupStatistics));
                 VertexBufferManager.exit();
                 VertexArrayManager.exit();
             }
@@ -808,7 +811,9 @@ public class VideoEngine {
         if (State.dumpGeNextFrame) {
             // Set the VideoEngine log level to TRACE when dumping,
             // the information in the log file is also interesting
-	        logLevel = log.getLevel();
+
+            // @FIXME: yap..
+	        //logLevel = log.getLevel();
 	        setLogLevel(Level.TRACE);
         } else if (State.recordGeFrames) {
         	if (!CaptureManager.captureInProgress) {
@@ -859,17 +864,17 @@ public class VideoEngine {
         isLogTraceEnabled = log.isTraceEnabled();
         isLogDebugEnabled = log.isDebugEnabled();
         isLogInfoEnabled = log.isInfoEnabled();
-        isLogWarnEnabled = log.isEnabledFor(Level.WARN);
+        isLogWarnEnabled = log.isWarnEnabled();
     }
 
     public void setLogLevel(Level level) {
-        log.setLevel(level);
+        //log.setLevel(level);
         logLevelUpdated();
     }
 
     public void endDumpFrame() {
         if (logLevel != null) {
-        	log.setLevel(logLevel);
+        	//log.setLevel(logLevel);
         	logLevel = null;
         }
     }

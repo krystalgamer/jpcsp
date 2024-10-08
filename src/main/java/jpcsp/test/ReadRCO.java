@@ -24,13 +24,17 @@ import java.io.InputStream;
 
 import jpcsp.format.RCO;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ReadRCO {
 	public static void main(String[] args) {
-        DOMConfigurator.configure("LogSettings.xml");
-        Logger log = Logger.getLogger("rco");
+
+        // @FIXME
+        // DOMConfigurator.configure("LogSettings.xml");
+        Logger log = LoggerFactory.getLogger("rco");
 		try {
 			File file = new File(args[0]);
 			InputStream is = new FileInputStream(file);

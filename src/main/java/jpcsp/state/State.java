@@ -24,7 +24,8 @@ import java.io.IOException;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.Allegrex.compiler.RuntimeContextLLE;
@@ -33,7 +34,7 @@ import jpcsp.hardware.Battery;
 import jpcsp.hardware.Wlan;
 
 public class State implements IState {
-	public static Logger log = Logger.getLogger("state");
+	public static Logger log = LoggerFactory.getLogger("state");
 	private static final int STATE_VERSION = 0;
 
 	public State() {

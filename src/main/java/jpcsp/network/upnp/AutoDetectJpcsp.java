@@ -36,10 +36,11 @@ import jpcsp.hardware.Wlan;
 import jpcsp.network.proonline.ProOnlineNetworkAdapter;
 import jpcsp.network.proonline.ProOnlineServer;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AutoDetectJpcsp {
-	protected static Logger log = Logger.getLogger("network");
+	protected static Logger log = LoggerFactory.getLogger("network");
 	private static AutoDetectJpcsp instance = null;
 	private ListenerThread listenerThread;
 	private static final String deviceName = "Jpcsp";

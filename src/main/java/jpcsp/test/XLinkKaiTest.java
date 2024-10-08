@@ -22,8 +22,10 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketTimeoutException;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Allegrex.compiler.RuntimeContext;
 import jpcsp.HLE.modules.sceNet;
@@ -57,7 +59,7 @@ public class XLinkKaiTest {
 					}
 				} catch (IOException e) {
 					if (!exit) {
-						log.error(e);
+						log.error(e.toString());
 					}
 				}
 			}
@@ -73,8 +75,9 @@ public class XLinkKaiTest {
 
 	public static void main(String[] args) {
         LWJGLFixer.fixOnce();
-        DOMConfigurator.configure("LogSettings.xml");
-        log = Logger.getLogger("XLinkKai");
+        // @FIXME
+        // DOMConfigurator.configure("LogSettings.xml");
+        log = LoggerFactory.getLogger("XLinkKai");
 		RuntimeContext.setLog4jMDC();
         Wlan.initialize();
 
@@ -83,7 +86,7 @@ public class XLinkKaiTest {
 //			test.testConnectDisconnect();
 			test.testListen();
 		} catch (IOException e) {
-			log.error(e);
+			log.error(e.toString());
 		}
 	}
 

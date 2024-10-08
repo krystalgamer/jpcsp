@@ -32,7 +32,8 @@ import java.util.Map;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.Modules;
 import jpcsp.HLE.TPointer32;
@@ -47,7 +48,7 @@ import jpcsp.util.Utilities;
  *
  */
 public class PSAR {
-	public static final Logger log = Logger.getLogger("psar");
+	public static final Logger log = LoggerFactory.getLogger("psar");
 	public static final int PSAR_MAGIC = 0x52415350; // "PSAR"
 	private boolean decrypted;
 	private boolean oldschool;

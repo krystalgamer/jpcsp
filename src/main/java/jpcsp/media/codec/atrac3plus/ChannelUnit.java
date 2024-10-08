@@ -43,7 +43,8 @@ import jpcsp.media.codec.atrac3plus.Atrac3plusData1.Atrac3pSpecCodeTab;
 import jpcsp.media.codec.util.BitReader;
 import jpcsp.media.codec.util.VLC;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /*
  * Based on the FFmpeg version from Maxim Poliakovski.

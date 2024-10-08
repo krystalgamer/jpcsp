@@ -33,7 +33,8 @@ import static jpcsp.util.Utilities.signExtend;
 
 import java.util.Arrays;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Memory;
 import jpcsp.media.codec.ICodec;
@@ -47,7 +48,7 @@ import jpcsp.media.codec.util.VLC;
  * All credits go to them.
  */
 public class Atrac3Decoder implements ICodec {
-	public static Logger log = Logger.getLogger("atrac3");
+	public static Logger log = LoggerFactory.getLogger("atrac3");
 	public static final int AT3_ERROR = -2;
 	public static final int JOINT_STEREO = 0x12;
 	public static final int STEREO       = 0x2;
@@ -450,7 +451,7 @@ public class Atrac3Decoder implements ICodec {
 					}
 					break;
 				default:
-					log.fatal(String.format("Invalid s2 code %d", s2));
+					log.error(String.format("Invalid s2 code %d", s2));
 					break;
 			}
 		}

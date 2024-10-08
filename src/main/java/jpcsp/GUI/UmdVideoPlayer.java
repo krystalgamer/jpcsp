@@ -65,7 +65,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Emulator;
 import jpcsp.MainGUI;
@@ -96,7 +97,7 @@ import com.twilight.h264.decoder.GetBitContext;
 import com.twilight.h264.decoder.H264Context;
 
 public class UmdVideoPlayer implements KeyListener {
-	private static Logger log = Logger.getLogger("videoplayer");
+	private static Logger log = LoggerFactory.getLogger("videoplayer");
 	private static final boolean dumpFrames = false;
 
     // ISO file

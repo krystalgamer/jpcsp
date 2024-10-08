@@ -26,8 +26,10 @@ import jpcsp.util.DurationStatistics;
 import jpcsp.util.NativeCpuInfo;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import sun.misc.Unsafe;
 
@@ -245,6 +247,9 @@ public class NativeUtils {
 
     public static void setLogLevel(Logger log) {
     	int level = 7; // E_DEFAULT
+
+        // @FIXME
+        /*
     	switch (log.getEffectiveLevel().toInt()) {
 	    	case Level.ALL_INT:
 	    		level = 7; // E_FORCE
@@ -271,6 +276,8 @@ public class NativeUtils {
 	    		level = 0; // E_OFF
 	    		break;
     	}
+
+         */
 
     	setLogLevel(level);
     }

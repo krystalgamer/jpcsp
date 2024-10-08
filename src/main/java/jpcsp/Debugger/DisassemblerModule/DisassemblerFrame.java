@@ -79,7 +79,8 @@ import jpcsp.Debugger.StepLogger;
 import jpcsp.WindowPropSaver;
 import jpcsp.memory.DebuggerMemory;
 import jpcsp.util.Constants;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -1453,9 +1454,10 @@ private void DumpCodeToTextActionPerformed(java.awt.event.ActionEvent evt) {//GE
             return;
         }
 
-        Logger.getRootLogger().debug("Start address: " + dlgDC.getStartAddress());
-        Logger.getRootLogger().debug("End address: " + dlgDC.getEndAddress());
-        Logger.getRootLogger().debug("File name: " + dlgDC.getFilename());
+        Logger logger = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
+        logger.debug("Start address: " + dlgDC.getStartAddress());
+        logger.debug("End address: " + dlgDC.getEndAddress());
+        logger.debug("File name: " + dlgDC.getFilename());
 
         BufferedWriter bufferedWriter = null;
         try {

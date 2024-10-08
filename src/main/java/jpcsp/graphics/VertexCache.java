@@ -56,7 +56,7 @@ public class VertexCache {
 
 	public void exit() {
 		if (DurationStatistics.collectStatistics) {
-			VideoEngine.log.info(statistics);
+			VideoEngine.log.info(statistics.toString());
 		}
 	}
 

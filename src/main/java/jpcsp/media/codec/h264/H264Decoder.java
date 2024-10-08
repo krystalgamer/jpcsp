@@ -16,7 +16,8 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
  */
 package jpcsp.media.codec.h264;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.twilight.h264.decoder.AVFrame;
 import com.twilight.h264.decoder.AVPacket;
@@ -26,7 +27,7 @@ import com.twilight.h264.decoder.MpegEncContext;
 import jpcsp.media.codec.IVideoCodec;
 
 public class H264Decoder implements IVideoCodec {
-	private static Logger log = Logger.getLogger("h264");
+	private static Logger log = LoggerFactory.getLogger("h264");
 	private MpegEncContext context;
 	private AVFrame picture;
 	private AVPacket packet;

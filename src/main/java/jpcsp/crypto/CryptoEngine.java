@@ -16,13 +16,14 @@
  */
 package jpcsp.crypto;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.settings.AbstractBoolSettingsListener;
 import jpcsp.settings.Settings;
 
 public class CryptoEngine {
-	public static Logger log = Logger.getLogger("crypto");
+	public static Logger log = LoggerFactory.getLogger("crypto");
     private static final String name = "CryptEngine";
     private static boolean isCryptoEngineInit;
     private static boolean cryptoSavedata;

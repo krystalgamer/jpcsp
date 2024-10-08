@@ -109,7 +109,8 @@ import jpcsp.util.MetaInformation;
 import jpcsp.util.Utilities;
 
 import org.slf4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.jidesoft.plaf.LookAndFeelFactory;
 
@@ -3181,7 +3182,8 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
     		}
     	}
 
-    	DOMConfigurator.configure(logSettingsFileName);
+        // @FIXME
+    	// DOMConfigurator.configure(logSettingsFileName);
         setLog4jMDC();
     }
 

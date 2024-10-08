@@ -80,10 +80,11 @@ import jpcsp.remote.IProcessHTTPRequest;
 import jpcsp.network.protocols.DNS.DNSRecord;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AccessPoint implements IProcessHTTPRequest {
-    public static Logger log = Logger.getLogger("accesspoint");
+    public static Logger log = LoggerFactory.getLogger("accesspoint");
     public static final int HARDWARE_TYPE_ETHERNET = 0x0001;
     public static final int IP_ADDRESS_LENGTH = 4;
     private static final int BUFFER_SIZE = 2000;

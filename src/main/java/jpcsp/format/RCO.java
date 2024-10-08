@@ -48,10 +48,11 @@ import jpcsp.format.rco.vsmx.objects.MoviePlayer;
 import jpcsp.format.rco.vsmx.objects.Resource;
 import jpcsp.util.Utilities;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class RCO {
-	public static final Logger log = Logger.getLogger("rco");
+	public static final Logger log = LoggerFactory.getLogger("rco");
 	private static final boolean dumpImages = false;
 	private static final int RCO_HEADER_SIZE = 164;
 	private static final int RCO_MAGIC = 0x00505246;

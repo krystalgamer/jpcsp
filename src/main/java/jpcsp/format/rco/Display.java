@@ -26,7 +26,8 @@ import java.util.List;
 
 import javax.swing.JComponent;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.format.RCO;
 import jpcsp.format.rco.vsmx.interpreter.VSMXBaseObject;

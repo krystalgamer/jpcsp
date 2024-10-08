@@ -36,8 +36,10 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 import javax.swing.JFrame;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.xml.DOMConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Memory;
 import jpcsp.MemoryMap;
@@ -57,7 +59,7 @@ import com.twilight.h264.player.PlayerFrame;
 import com.twilight.h264.util.FrameUtils;
 
 public class PSMFPlayer implements Runnable {
-	private static Logger log = Logger.getLogger("PSMFPlayer");
+	private static Logger log = LoggerFactory.getLogger("PSMFPlayer");
 	private static final int progressHeight = 2;
 
 	private PlayerFrame displayPanel;
@@ -360,7 +362,8 @@ public class PSMFPlayer implements Runnable {
 	}
 
 	public boolean playFile(String filename) {
-        DOMConfigurator.configure("LogSettings.xml");
+        // @FIXME
+        // DOMConfigurator.configure("LogSettings.xml");
 
         H264Decoder codec;
 	    MpegEncContext c= null;

@@ -120,7 +120,7 @@ public class AsyncVertexCache extends VertexCache {
 			// Add a dummy entry to allow the thread to exit
 			asyncEntries.add(new AsyncEntry());
 			if (DurationStatistics.collectStatistics) {
-				VideoEngine.log.info(statistics);
+				VideoEngine.log.info(String.valueOf(statistics));
 			}
 		}
 

@@ -27,7 +27,8 @@ import static jpcsp.graphics.VideoEngine.NUM_LIGHTS;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.HLE.kernel.types.pspAbstractMemoryMappedStructure;
 import jpcsp.graphics.RE.IRenderingEngine;

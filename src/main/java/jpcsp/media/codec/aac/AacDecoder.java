@@ -56,7 +56,8 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import jpcsp.Memory;
 import jpcsp.media.codec.ICodec;
@@ -69,7 +70,7 @@ import jpcsp.media.codec.util.VLC;
 import jpcsp.util.Utilities;
 
 public class AacDecoder implements ICodec {
-	public static Logger log = Logger.getLogger("aac");
+	public static Logger log = LoggerFactory.getLogger("aac");
 	public static final int AAC_ERROR = -4;
 	public static final int MAX_CHANNELS = 64;
 	public static final int MAX_ELEM_ID = 16;

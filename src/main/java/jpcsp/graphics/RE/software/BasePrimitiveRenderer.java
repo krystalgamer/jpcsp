@@ -881,7 +881,7 @@ public abstract class BasePrimitiveRenderer extends BaseRenderer {
 		DurationStatistics[] sortedPixelsStatistics = pixelsStatistics.values().toArray(new DurationStatistics[pixelsStatistics.size()]);
 		Arrays.sort(sortedPixelsStatistics);
 		for (DurationStatistics durationStatistics : sortedPixelsStatistics) {
-			log.info(durationStatistics);
+			log.info(String.valueOf(durationStatistics));
 		}
 	}
 
