@@ -41,8 +41,7 @@ public class NativeUtils {
 	public static Logger log = ExternalGE.log;
 	private static boolean isInitialized = false;
 	private static boolean isAvailable = false;
-    private static Unsafe unsafe = null;
-    private static boolean unsafeInitialized = false;
+    private final static boolean unsafeInitialized = false;
     private static long intArrayBaseOffset = 0L;
     private static long memoryIntAddress = 0L;
 	private static Object[] arrayObject = new Object[] { null, 0x123456789ABCDEFL, 0x1111111122222222L };
@@ -123,107 +122,13 @@ public class NativeUtils {
 		return isAvailable;
 	}
 
-    public static void checkMemoryIntAddress() {
-    	long address = getMemoryUnsafeAddr();
-    	if (address == 0L) {
-    		return;
-    	}
-
-    	int[] memoryInt = RuntimeContext.getMemoryInt();
-		memoryInt[0] = 0x12345678;
-		int x = unsafe.getInt(memoryIntAddress);
-		if (x != memoryInt[0]) {
-			log.error(String.format("Non matching value 0x%08X - 0x%08X", x, memoryInt[0]));
-		} else {
-			log.info(String.format("Matching value 0x%08X - 0x%08X", x, memoryInt[0]));
-		}
-		memoryInt[0] = 0;
-    }
-
     public static long getMemoryUnsafeAddr() {
     	if (!ExternalGE.useUnsafe || !RuntimeContext.hasMemoryInt()) {
     		return 0L;
     	}
 
-    	if (!unsafeInitialized) {
-			try {
-				Field f = Unsafe.class.getDeclaredField("theUnsafe");
-				if (f != null) {
-			    	f.setAccessible(true);
-			    	unsafe = (Unsafe) f.get(null);
-			    	intArrayBaseOffset = unsafe.arrayBaseOffset(RuntimeContext.getMemoryInt().getClass());
-			    	arrayObjectBaseOffset = unsafe.arrayBaseOffset(arrayObject.getClass());
-			    	arrayObjectIndexScale = unsafe.arrayIndexScale(arrayObject.getClass());
-			    	addressSize = unsafe.addressSize();
 
-			    	if (log.isInfoEnabled()) {
-			    		log.info(String.format("Unsafe address information: addressSize=%d, arrayBaseOffset=%d, indexScale=%d", addressSize, arrayObjectBaseOffset, arrayObjectIndexScale));
-			    	}
-
-			    	if (addressSize != 4 && addressSize != 8) {
-			    		log.error(String.format("Unknown addressSize=%d", addressSize));
-			    	}
-			    	if (arrayObjectIndexScale != 4 && arrayObjectIndexScale != 8) {
-			    		log.error(String.format("Unknown addressSize=%d, indexScale=%d", addressSize, arrayObjectIndexScale));
-			    	}
-			    	if (arrayObjectIndexScale > addressSize) {
-			    		log.error(String.format("Unknown addressSize=%d, indexScale=%d", addressSize, arrayObjectIndexScale));
-			    	}
-				}
-			} catch (NoSuchFieldException e) {
-				log.error("getMemoryUnsafeAddr", e);
-			} catch (SecurityException e) {
-				log.error("getMemoryUnsafeAddr", e);
-			} catch (IllegalArgumentException e) {
-				log.error("getMemoryUnsafeAddr", e);
-			} catch (IllegalAccessException e) {
-				log.error("getMemoryUnsafeAddr", e);
-			}
-			unsafeInitialized = true;
-    	}
-
-    	if (unsafe == null) {
-    		return 0L;
-    	}
-
-    	arrayObject[0] = RuntimeContext.getMemoryInt();
-    	long address = 0L;
-    	if (addressSize == 4) {
-    		address = unsafe.getInt(arrayObject, arrayObjectBaseOffset);
-        	address &= 0xFFFFFFFFL;
-    	} else if (addressSize == 8) {
-    		if (arrayObjectIndexScale == 8) {
-    			// The JVM is running with the following option disabled:
-    			//   -XX:-UseCompressedOops
-    			// Object addresses are stored as 64-bit values.
-    			address = unsafe.getLong(arrayObject, arrayObjectBaseOffset);
-    		} else if (arrayObjectIndexScale == 4) {
-    			// The JVM is running with the following option enabled
-    			//   -XX:+UseCompressedOops
-    			// Object addresses are stored as compressed 32-bit values (shifted by 3).
-    			address = unsafe.getInt(arrayObject, arrayObjectBaseOffset) & 0xFFFFFFFFL;
-    			address <<= 3;
-    		}
-    	}
-
-    	if (address == 0L) {
-    		return address;
-    	}
-
-    	if (false) {
-	    	// Perform a self-test
-	    	int[] memoryInt = RuntimeContext.getMemoryInt();
-	    	int testValue = 0x12345678;
-	    	int originalValue = memoryInt[0];
-	    	memoryInt[0] = testValue;
-	    	int resultValue = unsafe.getInt(address + intArrayBaseOffset);
-	    	memoryInt[0] = originalValue;
-	    	if (resultValue != testValue) {
-	    		log.error(String.format("Unsafe self-test failed: 0x%08X != 0x%08X", testValue, resultValue));
-	    	}
-    	}
-
-    	return address + intArrayBaseOffset;
+    	return 0L;
     }
 
     public static void updateMemoryUnsafeAddr() {
@@ -280,14 +185,6 @@ public class NativeUtils {
          */
 
     	setLogLevel(level);
-    }
-
-    public static boolean coreInterpretWithStatistics() {
-    	coreInterpret.start();
-    	boolean result = coreInterpret();
-    	coreInterpret.end();
-
-    	return result;
     }
 
 	public static boolean isCoreCtrlActive() {
