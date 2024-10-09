@@ -55,29 +55,8 @@ public class BatteryUpdateThread extends Thread {
 
     private void updateWindows() {
         while (true) {
-            BatteryWindows.Kernel32.SYSTEM_POWER_STATUS status = BatteryWindows.status();
-
-            // getLifeTime
-            int batteryLifeTimeInSeconds = status.BatteryLifeTime;
-            if (batteryLifeTimeInSeconds < 0) batteryLifeTimeInSeconds = 5 * 3600; // Unknown lifetime
-            Battery.setLifeTime(batteryLifeTimeInSeconds / 60);
-
-            // isPluggedIn
-            Battery.setPluggedIn(status.ACLineStatus == 1);
-
-            // isPResent
-            Battery.setPresent((status.BatteryFlag & 128) != 0);
-
-            // currentPowerPercent
-            int percent = status.BatteryLifePercent;
-            if (percent >= 0 && percent <= 100) {
-                Battery.setCurrentPowerPercent(percent);
-            } else {
-                // Invalid value, not update it!
-            }
-
-            // isCharging
-            Battery.setCharging((status.BatteryFlag & 8) != 0);
+            Battery.setPluggedIn(true);
+            Battery.setPresent(true);
 
             sleepMillis(5 * 1000); // Wait five second between updates
         }
@@ -101,66 +80,9 @@ public class BatteryUpdateThread extends Thread {
 
     private void updateGeneric() {
         while (true) {
+
+            Battery.setCurrentPowerPercent(100);
             sleepMillis(sleepMillis);
-
-            int powerPercent = Battery.getCurrentPowerPercent();
-
-            // Increase/decrease power by 1%
-            if (Battery.isCharging()) {
-                if (powerPercent < 100) {
-                    powerPercent++;
-                }
-            } else {
-                if (powerPercent > 0) {
-                    powerPercent--;
-                }
-            }
-
-            Battery.setCurrentPowerPercent(powerPercent);
-        }
-    }
-
-    static class BatteryWindows {
-        static private Kernel32.SYSTEM_POWER_STATUS result = new Kernel32.SYSTEM_POWER_STATUS();
-
-        static public Kernel32.SYSTEM_POWER_STATUS status() {
-            Kernel32.INSTANCE.GetSystemPowerStatus(result);
-            return result;
-        }
-
-        // http://stackoverflow.com/questions/3434719/how-to-get-the-remaining-battery-life-in-a-windows-system
-        // http://msdn2.microsoft.com/en-us/library/aa373232.aspx
-        public interface Kernel32 extends StdCallLibrary {
-            Kernel32 INSTANCE = (Kernel32) Native.loadLibrary("Kernel32", Kernel32.class);
-
-            class SYSTEM_POWER_STATUS extends Structure {
-                public byte ACLineStatus; // 0 = Offline, 1 = Online, other = Unknown
-                public byte BatteryFlag; // 1 = High (more than 66%), 2 = Low (less than 33%), 4 = Critical (less than 5%), 8 = Charging, 128 = No system battery
-                public byte BatteryLifePercent; // 0-100 (-1 on desktop)
-                public byte Reserved1;
-                public int BatteryLifeTime; // Estimated Lifetime in seconds
-                public int BatteryFullLifeTime; // Estimated Lifetime in seconds on full charge
-
-                @Override
-                protected List<String> getFieldOrder() {
-                    return Arrays.asList("ACLineStatus", "BatteryFlag", "BatteryLifePercent", "Reserved1", "BatteryLifeTime", "BatteryFullLifeTime");
-                }
-            }
-
-            int GetSystemPowerStatus(SYSTEM_POWER_STATUS result);
-        }
-    }
-
-    // http://stackoverflow.com/questions/22128336/how-to-add-a-command-to-check-battery-level-in-linux-shell
-    static class BatteryLinux {
-        static private BatteryLinux INSTANCE = new BatteryLinux();
-        static private String FOLDER = "/sys/class/power_supply/BAT0";
-
-        static public BatteryLinux status() {
-            return INSTANCE;
-        }
-
-        public static void refresh() {
         }
     }
 }
