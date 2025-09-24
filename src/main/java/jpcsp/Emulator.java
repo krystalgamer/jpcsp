@@ -328,7 +328,7 @@ public class Emulator implements Runnable {
             mem.memset(MemoryMap.START_RAM, (byte) 0, MemoryMap.SIZE_RAM);
         }
 
-        Battery.initialize();
+        Battery.instance.initialize();
         Wlan.initialize();
         SceUidManager.reset();
         HLEUidObjectMapping.reset();

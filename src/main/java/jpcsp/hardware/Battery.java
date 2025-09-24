@@ -24,31 +24,43 @@ import jpcsp.state.StateInputStream;
 import jpcsp.state.StateOutputStream;
 
 public class Battery {
-	private static final int STATE_VERSION = 0;
-    private static final String settingsBatterySerialNumber = "batterySerialNumber";
+	private final int STATE_VERSION = 0;
+    private final String settingsBatterySerialNumber = "batterySerialNumber";
     public static final int BATTERY_SERIAL_NUMBER_SERVICE = 0xFFFFFFFF;
-    public static final int BATTERY_SERIAL_NUMBER_AUTOBOOT = 0x00000000;
+    public final int BATTERY_SERIAL_NUMBER_AUTOBOOT = 0x00000000;
+
     //battery life time in minutes
-    private static int lifeTime = (5 * 60);        // 5 hours
+    private int lifeTime = (5 * 60);        // 5 hours
     //some standard battery temperature 28 deg C
-    private static int temperature = 28;
+    private int temperature = 28;
     //battery voltage 4,135 in slim
-    private static int voltage = 4135;
+    private int voltage = 4135;
 
-    private static boolean pluggedIn = true;
-    private static boolean present = true;
-    private static int currentPowerPercent = 100;
+    private boolean pluggedIn = true;
+    private boolean present = true;
+    private int currentPowerPercent = 100;
     // led starts flashing at 12%
-    private static final int lowPercent = 12;
+    private final int lowPercent = 12;
     // PSP auto suspends at 4%
-    private static final int forceSuspendPercent = 4;
+    private final int forceSuspendPercent = 4;
     // battery capacity in mAh when it is full
-    private static final int fullCapacity = 1800;
-    private static boolean charging = false;
-    public static final int EEPROM_SIZE = 256;
-    private static final byte[] eeprom = new byte[EEPROM_SIZE];
+    private final int fullCapacity = 1800;
+    private boolean charging = false;
+    public final int EEPROM_SIZE = 256;
+    private final byte[] eeprom = new byte[EEPROM_SIZE];
 
-    public static void initialize() {
+    public static final Battery instance = new Battery();
+    private boolean initDone = false;
+
+    private Battery() {}
+
+    public synchronized void initialize() {
+
+        if (initDone)
+        {
+            return;
+        }
+
     	// Generate a random but valid battery serial number
     	int randomBatterySerialNumber;
     	Random random = new Random();
@@ -66,87 +78,90 @@ public class Battery {
     	writeEeprom(19, batterySerialNumber >> 8);
     	writeEeprom(18, batterySerialNumber);
 
-    	BatteryUpdateThread.initialize();
+        long millis = this.getLifeTime() * 60L / 100;
+    	new BatteryUpdateThread(millis * 1000, this).start();
+
+        initDone = true;
     }
 
-    private static void batterySerialNumberUpdated() {
+    private void batterySerialNumberUpdated() {
     	int batterySerialNumber = readEepromBatterySerialNumber();
     	Settings.getInstance().writeIntHex(settingsBatterySerialNumber, batterySerialNumber);
     }
 
-    public static int getLifeTime() {
+    public int getLifeTime() {
         return lifeTime;
     }
 
-    public static void setLifeTime(int lifeTime) {
-        Battery.lifeTime = lifeTime;
+    public void setLifeTime(int lifeTime) {
+        this.lifeTime = lifeTime;
     }
 
-    public static int getTemperature() {
+    public int getTemperature() {
         return temperature;
     }
 
-    public static void setTemperature(int temperature) {
-        Battery.temperature = temperature;
+    public void setTemperature(int temperature) {
+        this.temperature = temperature;
     }
 
-    public static int getVoltage() {
+    public int getVoltage() {
         return voltage;
     }
 
-    public static void setVoltage(int voltage) {
-        Battery.voltage = voltage;
+    public void setVoltage(int voltage) {
+        this.voltage = voltage;
     }
 
-    public static boolean isPluggedIn() {
+    public boolean isPluggedIn() {
         return pluggedIn;
     }
 
-    public static void setPluggedIn(boolean pluggedIn) {
-        Battery.pluggedIn = pluggedIn;
+    public void setPluggedIn(boolean pluggedIn) {
+        this.pluggedIn = pluggedIn;
     }
 
-    public static boolean isPresent() {
+    public boolean isPresent() {
         return present;
     }
 
-    public static void setPresent(boolean present) {
-        Battery.present = present;
+    public void setPresent(boolean present) {
+        this.present = present;
     }
 
-    public static int getCurrentPowerPercent() {
+    public int getCurrentPowerPercent() {
         return currentPowerPercent;
     }
 
-    public static void setCurrentPowerPercent(int currentPowerPercent) {
-        Battery.currentPowerPercent = currentPowerPercent;
+    public void setCurrentPowerPercent(int currentPowerPercent) {
+        this.currentPowerPercent = currentPowerPercent;
     }
 
-    public static boolean isCharging() {
+    public boolean isCharging() {
         return charging;
     }
 
-    public static void setCharging(boolean charging) {
-        Battery.charging = charging;
+    public void setCharging(boolean charging) {
+        this.charging = charging;
     }
 
-    public static int getLowPercent() {
+    public int getLowPercent() {
         return lowPercent;
     }
 
-    public static int getForceSuspendPercent() {
+    public int getForceSuspendPercent() {
         return forceSuspendPercent;
     }
 
-    public static int getFullCapacity() {
+    public int getFullCapacity() {
         return fullCapacity;
     }
 
-    public static int readEeprom(int address) {
+    public int readEeprom(int address) {
     	return eeprom[address] & 0xFF;
     }
 
-    public static void writeEeprom(int address, int value) {
+    public void writeEeprom(int address, int value) {
     	eeprom[address] = (byte) (value & 0xFF);
 
     	if (address == 14 || address == 15 || address == 18 || address == 19) {
@@ -154,7 +169,7 @@ public class Battery {
     	}
     }
 
-    public static int readEepromBatterySerialNumber() {
+    public int readEepromBatterySerialNumber() {
     	int batterySerialNumber = 0;
     	// Read the serial number from the EEPROM
     	batterySerialNumber |= readEeprom(15) << 24;
@@ -165,7 +180,7 @@ public class Battery {
     	return batterySerialNumber;
     }
 
-    public static void read(StateInputStream stream) throws IOException {
+    public void read(StateInputStream stream) throws IOException {
 		stream.readVersion(STATE_VERSION);
 		lifeTime = stream.readInt();
 		temperature = stream.readInt();
@@ -177,7 +192,7 @@ public class Battery {
 		stream.read(eeprom);
 	}
 
-	public static void write(StateOutputStream stream) throws IOException {
+	public void write(StateOutputStream stream) throws IOException {
 		stream.writeVersion(STATE_VERSION);
 		stream.writeInt(lifeTime);
 		stream.writeInt(temperature);

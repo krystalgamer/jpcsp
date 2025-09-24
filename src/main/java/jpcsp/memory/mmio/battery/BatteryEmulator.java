@@ -489,7 +489,7 @@ public class BatteryEmulator {
 	}
 
 	public static int readEeprom16(int address) {
-		int value = (Battery.readEeprom(address << 1) << 8) | Battery.readEeprom((address << 1) + 1);
+		int value = (Battery.instance.readEeprom(address << 1) << 8) | Battery.instance.readEeprom((address << 1) + 1);
 
 		if (log.isDebugEnabled()) {
 			log.debug(String.format("EEPROM Read address=0x%02X: 0x%04X", address, value));
@@ -505,7 +505,7 @@ public class BatteryEmulator {
 			log.debug(String.format("EEPROM Write address=0x%02X: 0x%04X", address, value));
 		}
 
-		Battery.writeEeprom((address << 1) + 0, value >> 8);
-		Battery.writeEeprom((address << 1) + 1, value);
+        Battery.instance.writeEeprom((address << 1) + 0, value >> 8);
+        Battery.instance.writeEeprom((address << 1) + 1, value);
 	}
 }

@@ -320,7 +320,7 @@ public class sceSyscon extends HLEModule {
     public int getPowerSupplyStatus() {
     	int powerSupplyStatus = 0xC0; // Unknown value
 
-    	if (Battery.isPresent()) {
+    	if (Battery.instance.isPresent()) {
     		powerSupplyStatus |= 0x02; // Flag indicating that a battery is present
     	}
 
@@ -328,7 +328,7 @@ public class sceSyscon extends HLEModule {
     }
 
     private int getBatteryStatusCap() {
-    	return (Battery.getCurrentPowerPercent() + 1) * 0x10000 / 16 + 0x800;
+    	return (Battery.instance.getCurrentPowerPercent() + 1) * 0x10000 / 16 + 0x800;
     }
 
     public int getBatteryStatusCap1() {
@@ -424,7 +424,7 @@ public class sceSyscon extends HLEModule {
     			}
 
     			// The PSP Street has an internal battery, it seems to return that no battery is present in this polestar register
-    			if (!Battery.isPresent() || getModel() == MODEL_PSP_STREET) {
+    			if (!Battery.instance.isPresent() || getModel() == MODEL_PSP_STREET) {
     				// Inverted logic, the flag 0x0002 means that the battery is NOT present
     				value = setBit(value, 1);
     			}
@@ -468,7 +468,7 @@ public class sceSyscon extends HLEModule {
     @HLEUnimplemented
 	@HLEFunction(nid = 0x1605847F, version = 150)
 	public boolean sceSysconIsLowBattery() {
-    	return Battery.getCurrentPowerPercent() <= Battery.getLowPercent();
+    	return Battery.instance.getCurrentPowerPercent() <= Battery.instance.getLowPercent();
 	}
 
     /**
@@ -861,7 +861,7 @@ public class sceSyscon extends HLEModule {
 	@HLEFunction(nid = 0x71135D7D, version = 150)
 	@HLEFunction(nid = 0x4C871BEA, version = 660)
 	public int sceSysconBatteryGetFullCap(@BufferInfo(usage=Usage.out) TPointer32 capAddr) {
-    	capAddr.setValue(Battery.getFullCapacity());
+    	capAddr.setValue(Battery.instance.getFullCapacity());
     	return 0;
     }
 
@@ -903,7 +903,7 @@ public class sceSyscon extends HLEModule {
 	@HLEFunction(nid = 0x70C10E61, version = 150)
 	@HLEFunction(nid = 0xCE8B6633, version = 660)
 	public int sceSysconBatteryGetTemp(@BufferInfo(usage=Usage.out) TPointer32 tempAddr) {
-    	tempAddr.setValue(Battery.getTemperature());
+    	tempAddr.setValue(Battery.instance.getTemperature());
     	return 0;
     }
 
@@ -931,7 +931,7 @@ public class sceSyscon extends HLEModule {
 	@HLEFunction(nid = 0x8BDEBB1E, version = 150)
 	@HLEFunction(nid = 0xA7DB34BB, version = 660)
 	public int sceSysconBatteryGetVolt(@BufferInfo(usage=Usage.out) TPointer32 voltAddr) {
-    	voltAddr.setValue(Battery.getVoltage());
+    	voltAddr.setValue(Battery.instance.getVoltage());
     	return 0;
     }
 

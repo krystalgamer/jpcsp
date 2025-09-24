@@ -227,7 +227,7 @@ public class Syscon78k0Test {
         log = SysconEmulator.log;
 		RuntimeContext.setLog4jMDC();
 		Wlan.initialize();
-		Battery.initialize();
+        Battery.instance.initialize();
         new Emulator(new AutoTestsRunner.DummyGUI());
         Emulator.getClock().resume();
 		RuntimeContext.debugCodeBlockCalls = true;

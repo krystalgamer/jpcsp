@@ -128,7 +128,7 @@ public class scePower extends HLEModule {
 
     @HLEFunction(nid = 0xE8E4E204, version = 150)
     public int scePowerGetForceSuspendCapacity() {
-        int forceSuspendCapacity = (Battery.getForceSuspendPercent() * Battery.getFullCapacity()) / 100;
+        int forceSuspendCapacity = (Battery.instance.getForceSuspendPercent() * Battery.instance.getFullCapacity()) / 100;
         if (log.isDebugEnabled()) {
         	log.debug(String.format("scePowerGetForceSuspendCapacity returning %d mAh", forceSuspendCapacity));
         }
@@ -138,7 +138,7 @@ public class scePower extends HLEModule {
 
     @HLEFunction(nid = 0xB999184C, version = 150)
     public int scePowerGetLowBatteryCapacity() {
-        int lowBatteryCapacity = (Battery.getLowPercent() * Battery.getFullCapacity()) / 100;
+        int lowBatteryCapacity = (Battery.instance.getLowPercent() * Battery.instance.getFullCapacity()) / 100;
         if (log.isDebugEnabled()) {
         	log.debug(String.format("scePowerGetLowBatteryCapacity returning %d mAh", lowBatteryCapacity));
         }
@@ -149,40 +149,40 @@ public class scePower extends HLEModule {
     @HLEFunction(nid = 0x87440F5E, version = 150)
     public boolean scePowerIsPowerOnline() {
     	if (log.isDebugEnabled()) {
-    		log.debug(String.format("scePowerIsPowerOnline returning %b", Battery.isPluggedIn()));
+    		log.debug(String.format("scePowerIsPowerOnline returning %b", Battery.instance.isPluggedIn()));
     	}
 
-        return Battery.isPluggedIn();
+        return Battery.instance.isPluggedIn();
     }
 
     @HLEFunction(nid = 0x0AFD0D8B, version = 150)
     public boolean scePowerIsBatteryExist() {
     	if (log.isDebugEnabled()) {
-    		log.debug(String.format("scePowerIsBatteryExist returning %b", Battery.isPresent()));
+    		log.debug(String.format("scePowerIsBatteryExist returning %b", Battery.instance.isPresent()));
     	}
 
-        return Battery.isPresent();
+        return Battery.instance.isPresent();
     }
 
     @HLEFunction(nid = 0x1E490401, version = 150)
     public boolean scePowerIsBatteryCharging() {
     	if (log.isDebugEnabled()) {
-    		log.debug(String.format("scePowerIsBatteryCharging returning %b", Battery.isCharging()));
+    		log.debug(String.format("scePowerIsBatteryCharging returning %b", Battery.instance.isCharging()));
     	}
 
-        return Battery.isCharging();
+        return Battery.instance.isCharging();
     }
 
     @HLEFunction(nid = 0xB4432BC8, version = 150)
     public int scePowerGetBatteryChargingStatus() {
         int status = 0;
-        if (Battery.isPresent()) {
+        if (Battery.instance.isPresent()) {
             status |= PSP_POWER_CB_BATTERY_EXIST;
         }
-        if (Battery.isPluggedIn()) {
+        if (Battery.instance.isPluggedIn()) {
             status |= PSP_POWER_CB_AC_POWER;
         }
-        if (Battery.isCharging()) {
+        if (Battery.instance.isCharging()) {
             // I don't know exactly what to return under PSP_POWER_CB_BATTPOWER
             status |= PSP_POWER_CB_BATTPOWER;
         }
@@ -196,7 +196,7 @@ public class scePower extends HLEModule {
 
     @HLEFunction(nid = 0xD3075926, version = 150)
     public boolean scePowerIsLowBattery() {
-        boolean isLow = Battery.getCurrentPowerPercent() <= Battery.getLowPercent();
+        boolean isLow = Battery.instance.getCurrentPowerPercent() <= Battery.instance.getLowPercent();
         if (log.isDebugEnabled()) {
         	log.debug(String.format("scePowerIsLowBattery returning %b", isLow));
         }
@@ -215,7 +215,7 @@ public class scePower extends HLEModule {
      */
     @HLEFunction(nid = 0x78A1A796, version = 150)
     public boolean scePowerIsSuspendRequired() {
-        boolean isSuspendRequired = Battery.getCurrentPowerPercent() <= Battery.getForceSuspendPercent();
+        boolean isSuspendRequired = Battery.instance.getCurrentPowerPercent() <= Battery.instance.getForceSuspendPercent();
         if (log.isDebugEnabled()) {
         	log.debug(String.format("scePowerIsSuspendRequired returning %b", isSuspendRequired));
         }
@@ -225,7 +225,7 @@ public class scePower extends HLEModule {
 
     @HLEFunction(nid = 0x94F5A53F, version = 150)
     public int scePowerGetBatteryRemainCapacity() {
-        int batteryRemainCapacity = (Battery.getCurrentPowerPercent() * Battery.getFullCapacity()) / 100;
+        int batteryRemainCapacity = (Battery.instance.getCurrentPowerPercent() * Battery.instance.getFullCapacity()) / 100;
         if (log.isDebugEnabled()) {
         	log.debug(String.format("scePowerGetBatteryRemainCapacity returning %d mAh", batteryRemainCapacity));
         }
@@ -236,37 +236,37 @@ public class scePower extends HLEModule {
     @HLEFunction(nid = 0xFD18A0FF, version = 150)
     public int scePowerGetBatteryFullCapacity() {
     	if (log.isDebugEnabled()) {
-    		log.debug(String.format("scePowerGetBatteryFullCapacity returning %d mAh", Battery.getFullCapacity()));
+    		log.debug(String.format("scePowerGetBatteryFullCapacity returning %d mAh", Battery.instance.getFullCapacity()));
     	}
 
-        return Battery.getFullCapacity();
+        return Battery.instance.getFullCapacity();
     }
 
     @HLEFunction(nid = 0x2085D15D, version = 150)
     public int scePowerGetBatteryLifePercent() {
     	if (log.isDebugEnabled()) {
-    		log.debug(String.format("scePowerGetBatteryLifePercent returning %d %%", Battery.getCurrentPowerPercent()));
+    		log.debug(String.format("scePowerGetBatteryLifePercent returning %d %%", Battery.instance.getCurrentPowerPercent()));
     	}
 
-        return Battery.getCurrentPowerPercent();
+        return Battery.instance.getCurrentPowerPercent();
     }
 
     @HLEFunction(nid = 0x8EFB3FA2, version = 150)
     public int scePowerGetBatteryLifeTime() {
     	if (log.isDebugEnabled()) {
-    		log.debug(String.format("scePowerGetBatteryLifeTime returning %d", Battery.getLifeTime()));
+    		log.debug(String.format("scePowerGetBatteryLifeTime returning %d", Battery.instance.getLifeTime()));
     	}
 
-        return Battery.getLifeTime();
+        return Battery.instance.getLifeTime();
     }
 
     @HLEFunction(nid = 0x28E12023, version = 150)
     public int scePowerGetBatteryTemp() {
     	if (log.isDebugEnabled()) {
-    		log.debug(String.format("scePowerGetBatteryTemp returning %d C", Battery.getTemperature()));
+    		log.debug(String.format("scePowerGetBatteryTemp returning %d C", Battery.instance.getTemperature()));
     	}
 
-        return Battery.getTemperature();
+        return Battery.instance.getTemperature();
     }
 
     @HLEUnimplemented
@@ -278,10 +278,10 @@ public class scePower extends HLEModule {
     @HLEFunction(nid = 0x483CE86B, version = 150)
     public int scePowerGetBatteryVolt() {
     	if (log.isDebugEnabled()) {
-    		log.debug(String.format("scePowerGetBatteryVolt %d", Battery.getVoltage()));
+    		log.debug(String.format("scePowerGetBatteryVolt %d", Battery.instance.getVoltage()));
     	}
 
-        return Battery.getVoltage();
+        return Battery.instance.getVoltage();
     }
 
     @HLEUnimplemented

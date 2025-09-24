@@ -454,7 +454,7 @@ public class SysconBatteryEmulator extends Nec78k0SerialInterface {
 					log.debug(String.format("UART6 Battery received syscon command %s", getSysconCmdName(sysconCmdBattery)));
 				}
 				startReceptionBuffer(2);
-				addReceptionBufferData16(Battery.getVoltage());
+				addReceptionBufferData16(Battery.instance.getVoltage());
 				endReceptionBuffer();
 				break;
 			case PSP_SYSCON_CMD_BATTERY_GET_SERIAL:
@@ -462,7 +462,7 @@ public class SysconBatteryEmulator extends Nec78k0SerialInterface {
 					log.debug(String.format("UART6 Battery received syscon command %s", getSysconCmdName(sysconCmdBattery)));
 				}
 				startReceptionBuffer(4);
-				addReceptionBufferData32(Battery.readEepromBatterySerialNumber());
+				addReceptionBufferData32(Battery.instance.readEepromBatterySerialNumber());
 				endReceptionBuffer();
 				break;
 			case PSP_SYSCON_CMD_BATTERY_GET_INFO:
@@ -489,7 +489,7 @@ public class SysconBatteryEmulator extends Nec78k0SerialInterface {
 					log.debug(String.format("UART6 Battery received syscon command %s", getSysconCmdName(sysconCmdBattery)));
 				}
 				startReceptionBuffer(2);
-				addReceptionBufferData16(Battery.getFullCapacity());
+				addReceptionBufferData16(Battery.instance.getFullCapacity());
 				endReceptionBuffer();
 				break;
 			case PSP_SYSCON_CMD_BATTERY_GET_CYCLE:
@@ -513,7 +513,7 @@ public class SysconBatteryEmulator extends Nec78k0SerialInterface {
 					log.debug(String.format("UART6 Battery received syscon command %s", getSysconCmdName(sysconCmdBattery)));
 				}
 				startReceptionBuffer(1);
-				addReceptionBufferData8(Battery.getTemperature());
+				addReceptionBufferData8(Battery.instance.getTemperature());
 				endReceptionBuffer();
 				break;
 			case PSP_SYSCON_CMD_BATTERY_GET_ELEC:

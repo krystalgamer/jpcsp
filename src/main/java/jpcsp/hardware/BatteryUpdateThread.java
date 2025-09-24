@@ -28,21 +28,17 @@ import java.util.List;
  * @author gid15
  */
 public class BatteryUpdateThread extends Thread {
-    private static BatteryUpdateThread instance = null;
+
     private long sleepMillis;
+    private Battery battery;
 
-    public static void initialize() {
-        if (instance == null) {
-            long secondsForOnePercentDrain = Battery.getLifeTime() * 60 / 100;
-            instance = new BatteryUpdateThread(secondsForOnePercentDrain * 1000);
-            instance.setDaemon(true);
-            instance.setName("Battery Drain");
-            instance.start();
-        }
-    }
-
-    public BatteryUpdateThread(long sleepMillis) {
+    public BatteryUpdateThread(long sleepMillis, Battery battery)
+    {
+        this.battery = battery;
         this.sleepMillis = sleepMillis;
+
+        this.setDaemon(true);
+        this.setName("Battery Drain");
     }
 
     @Override
@@ -55,8 +51,8 @@ public class BatteryUpdateThread extends Thread {
 
     private void updateWindows() {
         while (true) {
-            Battery.setPluggedIn(true);
-            Battery.setPresent(true);
+            this.battery.setPluggedIn(true);
+            this.battery.setPresent(true);
 
             sleepMillis(5 * 1000); // Wait five second between updates
         }
@@ -80,8 +76,7 @@ public class BatteryUpdateThread extends Thread {
 
     private void updateGeneric() {
         while (true) {
-
-            Battery.setCurrentPowerPercent(100);
+            this.battery.setCurrentPowerPercent(100);
             sleepMillis(sleepMillis);
         }
     }

@@ -166,11 +166,11 @@ public class sceImpose extends HLEModule {
 	@HLEFunction(nid = 0x8C943191, version = 150)
 	@HLEFunction(nid = 0x5557F4E2, version = 660)
 	public int sceImposeGetBatteryIconStatus(TPointer32 chargingPtr, TPointer32 iconStatusPtr) {
-		int batteryPowerPercent = Battery.getCurrentPowerPercent();
+		int batteryPowerPercent = Battery.instance.getCurrentPowerPercent();
 
         // Possible values for iconStatus: 0..3
         int iconStatus = Math.min(batteryPowerPercent / 25, 3);
-        boolean charging = Battery.isCharging();
+        boolean charging = Battery.instance.isCharging();
 
         chargingPtr.setValue(charging ? 1 : 0);
         iconStatusPtr.setValue(iconStatus);

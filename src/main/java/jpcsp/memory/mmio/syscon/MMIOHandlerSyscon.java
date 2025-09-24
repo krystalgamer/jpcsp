@@ -454,7 +454,7 @@ public class MMIOHandlerSyscon extends MMIOHandlerBase {
 					responseData = addResponseData16(responseData, sceSysconModule.getBatteryStatusCap2());
 					break;
 				case PSP_SYSCON_CMD_BATTERY_GET_FULL_CAP:
-					responseData = addResponseData32(responseData, Battery.getFullCapacity());
+					responseData = addResponseData32(responseData, Battery.instance.getFullCapacity());
 					break;
 				case PSP_SYSCON_CMD_BATTERY_GET_CYCLE:
 					responseData = addResponseData32(responseData, sceSysconModule.getBatteryCycle());
@@ -463,13 +463,13 @@ public class MMIOHandlerSyscon extends MMIOHandlerBase {
 					responseData = addResponseData32(responseData, sceSysconModule.getBatteryLimitTime());
 					break;
 				case PSP_SYSCON_CMD_BATTERY_GET_TEMP:
-					responseData = addResponseData32(responseData, Battery.getTemperature());
+					responseData = addResponseData32(responseData, Battery.instance.getTemperature());
 					break;
 				case PSP_SYSCON_CMD_BATTERY_GET_ELEC:
 					responseData = addResponseData32(responseData, sceSysconModule.getBatteryElec());
 					break;
 				case PSP_SYSCON_CMD_BATTERY_GET_VOLT:
-					responseData = addResponseData32(responseData, Battery.getVoltage());
+					responseData = addResponseData32(responseData, Battery.instance.getVoltage());
 					break;
 				case PSP_SYSCON_CMD_GET_BARYON:
 					responseData = addResponseData32(responseData, Model.getBaryonVersion());
@@ -577,15 +577,15 @@ public class MMIOHandlerSyscon extends MMIOHandlerBase {
 						responseData = new int[] { 0x84 };
 					} else {
 						address = data[PSP_SYSCON_TX_DATA] << 1;
-						Battery.writeEeprom(address + 0, data[PSP_SYSCON_TX_DATA + 1]);
-						Battery.writeEeprom(address + 1, data[PSP_SYSCON_TX_DATA + 2]);
+                        Battery.instance.writeEeprom(address + 0, data[PSP_SYSCON_TX_DATA + 1]);
+                        Battery.instance.writeEeprom(address + 1, data[PSP_SYSCON_TX_DATA + 2]);
 					}
 					break;
 				case PSP_SYSCON_CMD_BATTERY_READ_EEPROM:
 					address = data[PSP_SYSCON_TX_DATA] << 1;
 					responseData = Utilities.add(responseData, 0); // Response code
-					responseData = Utilities.add(responseData, Battery.readEeprom(address + 0));
-					responseData = Utilities.add(responseData, Battery.readEeprom(address + 1));
+					responseData = Utilities.add(responseData, Battery.instance.readEeprom(address + 0));
+					responseData = Utilities.add(responseData, Battery.instance.readEeprom(address + 1));
 					break;
 				case PSP_SYSCON_CMD_CTRL_TACHYON_WDT:
 					int tachyonWatchdogTimer = data[PSP_SYSCON_TX_DATA];

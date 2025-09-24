@@ -17,8 +17,7 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
 package jpcsp.memory.mmio;
 
 import static jpcsp.HLE.kernel.managers.IntrManager.PSP_GPIO_INTR;
-import static jpcsp.hardware.Battery.BATTERY_SERIAL_NUMBER_SERVICE;
-import static jpcsp.hardware.Battery.readEepromBatterySerialNumber;
+import jpcsp.hardware.Battery;
 import static jpcsp.util.Utilities.clearBit;
 import static jpcsp.util.Utilities.hasBit;
 import static jpcsp.util.Utilities.setBit;
@@ -26,11 +25,9 @@ import static jpcsp.util.Utilities.setBit;
 import java.io.IOException;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import jpcsp.Allegrex.compiler.RuntimeContextLLE;
 import jpcsp.HLE.modules.sceGpio;
-import jpcsp.hardware.Battery;
 import jpcsp.state.StateInputStream;
 import jpcsp.state.StateOutputStream;
 
@@ -124,8 +121,10 @@ public class MMIOHandlerGpio extends MMIOHandlerBase {
 
 		// The Pre-IPL is testing the GPIO port 4 to decide if needs to boot
 		// from the Nand (normal battery) or from the MemoryStick (service/Pandora battery)
-		Battery.initialize();
-		if (readEepromBatterySerialNumber() == BATTERY_SERIAL_NUMBER_SERVICE) {
+        Battery battery = Battery.instance;
+		battery.initialize();
+
+		if (battery.readEepromBatterySerialNumber() == Battery.BATTERY_SERIAL_NUMBER_SERVICE) {
 			if (log.isDebugEnabled()) {
 				log.debug(String.format("Booting from a service battery"));
 			}

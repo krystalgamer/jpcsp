@@ -93,7 +93,7 @@ public class State implements IState {
 		}
     	Emulator.getClock().read(stream);
 		Wlan.read(stream);
-		Battery.read(stream);
+        Battery.instance.read(stream);
 		Emulator.getProcessor().read(stream);
 		Emulator.getMemory().read(stream);
 		HLEModuleManager.getInstance().read(stream);
@@ -114,7 +114,7 @@ public class State implements IState {
 		stream.writeBoolean(Emulator.getMainGUI().isRunningReboot());
 		Emulator.getClock().write(stream);
 		Wlan.write(stream);
-		Battery.write(stream);
+        Battery.instance.write(stream);
 		Emulator.getProcessor().write(stream);
 		Emulator.getMemory().write(stream);
 		HLEModuleManager.getInstance().write(stream);
