@@ -147,8 +147,8 @@ public class UmdBrowser extends javax.swing.JDialog {
             List<File> programList = new ArrayList<File>();
             for (File path : paths) {
                 if (!path.isDirectory()) {
-                    log.error("'" + path + "' is not a directory.");
-                    return;
+                    log.warn("'" + path + "' is not a directory.");
+                    continue;
                 }
 
                 try {
