@@ -20,6 +20,8 @@ jobs:
           java-version: '8'
           distribution: 'temurin'
         
+      - name: Setup fake XServer
+        run: sudo apt install xserver-xorg-video-dummy
       - name: Run tests
         run: mvn test
 
