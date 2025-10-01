@@ -1677,7 +1677,7 @@ private void OpenFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 JpcspDialogManager.showError(this, bundle.getString("MainGUI.strCriticalError.text") + ": " + bundle.getString("MainGUI.strWrongLoader.text"));
             } else {
                 e.printStackTrace();
-                JpcspDialogManager.showError(this, bundle.getString("ioError") + ": " + e.getLocalizedMessage());
+                JpcspDialogManager.showError(this, bundle.getString("MainGUI.strIOError.text") + ": " + e.getLocalizedMessage());
             }
         } catch (Exception ex) {
             ex.printStackTrace();
