@@ -22,7 +22,7 @@ jobs:
           java-version: '8'
           distribution: 'temurin'
       - name: Setup fake XServer
-        run:|
+        run: |
           sudo apt install xvfb
           Xvfb :69 -screen 0 1024x768x24 > /dev/null 2>&1 &
       - name: Run tests
