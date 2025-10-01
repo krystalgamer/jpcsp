@@ -430,7 +430,6 @@ public class MainGUI extends javax.swing.JFrame implements KeyListener, Componen
         ChineseTW = new javax.swing.JMenuItem();
         Italian = new javax.swing.JMenuItem();
         Greek = new javax.swing.JMenuItem();
-        PluginsMenu = new javax.swing.JMenu();
         xbrzCheck = new javax.swing.JCheckBoxMenuItem();
         HelpMenu = new javax.swing.JMenu();
         About = new javax.swing.JMenuItem();
@@ -1170,8 +1169,6 @@ public class MainGUI extends javax.swing.JFrame implements KeyListener, Componen
 
         MenuBar.add(LanguageMenu);
 
-        PluginsMenu.setText(bundle.getString("MainGUI.PluginsMenu.text")); // NOI18N
-
         xbrzCheck.setSelected(Settings.getInstance().readBool("emu.plugins.xbrz"));
         xbrzCheck.setText(bundle.getString("MainGUI.xbrzCheck.text")); // NOI18N
         xbrzCheck.addActionListener(new java.awt.event.ActionListener() {
@@ -1179,9 +1176,6 @@ public class MainGUI extends javax.swing.JFrame implements KeyListener, Componen
                 xbrzCheckActionPerformed(evt);
             }
         });
-        PluginsMenu.add(xbrzCheck);
-
-        MenuBar.add(PluginsMenu);
 
         HelpMenu.setText(bundle.getString("MainGUI.HelpMenu.text")); // NOI18N
 
@@ -3349,7 +3343,6 @@ private void threeTimesResizeActionPerformed(java.awt.event.ActionEvent evt) {//
     private javax.swing.JMenuItem OpenFile;
     private javax.swing.JMenu OptionsMenu;
     private javax.swing.JToggleButton PauseButton;
-    private javax.swing.JMenu PluginsMenu;
     private javax.swing.JMenuItem Polish;
     private javax.swing.JMenuItem Portuguese;
     private javax.swing.JMenuItem PortugueseBR;
