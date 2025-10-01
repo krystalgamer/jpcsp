@@ -397,10 +397,10 @@ public class MMIOHandlerSyscon extends MMIOHandlerBase {
 					}
 
 					switch (led) {
-						case 0x40: LED.setLedMemoryStickOn(setOn); break;
-						case 0x80: LED.setLedWlanOn(setOn); break;
-						case 0x20: LED.setLedPowerOn(setOn); break;
-						case 0x10: LED.setLedBluetoothOn(setOn); break;
+						case 0x40: LED.Instance.setLedMemoryStickOn(setOn); break;
+						case 0x80: LED.Instance.setLedWlanOn(setOn); break;
+						case 0x20: LED.Instance.setLedPowerOn(setOn); break;
+						case 0x10: LED.Instance.setLedBluetoothOn(setOn); break;
 						default:
 							log.warn(String.format("startSysconCmd PSP_SYSCON_CMD_CTRL_LED unknown flag value 0x%02X", flag));
 							break;

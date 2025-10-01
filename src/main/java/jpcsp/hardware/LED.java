@@ -17,40 +17,46 @@ along with Jpcsp.  If not, see <http://www.gnu.org/licenses/>.
 package jpcsp.hardware;
 
 public class LED {
-	private static boolean ledMemoryStickOn;
-	private static boolean ledWlanOn;
-	private static boolean ledPowerOn;
-	private static boolean ledBluetoothOn;
+	private boolean ledMemoryStickOn;
+	private boolean ledWlanOn;
+	private boolean ledPowerOn;
+	private boolean ledBluetoothOn;
 
-	public static boolean isLedMemoryStickOn() {
+    public static LED Instance = new LED();
+
+    public LED()
+    {
+    }
+
+	public boolean isLedMemoryStickOn() {
 		return ledMemoryStickOn;
 	}
 
-	public static void setLedMemoryStickOn(boolean ledMemoryStickOn) {
-		LED.ledMemoryStickOn = ledMemoryStickOn;
+	public void setLedMemoryStickOn(boolean ledMemoryStickOn) {
+		this.ledMemoryStickOn = ledMemoryStickOn;
 	}
 
-	public static boolean isLedWlanOn() {
+	public boolean isLedWlanOn() {
 		return ledWlanOn;
 	}
 
-	public static void setLedWlanOn(boolean ledWlanOn) {
-		LED.ledWlanOn = ledWlanOn;
+	public void setLedWlanOn(boolean ledWlanOn) {
+        this.ledWlanOn = ledWlanOn;
 	}
 
-	public static boolean isLedPowerOn() {
+	public boolean isLedPowerOn() {
 		return ledPowerOn;
 	}
 
-	public static void setLedPowerOn(boolean ledPowerOn) {
-		LED.ledPowerOn = ledPowerOn;
+	public void setLedPowerOn(boolean ledPowerOn) {
+        this.ledPowerOn = ledPowerOn;
 	}
 
-	public static boolean isLedBluetoothOn() {
+	public boolean isLedBluetoothOn() {
 		return ledBluetoothOn;
 	}
 
-	public static void setLedBluetoothOn(boolean ledBluetoothOn) {
-		LED.ledBluetoothOn = ledBluetoothOn;
+	public void setLedBluetoothOn(boolean ledBluetoothOn) {
+        this.ledBluetoothOn = ledBluetoothOn;
 	}
 }

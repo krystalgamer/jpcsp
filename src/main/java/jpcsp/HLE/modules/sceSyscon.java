@@ -772,10 +772,10 @@ public class sceSyscon extends HLEModule {
 	@HLEFunction(nid = 0x18BFBE65, version = 150)
 	public int sceSysconCtrlLED(int led, boolean state) {
     	switch (led) {
-    		case PSP_SYSCON_LED_MS: LED.setLedMemoryStickOn(state); break;
-    		case PSP_SYSCON_LED_WLAN: LED.setLedWlanOn(state); break;
-    		case PSP_SYSCON_LED_POWER: LED.setLedPowerOn(state); break;
-    		case PSP_SYSCON_LED_BT: LED.setLedBluetoothOn(state); break;
+    		case PSP_SYSCON_LED_MS: LED.Instance.setLedMemoryStickOn(state); break;
+    		case PSP_SYSCON_LED_WLAN: LED.Instance.setLedWlanOn(state); break;
+    		case PSP_SYSCON_LED_POWER: LED.Instance.setLedPowerOn(state); break;
+    		case PSP_SYSCON_LED_BT: LED.Instance.setLedBluetoothOn(state); break;
     		default: return SceKernelErrors.ERROR_INVALID_INDEX;
     	}
 
