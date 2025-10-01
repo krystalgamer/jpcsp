@@ -301,7 +301,7 @@ public class Emulator implements Runnable {
         moduleLoaded = false;
 
         Model.init();
-        Nand.init();
+        Nand.Instance.init();
         HLEModuleManager.getInstance().stopModules();
         NIDMapper.getInstance().unloadAll();
         RuntimeContext.reset();

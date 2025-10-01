@@ -19,28 +19,36 @@ package jpcsp.hardware;
 public class Nand {
     public static final int pageSize = 0x200; // 512B per page
     public static final int pagesPerBlock = 0x20; // 16KB per block
-	private static int totalSizeMb;
+	private int totalSizeMb;
 
-	public static void init() {
+
+    public final static Nand Instance = new Nand();
+
+    public void Nand()
+    {
+        this.init();
+    }
+
+	public void init() {
 		totalSizeMb = 32;
 		if (Model.getModel() != Model.MODEL_PSP_FAT) {
 			totalSizeMb = 64;
 		}
 	}
 
-	public static int getTotalSizeMb() {
+	public int getTotalSizeMb() {
 		return totalSizeMb;
 	}
 
-	public static int getTotalSize() {
+	public int getTotalSize() {
 		return totalSizeMb * 0x100000;
 	}
 
-	public static int getTotalPages() {
+	public int getTotalPages() {
 		return getTotalSize() / pageSize;
 	}
 
-	public static int getTotalBlocks() {
+	public int getTotalBlocks() {
 		return getTotalSize() / (pagesPerBlock * pageSize);
 	}
 }

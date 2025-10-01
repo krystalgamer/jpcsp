@@ -19,7 +19,6 @@ package jpcsp.HLE.modules;
 import static java.lang.Integer.rotateRight;
 import static jpcsp.HLE.HLEModuleManager.InternalSyscallNid;
 import static jpcsp.HLE.modules.sceIdStorage.idStorageKeys;
-import static jpcsp.hardware.Nand.getTotalPages;
 import static jpcsp.hardware.Nand.pageSize;
 import static jpcsp.hardware.Nand.pagesPerBlock;
 
@@ -235,8 +234,8 @@ public class sceNand extends HLEModule {
 
     	initNandInProgress = true;
 
-    	IntArrayMemory nandMemory = new IntArrayMemory(new int[Nand.getTotalSize() >> 2]);
-		IntArrayMemory nandSpareMemory = new IntArrayMemory(new int[Nand.getTotalPages() << 2]);
+    	IntArrayMemory nandMemory = new IntArrayMemory(new int[Nand.Instance.getTotalSize() >> 2]);
+		IntArrayMemory nandSpareMemory = new IntArrayMemory(new int[Nand.Instance.getTotalPages() << 2]);
 
 		for (int ppn = 0; ppn < ppnToLbn.length; ppn += pagesPerBlock) {
 			hleNandReadPages(ppn, nandMemory.getPointer(ppn * pageSize), nandSpareMemory.getPointer(ppn * 16), pagesPerBlock, true, true, true);
@@ -340,13 +339,13 @@ public class sceNand extends HLEModule {
     	boolean nandMemoryPresent = stream.readBoolean();
     	if (nandMemoryPresent) {
     		if (nandMemory == null) {
-    			nandMemory = new IntArrayMemory(new int[Nand.getTotalSize() >> 2]);
+    			nandMemory = new IntArrayMemory(new int[Nand.Instance.getTotalSize() >> 2]);
     			nandMemoryPointer = nandMemory.getPointer();
     		}
     		nandMemory.read(stream);
 
     		if (nandSpareMemory == null) {
-    			nandSpareMemory = new IntArrayMemory(new int[Nand.getTotalPages() << 2]);
+    			nandSpareMemory = new IntArrayMemory(new int[Nand.Instance.getTotalPages() << 2]);
     			nandSpareMemoryPointer = nandSpareMemory.getPointer();
     		}
     		nandSpareMemory.read(stream);
@@ -514,8 +513,8 @@ public class sceNand extends HLEModule {
 		writeProtected = true;
 		scramble = 0;
 
-		Nand.init();
-		ppnToLbn = new int[getTotalPages()];
+        Nand.Instance.init();
+		ppnToLbn = new int[Nand.Instance.getTotalPages()];
 		flash1LbnStart = flash0LbnStart + (getTotalSectorsFlash0() / pagesPerBlock) + 1; // 0x602 on PSP-1000, 0xA42 on PSP-2000
 		flash2LbnStart = flash1LbnStart + (getTotalSectorsFlash1() / pagesPerBlock) + 1; // 0x702 on PSP-1000, 0xB82 on PSP-2000
 		flash3LbnStart = flash2LbnStart + (getTotalSectorsFlash2() / pagesPerBlock) + 1; // 0x742 on PSP-1000, 0xC82 on PSP-2000
@@ -1148,7 +1147,7 @@ public class sceNand extends HLEModule {
     }
 
     public static boolean isSmallNand() {
-    	return Nand.getTotalSizeMb() <= 32;
+    	return Nand.Instance.getTotalSizeMb() <= 32;
     }
 
     private static int getTotalSectorsFlash0() {
@@ -1662,7 +1661,7 @@ public class sceNand extends HLEModule {
     @HLEFunction(nid = 0xC1376222, version = 150, jumpCall = true)
     public int sceNandGetTotalBlocks() {
     	// Has no parameters
-    	return Nand.getTotalBlocks();
+    	return Nand.Instance.getTotalBlocks();
     }
 
     @HLEUnimplemented
