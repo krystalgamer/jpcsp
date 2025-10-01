@@ -18,13 +18,19 @@ package jpcsp.hardware;
 
 public class UMDDrive {
     // UMD Drive power
-    private static boolean umdPower = true;
+    private boolean umdPower = true;
 
-	public static boolean hasUmdPower() {
+    public final static UMDDrive Instance = new UMDDrive();
+
+    public UMDDrive()
+    {
+    }
+
+	public boolean hasUmdPower() {
 		return umdPower;
 	}
 
-	public static void setUmdPower(boolean umdPower) {
-		UMDDrive.umdPower = umdPower;
+	public void setUmdPower(boolean umdPower) {
+		this.umdPower = umdPower;
 	}
 }

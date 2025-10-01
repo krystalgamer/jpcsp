@@ -323,7 +323,7 @@ public class MMIOHandlerSyscon extends MMIOHandlerBase {
 					// Doing nothing
 					break;
 				case PSP_SYSCON_CMD_CTRL_LEPTON_POWER:
-					UMDDrive.setUmdPower(data[PSP_SYSCON_TX_DATA] != 0);
+					UMDDrive.Instance.setUmdPower(data[PSP_SYSCON_TX_DATA] != 0);
 					break;
 				case PSP_SYSCON_CMD_RESET_DEVICE:
 					int device = data[PSP_SYSCON_TX_DATA] & 0x3F;

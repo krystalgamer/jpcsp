@@ -621,7 +621,7 @@ public class sceSyscon extends HLEModule {
 	@HLEUnimplemented
 	@HLEFunction(nid = 0x577C5771, version = 660)
 	public boolean sceSysconGetLeptonPowerCtrl() {
-		return UMDDrive.hasUmdPower();
+		return UMDDrive.Instance.hasUmdPower();
 	}
 
     /**
@@ -634,7 +634,7 @@ public class sceSyscon extends HLEModule {
 	@HLEUnimplemented
 	@HLEFunction(nid = 0x8A4519F5, version = 660)
 	public int sceSysconCtrlLeptonPower(boolean power) {
-		UMDDrive.setUmdPower(power);
+        UMDDrive.Instance.setUmdPower(power);
 
 		return 0;
 	}
