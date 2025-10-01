@@ -198,7 +198,7 @@ public class sceImpose extends HLEModule {
 		switch (param) {
 			case PSP_IMPOSE_MAIN_VOLUME:
 				// Return value [0..30]?
-				if (Audio.isMuted()) {
+				if (Audio.Instance.isMuted()) {
 					value = 0;
 				} else {
 					value = 30;
@@ -208,7 +208,7 @@ public class sceImpose extends HLEModule {
 				value = 0;
 				break;
 			case PSP_IMPOSE_MUTE:
-				value = Audio.isMuted() ? 1 : 0;
+				value = Audio.Instance.isMuted() ? 1 : 0;
 				break;
 			case PSP_IMPOSE_AVLS:
 				value = imposeAvls;
@@ -265,7 +265,7 @@ public class sceImpose extends HLEModule {
 				if (value < 0 || value > 1) {
 					return SceKernelErrors.ERROR_INVALID_VALUE;
 				}
-				Audio.setMuted(value != 0);
+                Audio.Instance.setMuted(value != 0);
 				imposeChanges |= PSP_IMPOSE_MUTE | PSP_IMPOSE_MAIN_VOLUME;
 				break;
 			case PSP_IMPOSE_AVLS:

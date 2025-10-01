@@ -177,7 +177,7 @@ public class MMIOHandlerAudio extends MMIOHandlerBase {
 				log.trace(String.format("sendAudioData value=0x%08X, %s", value, toString()));
 			}
 
-			if (Audio.isMuted()) {
+			if (Audio.Instance.isMuted()) {
 				value = 0;
 			}
 

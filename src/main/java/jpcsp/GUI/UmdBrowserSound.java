@@ -214,7 +214,7 @@ public class UmdBrowserSound {
 			bytes[i] = (byte) mem.read8(samplesAddr + i);
 		}
 
-		if (Audio.isMuted()) {
+		if (Audio.Instance.isMuted()) {
 			Arrays.fill(bytes, (byte) 0);
 		}
 

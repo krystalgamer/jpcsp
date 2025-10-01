@@ -136,7 +136,7 @@ public class sceAudio extends HLEModule {
 
             IMemoryReader memoryReader = MemoryReader.getMemoryReader(pvoid_buf, nbytes, 2);
             if (channel.isFormatMono()) {
-                int volume = Audio.getVolume(channel.getLeftVolume());
+                int volume = Audio.Instance.getVolume(channel.getLeftVolume());
                 for (int i = 0; i < nbytes; i += 2) {
                     short sample = (short) memoryReader.readNext();
 
@@ -145,8 +145,8 @@ public class sceAudio extends HLEModule {
                     SoundChannel.storeSample(sample, data, i);
                 }
             } else {
-                int leftVolume = Audio.getVolume(channel.getLeftVolume());
-                int rightVolume = Audio.getVolume(channel.getRightVolume());
+                int leftVolume = Audio.Instance.getVolume(channel.getLeftVolume());
+                int rightVolume = Audio.Instance.getVolume(channel.getRightVolume());
                 for (int i = 0; i < nbytes; i += 4) {
                     short lsample = (short) memoryReader.readNext();
                     short rsample = (short) memoryReader.readNext();

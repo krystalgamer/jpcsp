@@ -23,57 +23,65 @@ public class Audio {
 	public static final int PSP_AUDIO_VOLUME_MIN = 0;
 	public static final int PSP_AUDIO_VOLUME_MAX = 0x8000;
 	public static final int PSP_AUDIO_VOLUME_STEP = 0x100;
-	private static int volume = PSP_AUDIO_VOLUME_MAX;
-	private static boolean muted;
-	private static AudioMutedSettingsListerner audioMutedSettingsListerner;
 
-	private static class AudioMutedSettingsListerner extends AbstractBoolSettingsListener {
-		@Override
-		protected void settingsValueChanged(boolean value) {
-			setMuted(value);
-		}
-	}
 
-	public static int getVolume() {
+	private int volume = PSP_AUDIO_VOLUME_MAX;
+	private boolean muted;
+	private AudioMutedSettingsListener audioMutedSettingsListener;
+
+    public final static Audio Instance = new Audio();
+
+    public Audio()
+    {
+    }
+
+	private class AudioMutedSettingsListener extends AbstractBoolSettingsListener {
+        @Override
+        protected void settingsValueChanged(boolean value) {
+            setMuted(value);
+        }
+    }
+
+	public int getVolume() {
 		return volume;
 	}
 
-	public static void setVolume(int volume) {
+	public void setVolume(int volume) {
 		if (volume > PSP_AUDIO_VOLUME_MAX) {
 			volume = PSP_AUDIO_VOLUME_MAX;
 		} else if (volume < PSP_AUDIO_VOLUME_MIN) {
 			volume = PSP_AUDIO_VOLUME_MIN;
 		}
 
-		Audio.volume = volume;
+		this.volume = volume;
 	}
 
-	private static void init() {
-		if (audioMutedSettingsListerner == null) {
-			audioMutedSettingsListerner = new AudioMutedSettingsListerner();
-			Settings.getInstance().registerSettingsListener("HardwareAudio", "emu.mutesound", audioMutedSettingsListerner);
+	private synchronized void init() {
+		if (audioMutedSettingsListener == null) {
+			audioMutedSettingsListener = new AudioMutedSettingsListener();
+			Settings.getInstance().registerSettingsListener("HardwareAudio", "emu.mutesound", audioMutedSettingsListener);
 		}
 	}
 
-	public static boolean isMuted() {
+	public boolean isMuted() {
 		init();
 		return muted;
 	}
 
-	public static void setMuted(boolean muted) {
+	public void setMuted(boolean muted) {
 		init();
-		Audio.muted = muted;
+		this.muted = muted;
 	}
 
-	public static void setVolumeUp() {
+	public void setVolumeUp() {
 		setVolume(volume + PSP_AUDIO_VOLUME_STEP);
 	}
 
-	public static void setVolumeDown() {
+	public void setVolumeDown() {
 		setVolume(volume - PSP_AUDIO_VOLUME_STEP);
 	}
 
-	public static int getVolume(int volume) {
+	public int getVolume(int volume) {
 		if (isMuted()) {
 			volume = 0;
 		} else {

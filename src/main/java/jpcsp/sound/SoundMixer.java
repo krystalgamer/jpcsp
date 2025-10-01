@@ -80,8 +80,8 @@ public class SoundMixer {
 
     private void copyStereoSamplesToMem(int[] mixedSamples, int addr, int samples, int leftVol, int rightVol, boolean writeSamples) {
     	// Adjust the volume according to the global volume settings
-    	leftVol = Audio.getVolume(leftVol);
-    	rightVol = Audio.getVolume(rightVol);
+    	leftVol = Audio.Instance.getVolume(leftVol);
+    	rightVol = Audio.Instance.getVolume(rightVol);
 
     	if (!writeSamples) {
     		// If the samples have not been changed and the volume settings
@@ -106,7 +106,7 @@ public class SoundMixer {
 
     private void copyMonoSamplesToMem(int[] mixedSamples, int addr, int samples, int monoVol, boolean writeSamples) {
     	// Adjust the volume according to the global volume settings
-    	monoVol = Audio.getVolume(monoVol);
+    	monoVol = Audio.Instance.getVolume(monoVol);
 
     	if (!writeSamples) {
     		// If the samples have not been changed and the volume settings

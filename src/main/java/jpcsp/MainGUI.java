@@ -2723,9 +2723,9 @@ private void ControlsConfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-
 }//GEN-LAST:event_ControlsConfActionPerformed
 
 private void MuteOptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MuteOptActionPerformed
-        Audio.setMuted(!Audio.isMuted());
-        MuteOpt.setSelected(Audio.isMuted());
-        Settings.getInstance().writeBool("emu.mutesound", Audio.isMuted());
+    Audio.Instance.setMuted(!Audio.Instance.isMuted());
+        MuteOpt.setSelected(Audio.Instance.isMuted());
+        Settings.getInstance().writeBool("emu.mutesound", Audio.Instance.isMuted());
 }//GEN-LAST:event_MuteOptActionPerformed
 
 private void ClockSpeedNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClockSpeedNormalActionPerformed
