@@ -21,21 +21,27 @@ package jpcsp.hardware;
  *
  */
 public class Slide {
-	private static boolean slideOpen = true;
+	private boolean slideOpen = true;
 
-	public static boolean hasSlide() {
+    public final static Slide Instance = new Slide();
+
+    public Slide()
+    {
+    }
+
+	public boolean hasSlide() {
 		return Model.getModel() == Model.MODEL_PSP_GO;
 	}
 
-	public static boolean isSlideOpen() {
+	public boolean isSlideOpen() {
 		return slideOpen;
 	}
 
-	public static void closeSlide() {
+	public void closeSlide() {
 		slideOpen = false;
 	}
 
-	public static void openSlide() {
+	public void openSlide() {
 		slideOpen = true;
 	}
 }

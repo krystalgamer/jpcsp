@@ -601,8 +601,8 @@ public class Controller {
     	}
 
     	// The PSP Go has a slide which can be opened or closed
-    	if (Slide.hasSlide()) {
-    		if (Slide.isSlideOpen()) {
+    	if (Slide.Instance.hasSlide()) {
+    		if (Slide.Instance.isSlideOpen()) {
     			Buttons |= PSP_CTRL_SLIDE_OPEN;
     		} else {
     			Buttons &= ~PSP_CTRL_SLIDE_OPEN;
