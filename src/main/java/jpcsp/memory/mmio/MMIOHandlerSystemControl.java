@@ -290,7 +290,7 @@ public class MMIOHandlerSystemControl extends MMIOHandlerBase {
 			usbAndMemoryStick = setFlag(usbAndMemoryStick, SYSREG_USBMS_MS0_CONNECTED);
 		}
 
-		if (Usb.isCableConnected()) {
+		if (Usb.Instance.isCableConnected()) {
 			usbAndMemoryStick = setFlag(usbAndMemoryStick, SYSREG_USBMS_USB_CONNECTED);
 			resetDevices = setBit(resetDevices, SYSREG_RESET_USB);
 //			triggerUsbMemoryStickInterrupt(SYSREG_USBMS_USB_INTERRUPT_CABLE_CONNECTED);

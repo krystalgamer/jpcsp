@@ -66,7 +66,7 @@ public class sceUsb extends HLEModule {
 	}
 
 	protected int getUsbState() {
-		int state = Usb.isCableConnected() ? PSP_USB_CABLE_CONNECTED : PSP_USB_CABLE_DISCONNECTED;
+		int state = Usb.Instance.isCableConnected() ? PSP_USB_CABLE_CONNECTED : PSP_USB_CABLE_DISCONNECTED;
 
 		// USB has been activated?
 		state |= usbActivated ? PSP_USB_ACTIVATED : PSP_USB_DEACTIVATED;

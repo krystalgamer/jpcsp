@@ -18,13 +18,19 @@ package jpcsp.hardware;
 
 public class Usb {
 	// Simulate that a USB cable is connected.
-	private static boolean cableConnected = true;
+	private boolean cableConnected = true;
 
-	public static boolean isCableConnected() {
+    public final static Usb Instance = new Usb();
+
+    public Usb()
+    {
+    }
+
+	public boolean isCableConnected() {
 		return cableConnected;
 	}
 
-	public static void setCableConnected(boolean cableConnected) {
-		Usb.cableConnected = cableConnected;
+	public void setCableConnected(boolean cableConnected) {
+		this.cableConnected = cableConnected;
 	}
 }
