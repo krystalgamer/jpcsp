@@ -19,7 +19,6 @@ import static jpcsp.graphics.GeCommands.TPSM_PIXEL_STORAGE_MODE_4BIT_INDEXED;
 import static jpcsp.graphics.GeCommands.TPSM_PIXEL_STORAGE_MODE_8BIT_INDEXED;
 
 import jpcsp.graphics.VideoEngine;
-import jpcsp.plugins.XBRZNativeFilter;
 
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
@@ -1022,9 +1021,6 @@ public class RenderingEngineLwjgl extends NullRenderingEngine {
 
     @Override
     public void setPixelStore(int rowLength, int alignment) {
-        if (!VideoEngine.getInstance().isUsexBRZFilter()) {
-            GL11.glPixelStorei(GL11.GL_UNPACK_ROW_LENGTH, rowLength);
-        }
         GL11.glPixelStorei(GL11.GL_UNPACK_ALIGNMENT, alignment);
         GL11.glPixelStorei(GL11.GL_PACK_ROW_LENGTH, rowLength);
         GL11.glPixelStorei(GL11.GL_PACK_ALIGNMENT, alignment);
@@ -1055,45 +1051,13 @@ public class RenderingEngineLwjgl extends NullRenderingEngine {
         if (buffer == null) {
             GL11.glTexImage2D(GL11.GL_TEXTURE_2D, level, textureInternalFormatToGL[internalFormat], width, height, 0, textureFormatToGL[format], textureTypeToGL[type], directBufferUtilities.getDirectBuffer(textureSize, (ByteBuffer) buffer));
         } else if (buffer instanceof ByteBuffer) {
-            if (bufwidth != -1) {
-                ByteBuffer tmpbuf = directBufferUtilities.getDirectBuffer(textureSize, (ByteBuffer) buffer);
-                int length = tmpbuf.remaining();
-                byte[] buf = new byte[length];
-                tmpbuf.get(buf);
-                XBRZNativeFilter.ScaleandSetTexImage(2, buf, level, textureInternalFormatToGL[internalFormat], width, height, bufwidth, textureFormatToGL[format], textureTypeToGL[type]);
-            } else {
-                GL11.glTexImage2D(GL11.GL_TEXTURE_2D, level, textureInternalFormatToGL[internalFormat], width, height, 0, textureFormatToGL[format], textureTypeToGL[type], directBufferUtilities.getDirectBuffer(textureSize, (ByteBuffer) buffer));
-            }
+            GL11.glTexImage2D(GL11.GL_TEXTURE_2D, level, textureInternalFormatToGL[internalFormat], width, height, 0, textureFormatToGL[format], textureTypeToGL[type], directBufferUtilities.getDirectBuffer(textureSize, (ByteBuffer) buffer));
         } else if (buffer instanceof IntBuffer) {
-            if (bufwidth != -1) {
-                IntBuffer tmpbuf = directBufferUtilities.getDirectBuffer(textureSize, (IntBuffer) buffer);
-                int length = tmpbuf.remaining();
-                int[] buf = new int[length];
-                tmpbuf.get(buf);
-                XBRZNativeFilter.ScaleandSetTexImage(2, buf, level, textureInternalFormatToGL[internalFormat], width, height, bufwidth, textureFormatToGL[format], textureTypeToGL[type]);
-            } else {
-                GL11.glTexImage2D(GL11.GL_TEXTURE_2D, level, textureInternalFormatToGL[internalFormat], width, height, 0, textureFormatToGL[format], textureTypeToGL[type], directBufferUtilities.getDirectBuffer(textureSize, (IntBuffer) buffer));
-            }
+            GL11.glTexImage2D(GL11.GL_TEXTURE_2D, level, textureInternalFormatToGL[internalFormat], width, height, 0, textureFormatToGL[format], textureTypeToGL[type], directBufferUtilities.getDirectBuffer(textureSize, (IntBuffer) buffer));
         } else if (buffer instanceof ShortBuffer) {
-            if (bufwidth != -1) {
-                ShortBuffer tmpbuf = directBufferUtilities.getDirectBuffer(textureSize, (ShortBuffer) buffer);
-                int length = tmpbuf.remaining();
-                short[] buf = new short[length];
-                tmpbuf.get(buf);
-                XBRZNativeFilter.ScaleandSetTexImage(2, buf, level, textureInternalFormatToGL[internalFormat], width, height, bufwidth, textureFormatToGL[format], textureTypeToGL[type]);
-            } else {
-                GL11.glTexImage2D(GL11.GL_TEXTURE_2D, level, textureInternalFormatToGL[internalFormat], width, height, 0, textureFormatToGL[format], textureTypeToGL[type], directBufferUtilities.getDirectBuffer(textureSize, (ShortBuffer) buffer));
-            }
+            GL11.glTexImage2D(GL11.GL_TEXTURE_2D, level, textureInternalFormatToGL[internalFormat], width, height, 0, textureFormatToGL[format], textureTypeToGL[type], directBufferUtilities.getDirectBuffer(textureSize, (ShortBuffer) buffer));
         } else if (buffer instanceof FloatBuffer) {
-            if (bufwidth != -1) {
-                FloatBuffer tmpbuf = directBufferUtilities.getDirectBuffer(textureSize, (FloatBuffer) buffer);
-                int length = tmpbuf.remaining();
-                float[] buf = new float[length];
-                tmpbuf.get(buf);
-                XBRZNativeFilter.ScaleandSetTexImage(2, buf, level, textureInternalFormatToGL[internalFormat], width, height, bufwidth, textureFormatToGL[format], textureTypeToGL[type]);
-            } else {
-                GL11.glTexImage2D(GL11.GL_TEXTURE_2D, level, textureInternalFormatToGL[internalFormat], width, height, 0, textureFormatToGL[format], textureTypeToGL[type], directBufferUtilities.getDirectBuffer(textureSize, (FloatBuffer) buffer));
-            }
+            GL11.glTexImage2D(GL11.GL_TEXTURE_2D, level, textureInternalFormatToGL[internalFormat], width, height, 0, textureFormatToGL[format], textureTypeToGL[type], directBufferUtilities.getDirectBuffer(textureSize, (FloatBuffer) buffer));
         } else {
             throw new IllegalArgumentException();
         }

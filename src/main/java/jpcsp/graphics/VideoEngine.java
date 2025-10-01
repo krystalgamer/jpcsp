@@ -241,7 +241,6 @@ public class VideoEngine {
     private boolean useAsyncVertexCache = true;
     public boolean useOptimisticVertexCache = false;
     private boolean useTextureAnisotropicFilter = false;
-    private boolean usexBRZFilter = false;
     private boolean disableOptimizedVertexInfoReading = false;
     private boolean avoidDrawElementsWithNonZeroIndexOffset = false;
     private boolean enableTextureModding = true;
@@ -444,7 +443,6 @@ public class VideoEngine {
 
         @Override
         protected void settingsValueChanged(boolean value) {
-            setUsexBRZFilter(value);
         }
     }
 
@@ -6540,7 +6538,7 @@ public class VideoEngine {
         }
         
         // Check if scaling is needed for xBRZ.
-        boolean scale = isUsexBRZFilter();
+        boolean scale = false;
         if (texaddr > MemoryMap.END_VRAM && texaddr < MemoryMap.START_USERSPACE) {
             scale = false;
         }
@@ -6555,7 +6553,7 @@ public class VideoEngine {
                     context.texture_width[level], context.texture_height[level],
                     compressedTextureSize,
                     final_buffer);
-        } else if (isUsexBRZFilter() && scale) {
+        } else if (scale) {
             int textureSize = Math.max(textureBufferWidthInPixels, this.context.texture_width[level]) * this.context.texture_height[level] * textureByteAlignment;
             this.re.setTexImagexBRZ(
             		reTextureLevel,
@@ -8286,14 +8284,6 @@ public class VideoEngine {
 
     public void setUseTextureAnisotropicFilter(boolean useTextureAnisotropicFilter) {
         this.useTextureAnisotropicFilter = useTextureAnisotropicFilter;
-    }
-
-    public boolean isUsexBRZFilter() {
-        return usexBRZFilter;
-    }
-
-    public void setUsexBRZFilter(boolean usexBRZFilter) {
-        this.usexBRZFilter = usexBRZFilter;
     }
 
     public void setSkipThisFrame(boolean skipThisFrame) {
