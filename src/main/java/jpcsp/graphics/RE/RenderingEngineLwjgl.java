@@ -1021,6 +1021,7 @@ public class RenderingEngineLwjgl extends NullRenderingEngine {
 
     @Override
     public void setPixelStore(int rowLength, int alignment) {
+        GL11.glPixelStorei(GL11.GL_UNPACK_ROW_LENGTH, rowLength);
         GL11.glPixelStorei(GL11.GL_UNPACK_ALIGNMENT, alignment);
         GL11.glPixelStorei(GL11.GL_PACK_ROW_LENGTH, rowLength);
         GL11.glPixelStorei(GL11.GL_PACK_ALIGNMENT, alignment);
