@@ -145,9 +145,10 @@ public class sceResmgr extends HLEModule {
 	    	writeUnaligned32(buffer, 0xB4, 0x80); // dataOffset
 	    	int tag;
 	    	switch (Model.getGeneration()) {
-	    		case 1:  tag = 0x0B2B90F0; break;
-	    		case 2:  tag = 0x0B2B91F0; break;
-	    		default: tag = 0x0B2B92F0; break;
+	    		case 1:  tag = 0x0B2B90F0; break; // PSP-1000
+	    		case 2:  tag = 0x0B2B91F0; break; // PSP-2000
+	    		case 5:  tag = 0x0B2B93F0; break; // PSP-N1000 (Go)
+	    		default: tag = 0x0B2B92F0; break; // PSP-3000 (and others)
 	    	}
 	    	writeUnaligned32(buffer, 0xD0, tag); // tag
 
