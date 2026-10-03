@@ -263,6 +263,83 @@ public class PRX {
         new TAG_INFO(0x0DAA06F0, KeyVault.key_0DAA06F0, KeyVault.xor_0DAA06F0, 0x65),
         new TAG_INFO(0x89742B04, KeyVault.key_89742B04, KeyVault.xor_89742B04, 0x65),
         new TAG_INFO(0xE92408F0, KeyVault.key_E92408F0, KeyVault.xor_E92408F0, 0x65),
+        // Ported from decrypt_prx (PRXdecrypter): additional 16-byte tag keys
+        new TAG_INFO(0x4E3A1105, KeyVault.key_4E3A1105, 0x70), //5.00
+        new TAG_INFO(0xC3650F03, KeyVault.key_C3650F03, 0x70), //2.60
+        new TAG_INFO(0x8110A703, KeyVault.key_8110A703, 0x70), //2.60
+        new TAG_INFO(0x0276EA03, KeyVault.key_0276EA03, 0x70), //2.60
+        new TAG_INFO(0x3C2A28F0, KeyVault.key_3C2A28F0, 0x67), //5.70 PSPgo
+        new TAG_INFO(0x3C2A1EF0, KeyVault.key_3C2A1EF0, 0x67), //5.00 PSP-3000
+        new TAG_INFO(0x3C2A10F0, KeyVault.key_3C2A10F0, 0x67), //3.60
+        new TAG_INFO(0x279D28F0, KeyVault.key_279D28F0, 0x61), //5.70 PSPgo
+        new TAG_INFO(0x279D1EF0, KeyVault.key_279D1EF0, 0x61), //5.00 PSP-3000
+        new TAG_INFO(0xADF328F0, KeyVault.key_ADF328F0, 0x60), //5.70 PSPgo
+        new TAG_INFO(0xADF31EF0, KeyVault.key_ADF31EF0, 0x60), //5.00 PSP-3000
+        new TAG_INFO(0xADF310F0, KeyVault.key_ADF310F0, 0x60), //3.60
+        new TAG_INFO(0xD67B3303, KeyVault.key_D67B3303, 0x60), //2.60
+        new TAG_INFO(0xA6E31EF0, KeyVault.key_A6E31EF0, 0x5F), //5.00 PSP-3000
+        new TAG_INFO(0xA6E310F0, KeyVault.key_A6E310F0, 0x5F), //3.60
+        new TAG_INFO(0xA6E308F0, KeyVault.key_A6E308F0, 0x5F), //3.10
+        new TAG_INFO(0xA6E306F0, KeyVault.key_A6E306F0, 0x5F), //3.00
+        new TAG_INFO(0xA6E305F0, KeyVault.key_A6E305F0, 0x5F), //2.80
+        new TAG_INFO(0x6AB7CC03, KeyVault.key_6AB7CC03, 0x5F), //2.60
+        new TAG_INFO(0xEFD228F0, KeyVault.key_EFD228F0, 0x5E), //5.70 PSPgo
+        new TAG_INFO(0xEFD21EF0, KeyVault.key_EFD21EF0, 0x5E), //5.00 PSP-3000
+        new TAG_INFO(0xEFD210F0, KeyVault.key_EFD210F0, 0x5E), //3.60
+        new TAG_INFO(0xEFD206F0, KeyVault.key_EFD206F0, 0x5E), //3.00
+        new TAG_INFO(0xEFD205F0, KeyVault.key_EFD205F0, 0x5E), //2.80
+        new TAG_INFO(0x7B0528F0, KeyVault.key_7B0528F0, 0x5E), //5.70 PSPgo
+        new TAG_INFO(0x7B051EF0, KeyVault.key_7B051EF0, 0x5E), //5.00 PSP-3000
+        new TAG_INFO(0x7B0510F0, KeyVault.key_7B0510F0, 0x5E), //3.60
+        new TAG_INFO(0xD91690F0, KeyVault.key_D91690F0, 0x5D), //6.60
+        new TAG_INFO(0xD9161EF0, KeyVault.key_D9161EF0, 0x5D), //5.00 PSP-3000
+        new TAG_INFO(0xD91610F0, KeyVault.key_D91610F0, 0x5D), //3.60
+        new TAG_INFO(0x5A5C28F0, KeyVault.key_5A5C28F0, 0x5C), //5.70 PSPgo
+        new TAG_INFO(0x5A5C1EF0, KeyVault.key_5A5C1EF0, 0x5C), //5.00 PSP-3000
+        new TAG_INFO(0x5A5C10F0, KeyVault.key_5A5C10F0, 0x5C), //3.60
+        new TAG_INFO(0x0B2B9AF0, KeyVault.key_0B2B9AF0, 0x5C), //1.6x PSVita
+        new TAG_INFO(0x0B2B93F0, KeyVault.key_0B2B93F0, 0x5C), //6.60 PSPgo
+        new TAG_INFO(0x0B2B83F0, KeyVault.key_0B2B83F0, 0x5C), //6.30 PSPgo
+        new TAG_INFO(0x0B2B82F0, KeyVault.key_0B2B82F0, 0x5C), //6.30 PSP-3000 03g, 04g, 07g, 09g
+        new TAG_INFO(0x0B2B81F0, KeyVault.key_0B2B81F0, 0x5C), //6.30 PSP-2000
+        new TAG_INFO(0x0B2B80F0, KeyVault.key_0B2B80F0, 0x5C), //6.30 PSP-1000
+        new TAG_INFO(0x0B2B28F0, KeyVault.key_0B2B28F0, 0x5C), //5.70 PSPgo
+        new TAG_INFO(0x0B2B1FF0, KeyVault.key_0B2B1FF0, 0x5C), //6.00 PSP-3000 03g, 04g
+        new TAG_INFO(0x0B2B1EF0, KeyVault.key_0B2B1EF0, 0x5C), //5.00 PSP-3000
+        new TAG_INFO(0x0B2B12F0, KeyVault.key_0B2B12F0, 0x5C), //6.00 PSP-2000
+        new TAG_INFO(0x0B2B11F0, KeyVault.key_0B2B11F0, 0x5C), //3.70 PSP-2000
+        new TAG_INFO(0x0B2B10F0, KeyVault.key_0B2B10F0, 0x5C), //3.60
+        new TAG_INFO(0x0B2B0CF0, KeyVault.key_0B2B0CF0, 0x5C), //6.00 PSP-1000
+        new TAG_INFO(0x0B2B0BF0, KeyVault.key_0B2B0BF0, 0x5C), //3.70 PSP-1000
+        new TAG_INFO(0x0B2B0AF0, KeyVault.key_0B2B0AF0, 0x5C), //3.30
+        new TAG_INFO(0x0B2B08F0, KeyVault.key_0B2B08F0, 0x5C), //3.10
+        new TAG_INFO(0x0B2B06F0, KeyVault.key_0B2B06F0, 0x5C), //3.00
+        new TAG_INFO(0x0B2B05F0, KeyVault.key_0B2B05F0, 0x5C), //2.80
+        new TAG_INFO(0x495BE403, KeyVault.key_495BE403, 0x5C), //2.60
+        new TAG_INFO(0x8B9B28F0, KeyVault.key_8B9B28F0, 0x5B), //5.70 PSPgo
+        new TAG_INFO(0x8B9B1EF0, KeyVault.key_8B9B1EF0, 0x5B), //5.00 PSP-3000
+        new TAG_INFO(0x8B9B10F0, KeyVault.key_8B9B10F0, 0x5B), //3.60
+        new TAG_INFO(0x8B9B06F0, KeyVault.key_8B9B06F0, 0x5B), //3.00
+        new TAG_INFO(0x8B9B05F0, KeyVault.key_8B9B05F0, 0x5B), //2.80
+        new TAG_INFO(0x457B9AF0, KeyVault.key_457B9AF0, 0x5B), //1.6x PSVita
+        new TAG_INFO(0x628928F0, KeyVault.key_628928F0, 0x5A), //5.70 PSPgo
+        new TAG_INFO(0x62891EF0, KeyVault.key_62891EF0, 0x5A), //5.00 PSP-3000
+        new TAG_INFO(0x628910F0, KeyVault.key_628910F0, 0x5A), //3.60
+        new TAG_INFO(0x628906F0, KeyVault.key_628906F0, 0x5A), //3.00
+        new TAG_INFO(0x628905F0, KeyVault.key_628905F0, 0x5A), //2.80
+        new TAG_INFO(0x38029AF0, KeyVault.key_38029AF0, 0x5A), //1.6x PSVita
+        new TAG_INFO(0x380282F0, KeyVault.key_380282F0, 0x5A), //6.30 PSP-3000 03g, 04g, 07g, 09g
+        new TAG_INFO(0x380281F0, KeyVault.key_380281F0, 0x5A), //6.30 PSP-2000
+        new TAG_INFO(0x38021EF0, KeyVault.key_38021EF0, 0x5A), //5.00 PSP-3000
+        new TAG_INFO(0xD13B28F0, KeyVault.key_D13B28F0, 0x52), //5.70 PSPgo
+        new TAG_INFO(0xD13B1EF0, KeyVault.key_D13B1EF0, 0x52), //5.00 PSP-3000
+        new TAG_INFO(0xD13B10F0, KeyVault.key_D13B10F0, 0x52), //3.60
+        new TAG_INFO(0xD13B08F0, KeyVault.key_D13B08F0, 0x52), //3.10
+        new TAG_INFO(0xD13B06F0, KeyVault.key_D13B06F0, 0x52), //3.00
+        new TAG_INFO(0xD13B05F0, KeyVault.key_D13B05F0, 0x52), //2.80
+        new TAG_INFO(0x1B11FD03, KeyVault.key_1B11FD03, 0x52), //2.60
+        new TAG_INFO(0x4C949BF0, KeyVault.key_4C949BF0, 0x43), //2.02 psvita
+        new TAG_INFO(0x4C949AF0, KeyVault.key_4C949AF0, 0x43), //1.6x PSVita
     	// 144-bytes keys
         new TAG_INFO(0x00000000, KeyVault.g_key00, 0x42, 0x00),
         new TAG_INFO(0x02000000, KeyVault.key_5C3A61FE, 0x45, 0x00),
