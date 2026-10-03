@@ -157,8 +157,10 @@ public class PRX {
         new TAG_INFO(0x4C9422F0, KeyVault.keys600_2, 0x43),
         new TAG_INFO(0x4C941EF0, KeyVault.keys600_1, 0x43),
         new TAG_INFO(0x4C9429F0, KeyVault.keys570_5k, 0x43),
+        new TAG_INFO(0xA6E328F0, KeyVault.keys570_5k2, 0x5F),
         new TAG_INFO(0x4C941BF0, KeyVault.keys555_k2, 0x43),
         new TAG_INFO(0x4C941AF0, KeyVault.keys555_k1, 0x43),
+        new TAG_INFO(0x4C9421F0, KeyVault.keys555_k3, 0x43),
         new TAG_INFO(0x457B0BF0, KeyVault.keys505_a, 0x5B),
         new TAG_INFO(0x4C9420F0, KeyVault.keys505_k2, 0x43),
         new TAG_INFO(0x4C9419F0, KeyVault.keys505_1, 0x43),
@@ -290,7 +292,10 @@ public class PRX {
         new TAG_INFO(0xBB67C59F, KeyVault.g_key1B, 0x61, 0x61),
     	new TAG_INFO(0x0E000000, KeyVault.key_102DC8AF_2, 0x51, 0x00),
     	new TAG_INFO(0x06000000, KeyVault.key_06000000, 0x49, 0x00),
-    	new TAG_INFO(0xE42C2303, KeyVault.key_E42C2303, 0x49, 0x00)};
+    	new TAG_INFO(0xE42C2303, KeyVault.key_E42C2303, 0x49, 0x00),
+    	// Ported from pspdecrypt for table parity (older PSP keys)
+    	new TAG_INFO(0x7F24BDCD, KeyVault.g_demokeys_280, 0x60, 0x60),
+    	new TAG_INFO(0x0A000000, KeyVault.g_key_GAMESHAREDEMO_150, 0x4D, 0x00)};
 
     private TAG_INFO GetTagInfo(int tag) {
     	List<TAG_INFO> tagInfos = new LinkedList<TAG_INFO>();
