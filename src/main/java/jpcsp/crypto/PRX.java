@@ -1035,7 +1035,7 @@ public class PRX {
             }
 
             if (Utilities.memcmp(buf2, 0, buf4, 0, 0x14) != 0) {
-            	log.error(String.format("DecryptPRX: SHA1 Hash not matching: %s%s", Utilities.getMemoryDump(buf2, 0, 0x14), Utilities.getMemoryDump(buf4, 0, 0x14)));
+            	log.error(String.format("DecryptPRX: SHA1 Hash not matching for tag=0x%08X, type=%d, code=0x%02X (computed=%s expected=%s)", tag, type, pti.code, Utilities.getMemoryDump(buf2, 0, 0x14), Utilities.getMemoryDump(buf4, 0, 0x14)));
             }
 
             if ((type >= 2 && type <= 7) || type == 9 || type == 10) {
